@@ -1,3 +1,4 @@
+import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:capstoneapp1/pages/addusername.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,8 @@ class loadingPage extends StatefulWidget {
 
 class _loadingPageState extends State<loadingPage>
     with SingleTickerProviderStateMixin {
+  //Gamesounds
+  Gamesounds _sounds = Gamesounds();
   //loading animation
   static const spinkit = SpinKitFadingFour(
     color: Colors.green,
@@ -24,8 +27,9 @@ class _loadingPageState extends State<loadingPage>
     super.initState();
     //fullscreen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-
+    _sounds.GameOpening();
     Future.delayed(Duration(seconds: 4), () {
+      _sounds.GameOpeningStop();
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => AddUsername()));
     });
@@ -36,7 +40,7 @@ class _loadingPageState extends State<loadingPage>
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-
+    _sounds.GameOpeningStop();
     super.dispose();
   }
 
