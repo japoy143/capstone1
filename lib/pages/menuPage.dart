@@ -1,3 +1,7 @@
+import 'package:capstoneapp1/components/allComputerWords.dart';
+import 'package:capstoneapp1/components/allGeneralWords.dart';
+import 'package:capstoneapp1/components/computerwordsList.dart';
+import 'package:capstoneapp1/components/generalWordsList.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatefulWidget {
@@ -15,13 +19,13 @@ class _MenuPageState extends State<MenuPage> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Hi Rainier!',
                   style: TextStyle(
                       fontFamily: 'Rubik',
@@ -36,7 +40,7 @@ class _MenuPageState extends State<MenuPage> {
                     borderRadius: BorderRadius.circular(16.0),
                     border: Border.all(color: Colors.green, width: 3),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'WPM: 100',
                       style: TextStyle(
@@ -48,7 +52,7 @@ class _MenuPageState extends State<MenuPage> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             ),
             Padding(
@@ -61,19 +65,47 @@ class _MenuPageState extends State<MenuPage> {
                     width: 170,
                     decoration: BoxDecoration(
                       color: Colors.green[400],
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Column(children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 7.0,
                       ),
-                      Text(
+                      const Text(
                         'General Words',
                         style: TextStyle(
                             fontSize: 20.0,
                             fontFamily: 'Rubik',
                             fontWeight: FontWeight.bold),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 165,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.white24,
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: GeneralDict(),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const AllGeneralWords()));
+                        },
+                        child: const Text(
+                          'More',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Rubik',
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
                     ]),
                   ),
                   Container(
@@ -81,25 +113,53 @@ class _MenuPageState extends State<MenuPage> {
                     width: 170,
                     decoration: BoxDecoration(
                       color: Colors.green[400],
-                      borderRadius: BorderRadius.circular(12.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Column(children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 7.0,
                       ),
-                      Text(
+                      const Text(
                         'Computer Words',
                         style: TextStyle(
                             fontSize: 20.0,
                             fontFamily: 'Rubik',
                             fontWeight: FontWeight.bold),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 165,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.white24,
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: ComputerDict(),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const AllComputerWords()));
+                        },
+                        child: const Text(
+                          'More',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Rubik',
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
                     ]),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -111,10 +171,14 @@ class _MenuPageState extends State<MenuPage> {
                   color: Colors.green[400],
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Play',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -125,13 +189,17 @@ class _MenuPageState extends State<MenuPage> {
                 height: 70,
                 width: 200,
                 decoration: BoxDecoration(
-                  color: Colors.green[400],
+                  color: Colors.amberAccent,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'HighScores',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -142,13 +210,17 @@ class _MenuPageState extends State<MenuPage> {
                 height: 70,
                 width: 200,
                 decoration: BoxDecoration(
-                  color: Colors.green[400],
+                  color: Colors.redAccent,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Exit',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
