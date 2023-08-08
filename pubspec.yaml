@@ -84,6 +84,9 @@ flutter:
     - family: Rubik
       fonts:
         - asset: fonts/Rubik-Regular.ttf
-  #
+
+    - family: Anton
+      fonts:
+        - asset: fonts/Anton-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

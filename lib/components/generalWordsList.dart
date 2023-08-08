@@ -1,3 +1,4 @@
+import 'package:capstoneapp1/components/allGeneralWords.dart';
 import 'package:flutter/material.dart';
 
 class GeneralDict extends StatelessWidget {
@@ -22,15 +23,17 @@ class GeneralDict extends StatelessWidget {
           String key = genWords.keys.elementAt(index);
           String value = genWords.values.elementAt(index);
           return ListTile(
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => AllGeneralWords())),
             title: Text(
               key,
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: 'Rubik',
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold),
             ),
             subtitle: Text(value,
-                style: TextStyle(fontFamily: 'Rubik', fontSize: 15.0)),
+                style: const TextStyle(fontFamily: 'Rubik', fontSize: 15.0)),
           );
         });
   }

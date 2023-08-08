@@ -2,7 +2,10 @@ import 'package:capstoneapp1/components/allComputerWords.dart';
 import 'package:capstoneapp1/components/allGeneralWords.dart';
 import 'package:capstoneapp1/components/computerwordsList.dart';
 import 'package:capstoneapp1/components/generalWordsList.dart';
+import 'package:capstoneapp1/menuPages/highScore.dart';
+import 'package:capstoneapp1/menuPages/play.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -25,28 +28,34 @@ class _MenuPageState extends State<MenuPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                const Text(
-                  'Hi Rainier!',
-                  style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0),
-                ),
-                Container(
-                  height: 30,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: Colors.green, width: 3),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    'Hi Rainier!',
+                    style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.0),
                   ),
-                  child: const Center(
-                    child: Text(
-                      'WPM: 100',
-                      style: TextStyle(
-                          fontFamily: 'Rubik',
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 5.0),
+                  child: Container(
+                    height: 30,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.0),
+                      border: Border.all(color: Colors.green, width: 3),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'WPM: 100',
+                        style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 )
@@ -164,20 +173,26 @@ class _MenuPageState extends State<MenuPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 70,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.green[400],
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Play',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => playGame()));
+                },
+                child: Container(
+                  height: 70,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Play',
+                      style: TextStyle(
+                        fontFamily: 'Anton',
+                        fontSize: 30.0,
+                        color: Colors.white60,
+                      ),
                     ),
                   ),
                 ),
@@ -185,20 +200,26 @@ class _MenuPageState extends State<MenuPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 70,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.amberAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'HighScores',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => highScore()));
+                },
+                child: Container(
+                  height: 70,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'HighScores',
+                      style: TextStyle(
+                        fontFamily: 'Anton',
+                        fontSize: 30,
+                        color: Colors.white60,
+                      ),
                     ),
                   ),
                 ),
@@ -206,20 +227,25 @@ class _MenuPageState extends State<MenuPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 70,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Exit',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+                child: Container(
+                  height: 70,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Exit',
+                      style: TextStyle(
+                        fontFamily: 'Anton',
+                        fontSize: 30.0,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ),

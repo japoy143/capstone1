@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
               fontSize: 35.0,
               fontWeight: FontWeight.bold,
               color: Colors.green),
+          labelMedium: TextStyle(
+              fontFamily: 'Anton', fontWeight: FontWeight.bold, fontSize: 30.0),
         ),
         primaryColor: Colors.green[400],
         primarySwatch: Colors.green,
