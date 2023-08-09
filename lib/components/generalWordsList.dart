@@ -18,23 +18,24 @@ class GeneralDict extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: genWords.length,
-        itemBuilder: (context, index) {
-          String key = genWords.keys.elementAt(index);
-          String value = genWords.values.elementAt(index);
-          return ListTile(
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => AllGeneralWords())),
-            title: Text(
-              key,
-              style: const TextStyle(
-                  fontFamily: 'Rubik',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(value,
-                style: const TextStyle(fontFamily: 'Rubik', fontSize: 15.0)),
-          );
-        });
+      itemCount: genWords.length,
+      itemBuilder: (context, index) {
+        String key = genWords.keys.elementAt(index);
+        String value = genWords.values.elementAt(index);
+        return ListTile(
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AllGeneralWords())),
+          title: Text(
+            key,
+            style: const TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(value,
+              style: const TextStyle(fontFamily: 'Rubik', fontSize: 15.0)),
+        );
+      },
+    );
   }
 }

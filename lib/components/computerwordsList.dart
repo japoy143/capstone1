@@ -15,27 +15,26 @@ class ComputerDict extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: computerWords.length,
-        itemBuilder: (context, index) {
-          String key = computerWords.keys.elementAt(index);
-          String value = computerWords.values.elementAt(index);
-          return ListTile(
-            onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => AllComputerWords()));
-            },
-            title: Text(
-              key,
-              style: const TextStyle(
-                  fontFamily: 'Rubik',
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(
-              value,
-              style: const TextStyle(fontFamily: 'Rubik', fontSize: 15.0),
-            ),
-          );
-        });
+      itemCount: computerWords.length,
+      itemBuilder: (context, index) {
+        String key = computerWords.keys.elementAt(index);
+        String value = computerWords.values.elementAt(index);
+        return ListTile(
+          onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => AllComputerWords())),
+          title: Text(
+            key,
+            style: const TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            value,
+            style: const TextStyle(fontFamily: 'Rubik', fontSize: 15.0),
+          ),
+        );
+      },
+    );
   }
 }
