@@ -2,6 +2,8 @@ import 'package:capstoneapp1/components/allComputerWords.dart';
 import 'package:capstoneapp1/components/allGeneralWords.dart';
 import 'package:capstoneapp1/components/computerwordsList.dart';
 import 'package:capstoneapp1/components/generalWordsList.dart';
+
+import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/menuPages/highScore.dart';
 import 'package:capstoneapp1/menuPages/play.dart';
 import 'package:flutter/material.dart';
@@ -176,7 +178,7 @@ class _MenuPageState extends State<MenuPage> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => playGame()));
+                      MaterialPageRoute(builder: (context) => GameCategory()));
                 },
                 child: Container(
                   height: 70,
