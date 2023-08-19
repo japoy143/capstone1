@@ -39,7 +39,7 @@ class _MygameUIState extends State<MygameUI> {
     letters.shuffle();
 
     _startMinusLetter();
-    _timerform.startTimer(225);
+    _timerform.startTimer(224);
   }
 
   void onTapLetter(String letter) {
@@ -78,7 +78,7 @@ class _MygameUIState extends State<MygameUI> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
-    _timerform.timer?.cancel();
+    _timerform.startTimer(0);
     _newtimer.cancel();
   }
 

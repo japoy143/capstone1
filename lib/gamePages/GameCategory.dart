@@ -97,6 +97,28 @@ class _GameCategoryState extends State<GameCategory> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20.0,
+              ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.green[400],
+                      borderRadius: BorderRadius.circular(8.0)),
+                  child: Center(
+                    child: Text(
+                      'Exit',
+                      style: TextStyle(
+                          fontSize: 23.0,
+                          fontFamily: 'Anton',
+                          color: Colors.redAccent),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

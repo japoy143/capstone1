@@ -1,8 +1,10 @@
+import 'package:capstoneapp1/pages/addusernameUtils.dart';
 import 'package:capstoneapp1/pages/menuPage.dart';
 import 'package:flutter/material.dart';
 
 class AddUsername extends StatelessWidget {
-  const AddUsername({Key? key});
+  AddUsername({Key? key});
+  Note _note = Note();
 
   @override
   Widget build(BuildContext context) {
@@ -68,39 +70,9 @@ class AddUsername extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 300.0,
+            height: 200.0,
           ),
-          Container(
-            height: 95,
-            width: 225,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    'WORDY',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Rubik',
-                        fontSize: 32.0),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'woodpicker',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Edusa',
-                        fontSize: 32.0),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          Note(),
         ],
       ),
     );
