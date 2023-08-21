@@ -9,71 +9,79 @@ class AddUsername extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          // Wrap the Column with Expanded
-          const SizedBox(
-            height: 200,
-          ),
-          Text(
-            "Create Nickname",
-            style: TextStyle(
-                color: Colors.green[300],
-                fontSize: 20.0,
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Center(
-            child: Container(
-              height: 80,
-              width: 330,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Theme.of(context).primaryColor),
-              child: Row(
-                children: <Widget>[
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  SizedBox(
-                    width: 260,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onTapOutside: (event) {
-                          FocusScope.of(context).unfocus();
-                        },
-                        style: const TextStyle(color: Colors.black),
-                        decoration: const InputDecoration(
-                            focusColor: Colors.black,
-                            enabledBorder: OutlineInputBorder(),
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide.none)),
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // Wrap the Column with Expanded
+            const SizedBox(
+              height: 200,
+            ),
+            Text(
+              "Create Nickname",
+              style: TextStyle(
+                  color: Colors.green[300],
+                  fontSize: 20.0,
+                  fontFamily: 'Rubik',
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: Container(
+                height: 80,
+                width: 330,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Theme.of(context).primaryColor),
+                child: Row(
+                  children: <Widget>[
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      width: 260,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          onTapOutside: (event) {
+                            FocusScope.of(context).unfocus();
+                          },
+                          style: const TextStyle(color: Colors.white70),
+                          decoration: const InputDecoration(
+                              focusColor: Colors.white70,
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.white70)),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide.none)),
+                        ),
                       ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => MenuPage()));
-                    },
-                    icon: const Icon(Icons.add),
-                  ),
-                ],
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MenuPage()));
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 200.0,
-          ),
-          Note(),
-        ],
+            const SizedBox(
+              height: 200.0,
+            ),
+            Note(),
+          ],
+        ),
       ),
     );
   }

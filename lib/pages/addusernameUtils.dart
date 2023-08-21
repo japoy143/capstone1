@@ -32,27 +32,15 @@ class _NoteState extends State<Note> {
                 Text(
                   'Note:',
                   style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  note,
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 24,
-                  ),
+                      fontFamily: 'Rubik',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white60),
                 ),
               ],
             ),
             SizedBox(
-              height: 50,
+              height: 35,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,12 +53,33 @@ class _NoteState extends State<Note> {
                       }
                     });
                   },
-                  icon: Icon(Icons.arrow_back_ios),
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white70,
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                Center(
+                  child: SizedBox(
+                    height: 150,
+                    width: 240,
+                    child: Center(
+                      child: Text(
+                        note,
+                        style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 24,
+                            color: Colors.white70),
+                      ),
+                    ),
+                  ),
                 ),
                 IconButton(
                   onPressed: () {
                     setState(() {
-                      if (nextPage < 3) {
+                      if (nextPage < 6) {
                         nextPage++;
                       }
                     });
@@ -78,7 +87,10 @@ class _NoteState extends State<Note> {
                   icon: Transform(
                     alignment: Alignment.center,
                     transform: Matrix4.rotationY(3.14159),
-                    child: Icon(Icons.arrow_back_ios),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white70,
+                    ),
                   ),
                 ),
               ],
@@ -93,10 +105,17 @@ class _NoteState extends State<Note> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        myNote(nextPage == 0, '1'),
-        myNote(nextPage == 1, '2'),
-        myNote(nextPage == 2, '3'),
-        myNote(nextPage == 3, '4'),
+        myNote(nextPage == 0, 'The Goal of the game is to make computer words'),
+        myNote(nextPage == 1,
+            'General words is accepted but it has low corresponding score'),
+        myNote(nextPage == 2, 'The Score depends on the length of the word '),
+        myNote(nextPage == 3, 'The Game Has different level of difficulty'),
+        myNote(nextPage == 4,
+            'Normal Mode doenst have timer and has a complete set of keyboard'),
+        myNote(nextPage == 5,
+            'Time Pressure has a complete set of keys but every 15sec it removes a letter'),
+        myNote(nextPage == 6,
+            'Hard Mode has a timer and a randomize keys that makes it harder to create a word'),
       ],
     );
   }
