@@ -1,4 +1,7 @@
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
+
+import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -34,7 +37,7 @@ class _GameCategoryState extends State<GameCategory> {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Mygame())),
+                    .push(MaterialPageRoute(builder: (context) => Mygame1())),
                 child: Container(
                   height: 80,
                   width: 200,
@@ -57,7 +60,7 @@ class _GameCategoryState extends State<GameCategory> {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Mygame())),
+                    .push(MaterialPageRoute(builder: (context) => Mygame2())),
                 child: Container(
                   height: 100,
                   width: 200,
@@ -79,7 +82,7 @@ class _GameCategoryState extends State<GameCategory> {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Mygame())),
+                    .push(MaterialPageRoute(builder: (context) => Mygame3())),
                 child: Container(
                   height: 100,
                   width: 200,
@@ -110,7 +113,7 @@ class _GameCategoryState extends State<GameCategory> {
                       borderRadius: BorderRadius.circular(8.0)),
                   child: Center(
                     child: Text(
-                      'Exit',
+                      'Back',
                       style: TextStyle(
                           fontSize: 23.0,
                           fontFamily: 'Anton',

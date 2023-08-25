@@ -106,7 +106,7 @@ class _MenuPageState extends State<MenuPage> {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const AllGeneralWords()));
+                              builder: (context) => AllGeneralWords()));
                         },
                         child: const Text(
                           'More',
@@ -154,7 +154,7 @@ class _MenuPageState extends State<MenuPage> {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const AllComputerWords()));
+                              builder: (context) => AllComputerWords()));
                         },
                         child: const Text(
                           'More',

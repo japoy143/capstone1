@@ -1,27 +1,20 @@
+import 'package:capstoneapp1/components/Dictionaries/GeneralwordsList.dart';
 import 'package:capstoneapp1/components/allGeneralWords.dart';
 import 'package:flutter/material.dart';
 
 class GeneralDict extends StatelessWidget {
   GeneralDict({Key? key}) : super(key: key);
 
-  //general words list
-  Map<String, String> genWords = {
-    'Accept': 'consent to receive ',
-    'Compare':
-        'estimate, measure, or note the similarity or dissimilarity between.',
-    'Development': 'the process of developing or being developed.',
-    'Federal': 'relating to or denoting the central government',
-    'House':
-        'a building that serves as living quarters for one or a few families ',
-  };
+  //class where the general words list located
+  GenWords genWords = GenWords();
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: genWords.length,
+        itemCount: genWords.gWords.length,
         itemBuilder: (context, index) {
-          String key = genWords.keys.elementAt(index);
-          String value = genWords.values.elementAt(index);
+          String key = genWords.gWords.keys.elementAt(index);
+          String value = genWords.gWords.values.elementAt(index);
           return ListTile(
             onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => AllGeneralWords())),

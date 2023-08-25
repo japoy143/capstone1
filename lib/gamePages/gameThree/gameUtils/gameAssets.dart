@@ -6,7 +6,7 @@ class IMGS {
     return Visibility(
       visible: visibility,
       child: Container(
-        height: 230,
+        height: 200,
         width: 200,
         child: Image.asset(path),
       ),

@@ -1,27 +1,29 @@
 import 'dart:async';
 
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameTimer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'gameAssets.dart';
 
-class MygameUI1 extends StatefulWidget {
+class MygameUI3 extends StatefulWidget {
   @override
-  _MygameUI1State createState() => _MygameUI1State();
+  _MygameUI3State createState() => _MygameUI3State();
 }
 
-class _MygameUI1State extends State<MygameUI1> {
+class _MygameUI3State extends State<MygameUI3> {
   //Score
   int Score = 0;
   // one minute timer
   late Timer _timer;
   late Timer _newtimer;
   int seconds = 225;
-  TimerController _timerform = TimerController();
+  TimerController3 _timerform = TimerController3();
 
   //
-  List<String> letters = 'QWERTYUIOPASDFGHJKLZXCVBNM.'.split("");
+  List<String> letters =
+      'AAABBCCDDEEEFFGGHHIIIJJKKLLMMNNOOOPPQQRRSSTTUUUVVWWXXYYZZ'.split("");
 
   List<String> pressedLetters = [];
   String createdWord = '';
@@ -37,6 +39,10 @@ class _MygameUI1State extends State<MygameUI1> {
   @override
   void initState() {
     super.initState();
+    letters.shuffle();
+
+    _startMinusLetter();
+    _timerform.startTimer(224);
   }
 
   void onTapLetter(String letter) {
@@ -75,6 +81,34 @@ class _MygameUI1State extends State<MygameUI1> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
+    _timerform.timer?.cancel();
+    _newtimer.cancel();
+  }
+
+  //timer funct
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (seconds > 0) {
+          seconds--;
+        }
+      });
+    });
+  }
+
+  //length of letter iteration
+  int LetterCount = 15;
+  int numcount = 15;
+  void _startMinusLetter() {
+    _newtimer = Timer.periodic(Duration(seconds: 15), (timer) {
+      if (numcount % 15 == 0) {
+        if (LetterCount > 0) {
+          setState(() {
+            LetterCount--;
+          });
+        }
+      }
+    });
   }
 
   //time format
@@ -84,7 +118,7 @@ class _MygameUI1State extends State<MygameUI1> {
 
   @override
   Widget build(BuildContext context) {
-    String collected = letters.take(27).join('');
+    String collected = letters.take(LetterCount).join('');
 
     List<String> charlist = collected.split('');
 
@@ -109,7 +143,7 @@ class _MygameUI1State extends State<MygameUI1> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        'Score: ${Score}',
+                        'Score:${Score}',
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.white70,
@@ -129,15 +163,23 @@ class _MygameUI1State extends State<MygameUI1> {
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                "No timer",
-                                style: TextStyle(
-                                    color: Colors.white54,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "Rubik"),
-                              )
+                              const Icon(
+                                Icons.av_timer_sharp,
+                                color: Colors.white70,
+                              ),
+                              const SizedBox(
+                                width: 3.0,
+                              ),
+                              Obx(
+                                () => Text(
+                                  _timerform.time.value,
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white70),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -147,13 +189,13 @@ class _MygameUI1State extends State<MygameUI1> {
                 ],
               )),
           const SizedBox(
-            height: 20.0,
+            height: 5.0,
           ),
           Text(
             'WORDY',
             style: TextStyle(
                 fontFamily: 'Rubik',
-                fontSize: 35.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey[300]),
           ),
@@ -161,7 +203,7 @@ class _MygameUI1State extends State<MygameUI1> {
             'woodpicker',
             style: TextStyle(
               fontFamily: 'Edusa',
-              fontSize: 35.0,
+              fontSize: 30.0,
               color: Colors.grey[300],
             ),
           ),
@@ -180,7 +222,7 @@ class _MygameUI1State extends State<MygameUI1> {
           ),
           Container(
             height: 50,
-            width: 300,
+            width: 250,
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: Colors.grey[300],
@@ -196,13 +238,13 @@ class _MygameUI1State extends State<MygameUI1> {
             ),
           ),
           const SizedBox(
-            height: 45.0,
+            height: 15.0,
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 5.0),
+              padding: const EdgeInsets.only(left: 7.0),
               child: SizedBox(
-                height: 170,
+                height: 230,
                 width: 400,
                 child: Wrap(
                   children: charlist.map((e) {
@@ -211,11 +253,10 @@ class _MygameUI1State extends State<MygameUI1> {
                         onTapLetter(e);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 6.5, top: 5.0, bottom: 5.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 45,
-                          width: 35.5,
+                          height: 60,
+                          width: 60,
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(8.0),
@@ -238,9 +279,9 @@ class _MygameUI1State extends State<MygameUI1> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 5.0),
+            padding: const EdgeInsets.only(top: 5.0, bottom: 15.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
@@ -248,7 +289,7 @@ class _MygameUI1State extends State<MygameUI1> {
                     onTap: onDelete,
                     child: Container(
                       height: 40,
-                      width: 130,
+                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(12),
@@ -264,11 +305,60 @@ class _MygameUI1State extends State<MygameUI1> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: GestureDetector(
+                    onTap: num > 0
+                        ? () {
+                            setState(() {
+                              num -= 1;
+                              letters.shuffle();
+                            });
+                          }
+                        : null,
+                    child: Container(
+                      height: 40,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          const SizedBox(
+                            width: 27,
+                          ),
+                          Text(
+                            'Reshuffle',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                color: Colors.green[400]),
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Text(
+                                num.toString(),
+                                style: TextStyle(
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green[400]),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 GestureDetector(
                   onTap: onSubmit,
                   child: Container(
                     height: 40,
-                    width: 130,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(12),

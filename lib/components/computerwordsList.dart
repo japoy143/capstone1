@@ -1,24 +1,24 @@
 import 'package:capstoneapp1/components/allComputerWords.dart';
 import 'package:flutter/material.dart';
 
+import 'Dictionaries/ComputerWordsList.dart';
+
 class ComputerDict extends StatelessWidget {
   ComputerDict({Key? key}) : super(key: key);
 
+  //Computer Words list Directory Class
+  CompWords computerWords = CompWords();
+
   // computer words and meaning
-  Map<String, String> computerWords = {
-    'CPU': 'Central Processing Unit',
-    'ALU': 'Arithmetic Logic Unit',
-    'CU': 'Control Unit',
-    'HDD': 'Hard Disk Drive',
-  };
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: computerWords.length,
+        itemCount: computerWords.ComputerWordsList.length,
         itemBuilder: (context, index) {
-          String key = computerWords.keys.elementAt(index);
-          String value = computerWords.values.elementAt(index);
+          String key = computerWords.ComputerWordsList.keys.elementAt(index);
+          String value =
+              computerWords.ComputerWordsList.values.elementAt(index);
           return ListTile(
             onTap: () {
               Navigator.of(context).push(
