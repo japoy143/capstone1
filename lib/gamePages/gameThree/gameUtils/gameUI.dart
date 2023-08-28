@@ -1,10 +1,9 @@
 import 'dart:async';
-
-import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'gameAssets.dart';
 
 class MygameUI3 extends StatefulWidget {
@@ -16,12 +15,12 @@ class _MygameUI3State extends State<MygameUI3> {
   //Score
   int Score = 0;
   // one minute timer
-  late Timer _timer;
+
   late Timer _newtimer;
   int seconds = 225;
   TimerController3 _timerform = TimerController3();
 
-  //
+  //keys
   List<String> letters =
       'AAABBCCDDEEEFFGGHHIIIJJKKLLMMNNOOOPPQQRRSSTTUUUVVWWXXYYZZ'.split("");
 
@@ -30,12 +29,7 @@ class _MygameUI3State extends State<MygameUI3> {
   String meaning = '';
   TextEditingController userInputController = TextEditingController();
 
-  Map<String, String> computerWords = {
-    'ALU': 'Arithmethic',
-    'CPU': "Central Processing Unit",
-    'A': "Its ok"
-  };
-
+  CompWords compWords = CompWords();
   @override
   void initState() {
     super.initState();
@@ -52,19 +46,28 @@ class _MygameUI3State extends State<MygameUI3> {
     });
   }
 
-  void onSubmit() {
+  void onSubmit() async {
+    await tapsounds.OntapSounds();
     if (pressedLetters.isNotEmpty) {
+      bool exist = false;
       createdWord = pressedLetters.join('');
-      if (computerWords.containsKey(createdWord)) {
-        meaning = computerWords[createdWord]!;
-        print(meaning);
-      } else {
-        print('Word doesnt exist');
+      compWords.ComputerWordsList.forEach((key, value) {
+        if (key.toUpperCase() == createdWord.toUpperCase()) {
+          print("Word Exist");
+          tapsounds.Correct();
+          exist = true;
+        }
+      });
+      if (exist == false) {
+        tapsounds.Wrong();
       }
+    } else {
+      print('Word doesnt Exist');
     }
   }
 
-  void onDelete() {
+  void onDelete() async {
+    await tapsounds.OntapSounds();
     setState(() {
       if (pressedLetters.isNotEmpty) {
         pressedLetters.removeLast();
@@ -85,17 +88,6 @@ class _MygameUI3State extends State<MygameUI3> {
     _newtimer.cancel();
   }
 
-  //timer funct
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (seconds > 0) {
-          seconds--;
-        }
-      });
-    });
-  }
-
   //length of letter iteration
   int LetterCount = 15;
   int numcount = 15;
@@ -111,7 +103,8 @@ class _MygameUI3State extends State<MygameUI3> {
     });
   }
 
-  //time format
+  //GameSounds
+  Gamesounds tapsounds = Gamesounds();
 
   //gameimgs
   IMGS imgs = IMGS();
@@ -249,7 +242,8 @@ class _MygameUI3State extends State<MygameUI3> {
                 child: Wrap(
                   children: charlist.map((e) {
                     return InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        await tapsounds.OntapSounds();
                         onTapLetter(e);
                       },
                       child: Padding(
@@ -309,7 +303,8 @@ class _MygameUI3State extends State<MygameUI3> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: GestureDetector(
                     onTap: num > 0
-                        ? () {
+                        ? () async {
+                            await tapsounds.OntapSounds();
                             setState(() {
                               num -= 1;
                               letters.shuffle();

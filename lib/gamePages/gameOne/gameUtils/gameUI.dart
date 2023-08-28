@@ -1,10 +1,15 @@
 import 'dart:async';
-
+import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameBanner.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
+import 'package:capstoneapp1/helpers/gamesounds.dart';
+import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'gameAssets.dart';
+
+//dictionary
 
 class MygameUI1 extends StatefulWidget {
   @override
@@ -12,13 +17,11 @@ class MygameUI1 extends StatefulWidget {
 }
 
 class _MygameUI1State extends State<MygameUI1> {
+  //dictionary
+  final dMSAJson = DictionaryMSAFlutter();
   //Score
   int Score = 0;
   // one minute timer
-  late Timer _timer;
-  late Timer _newtimer;
-  int seconds = 225;
-  TimerController _timerform = TimerController();
 
   //
   List<String> letters = 'QWERTYUIOPASDFGHJKLZXCVBNM.'.split("");
@@ -26,17 +29,33 @@ class _MygameUI1State extends State<MygameUI1> {
   List<String> pressedLetters = [];
   String createdWord = '';
   String meaning = '';
+  //if word already exist
+  List<String> checker = [];
   TextEditingController userInputController = TextEditingController();
 
-  Map<String, String> computerWords = {
-    'ALU': 'Arithmethic',
-    'CPU': "Central Processing Unit",
-    'A': "Its ok"
-  };
+  //Computer Words List
+  CompWords compWords = CompWords();
+
+  //Timer 2 minutes
+  TimerController _timerform1 = TimerController();
+  TimerUI timerUI = TimerUI();
 
   @override
   void initState() {
     super.initState();
+    _timerform1.startTimer(119);
+  }
+
+  //game banner
+  void showBanner() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return WordUsed();
+        });
+    Timer(const Duration(seconds: 2), () {
+      Navigator.of(context).pop();
+    });
   }
 
   void onTapLetter(String letter) {
@@ -46,19 +65,62 @@ class _MygameUI1State extends State<MygameUI1> {
     });
   }
 
-  void onSubmit() {
-    if (pressedLetters.isNotEmpty) {
+  void onSubmit() async {
+    await tapsounds.OntapSounds();
+    if (pressedLetters.isNotEmpty && pressedLetters.length > 1) {
       createdWord = pressedLetters.join('');
-      if (computerWords.containsKey(createdWord)) {
-        meaning = computerWords[createdWord]!;
-        print(meaning);
+      bool isWordExist = false;
+      bool isWordUsed = false;
+      checker.forEach((element) {
+        if (element == createdWord) {
+          isWordUsed = true;
+        }
+      });
+      if (!isWordUsed) {
+        compWords.ComputerWordsList.forEach((key, value) {
+          if (key.toUpperCase() == createdWord.toUpperCase()) {
+            print("Word Exist");
+            tapsounds.Correct();
+
+            isWordExist = true;
+            if (createdWord.length > 6) {
+              setState(() {
+                Score += 15;
+              });
+            } else {
+              setState(() {
+                Score += 10;
+              });
+            }
+            return;
+          }
+        });
+
+        if (isWordExist) {
+          checker.add(createdWord);
+          return; // Exit the function if the word exists
+        }
+
+        if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
+          tapsounds.Correct();
+          checker.add(createdWord);
+          setState(() {
+            Score += 5;
+          });
+          return; // Exit the function
+        } else {
+          tapsounds.Wrong();
+        }
       } else {
-        print('Word doesnt exist');
+        showBanner();
+        tapsounds.Invalid();
+        print("Word used");
       }
     }
   }
 
-  void onDelete() {
+  void onDelete() async {
+    await tapsounds.OntapSounds();
     setState(() {
       if (pressedLetters.isNotEmpty) {
         pressedLetters.removeLast();
@@ -77,8 +139,8 @@ class _MygameUI1State extends State<MygameUI1> {
     userInputController.dispose();
   }
 
-  //time format
-
+  //GameSounds
+  Gamesounds tapsounds = Gamesounds();
   //gameimgs
   IMGS imgs = IMGS();
 
@@ -131,13 +193,22 @@ class _MygameUI1State extends State<MygameUI1> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                "No timer",
-                                style: TextStyle(
-                                    color: Colors.white54,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "Rubik"),
-                              )
+                              const Icon(
+                                Icons.av_timer_sharp,
+                                color: Colors.white70,
+                              ),
+                              const SizedBox(
+                                width: 3.0,
+                              ),
+                              Obx(
+                                () => Text(
+                                  _timerform1.time.value,
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white70),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -150,7 +221,7 @@ class _MygameUI1State extends State<MygameUI1> {
             height: 20.0,
           ),
           Text(
-            'WORDY',
+            "WORDY",
             style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 35.0,
@@ -158,7 +229,7 @@ class _MygameUI1State extends State<MygameUI1> {
                 color: Colors.grey[300]),
           ),
           Text(
-            'woodpicker',
+            "woodpicker",
             style: TextStyle(
               fontFamily: 'Edusa',
               fontSize: 35.0,
@@ -207,7 +278,8 @@ class _MygameUI1State extends State<MygameUI1> {
                 child: Wrap(
                   children: charlist.map((e) {
                     return InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        await tapsounds.OntapSounds();
                         onTapLetter(e);
                       },
                       child: Padding(

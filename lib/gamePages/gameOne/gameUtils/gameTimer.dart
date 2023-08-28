@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class TimerController {
   Timer? timer;
   int remainingSeconds = 0;
-  final time = '03.44'.obs;
+  final time = '02.00'.obs;
 
   startTimer(int seconds) {
     const duration = Duration(seconds: 1);

@@ -1,10 +1,8 @@
-import 'dart:async';
-
-import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameTimer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../components/Dictionaries/ComputerWordsList.dart';
+import '../../../helpers/gamesounds.dart';
 import 'gameAssets.dart';
 
 class MygameUI2 extends StatefulWidget {
@@ -16,7 +14,6 @@ class _MygameUI2State extends State<MygameUI2> {
   //Score
   int Score = 0;
   // one minute timer
-  late Timer _timer;
 
   int seconds = 225;
   TimerController2 _timerform = TimerController2();
@@ -30,11 +27,7 @@ class _MygameUI2State extends State<MygameUI2> {
   String meaning = '';
   TextEditingController userInputController = TextEditingController();
 
-  Map<String, String> computerWords = {
-    'ALU': 'Arithmethic',
-    'CPU': "Central Processing Unit",
-    'A': "Its ok"
-  };
+  CompWords compWords = CompWords();
 
   @override
   void initState() {
@@ -51,19 +44,28 @@ class _MygameUI2State extends State<MygameUI2> {
     });
   }
 
-  void onSubmit() {
+  void onSubmit() async {
+    await tapsounds.OntapSounds();
     if (pressedLetters.isNotEmpty) {
+      bool exist = false;
       createdWord = pressedLetters.join('');
-      if (computerWords.containsKey(createdWord)) {
-        meaning = computerWords[createdWord]!;
-        print(meaning);
-      } else {
-        print('Word doesnt exist');
+      compWords.ComputerWordsList.forEach((key, value) {
+        if (key.toUpperCase() == createdWord.toUpperCase()) {
+          print("Word Exist");
+          tapsounds.Correct();
+          exist = true;
+        }
+      });
+      if (exist == false) {
+        tapsounds.Wrong();
       }
+    } else {
+      print('Word doesnt Exist');
     }
   }
 
-  void onDelete() {
+  void onDelete() async {
+    await tapsounds.OntapSounds();
     setState(() {
       if (pressedLetters.isNotEmpty) {
         pressedLetters.removeLast();
@@ -82,17 +84,8 @@ class _MygameUI2State extends State<MygameUI2> {
     _timerform.timer?.cancel();
   }
 
-  //timer funct
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (seconds > 0) {
-          seconds--;
-        }
-      });
-    });
-  }
-
+  //GameSounds
+  Gamesounds tapsounds = Gamesounds();
   //gameimgs
   IMGS imgs = IMGS();
 
@@ -229,7 +222,8 @@ class _MygameUI2State extends State<MygameUI2> {
                 child: Wrap(
                   children: charlist.map((e) {
                     return InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        await tapsounds.OntapSounds();
                         onTapLetter(e);
                       },
                       child: Padding(
@@ -291,7 +285,8 @@ class _MygameUI2State extends State<MygameUI2> {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      await tapsounds.OntapSounds();
                       setState(() {
                         letters.shuffle();
                       });
