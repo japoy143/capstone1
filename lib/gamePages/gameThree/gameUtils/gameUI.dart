@@ -2,9 +2,11 @@ import 'dart:async';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
+import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'gameAssets.dart';
+import 'gameBanner.dart';
 
 class MygameUI3 extends StatefulWidget {
   @override
@@ -14,7 +16,9 @@ class MygameUI3 extends StatefulWidget {
 class _MygameUI3State extends State<MygameUI3> {
   //Score
   int Score = 0;
-  // one minute timer
+
+  //dictionary
+  final dMSAJson = DictionaryMSAFlutter();
 
   late Timer _newtimer;
   int seconds = 225;
@@ -27,6 +31,9 @@ class _MygameUI3State extends State<MygameUI3> {
   List<String> pressedLetters = [];
   String createdWord = '';
   String meaning = '';
+
+  //checker if the word is already used
+  List<String> checker = [];
   TextEditingController userInputController = TextEditingController();
 
   CompWords compWords = CompWords();
@@ -46,23 +53,70 @@ class _MygameUI3State extends State<MygameUI3> {
     });
   }
 
+  //game banner
+  void showBanner() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return WordUsed3();
+        });
+    Timer(const Duration(seconds: 2), () {
+      Navigator.of(context).pop();
+    });
+  }
+
   void onSubmit() async {
     await tapsounds.OntapSounds();
-    if (pressedLetters.isNotEmpty) {
-      bool exist = false;
+    if (pressedLetters.isNotEmpty && pressedLetters.length > 1) {
       createdWord = pressedLetters.join('');
-      compWords.ComputerWordsList.forEach((key, value) {
-        if (key.toUpperCase() == createdWord.toUpperCase()) {
-          print("Word Exist");
-          tapsounds.Correct();
-          exist = true;
+      bool isWordExist = false;
+      bool isWordUsed = false;
+      checker.forEach((element) {
+        if (element == createdWord) {
+          isWordUsed = true;
         }
       });
-      if (exist == false) {
-        tapsounds.Wrong();
+      if (!isWordUsed) {
+        compWords.ComputerWordsList.forEach((key, value) {
+          if (key.toUpperCase() == createdWord.toUpperCase()) {
+            print("Word Exist");
+            tapsounds.Correct();
+
+            isWordExist = true;
+            if (createdWord.length > 6) {
+              setState(() {
+                Score += 15;
+              });
+            } else {
+              setState(() {
+                Score += 10;
+              });
+            }
+            return;
+          }
+        });
+
+        if (isWordExist) {
+          checker.add(createdWord);
+          return; // Exit the function if the word exists
+        }
+
+        if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
+          tapsounds.Correct();
+          checker.add(createdWord);
+          setState(() {
+            Score += 5;
+          });
+          return; // Exit the function
+        } else {
+          tapsounds.Wrong();
+        }
+      } else {
+        showBanner();
+        tapsounds.Invalid();
+        print("Word used");
       }
-    } else {
-      print('Word doesnt Exist');
     }
   }
 

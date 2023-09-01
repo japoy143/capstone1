@@ -1,15 +1,16 @@
 import 'dart:async';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameBanner.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions2.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameWordsCollected.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'gameAssets.dart';
-
-//dictionary
 
 class MygameUI1 extends StatefulWidget {
   @override
@@ -21,9 +22,9 @@ class _MygameUI1State extends State<MygameUI1> {
   final dMSAJson = DictionaryMSAFlutter();
   //Score
   int Score = 0;
-  // one minute timer
+  //WordCount
+  int wordCount = 0;
 
-  //
   List<String> letters = 'QWERTYUIOPASDFGHJKLZXCVBNM.'.split("");
 
   List<String> pressedLetters = [];
@@ -43,18 +44,40 @@ class _MygameUI1State extends State<MygameUI1> {
   @override
   void initState() {
     super.initState();
-    _timerform1.startTimer(119);
+    _timerform1.startTimer(179);
+    timerBanner();
+  }
+
+  //Timer banner off
+  late Timer Timerbanner;
+  void timerBanner() {
+    Timerbanner = Timer(Duration(seconds: 179), () {
+      return showOptions(context);
+    });
   }
 
   //game banner
-  void showBanner() {
+  void showOptions(BuildContext context) {
     showDialog(
         context: context,
+        builder: (context) {
+          if (wordCount > 10) {
+            return GameOptions1(WordCount: wordCount);
+          } else {
+            return GameOptionsTry1(WordCount: wordCount);
+          }
+        });
+  }
+
+  void showBanner(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
         builder: (context) {
           return WordUsed();
         });
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
     });
   }
 
@@ -81,6 +104,7 @@ class _MygameUI1State extends State<MygameUI1> {
           if (key.toUpperCase() == createdWord.toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
+            wordCount += 1;
 
             isWordExist = true;
             if (createdWord.length > 6) {
@@ -104,6 +128,7 @@ class _MygameUI1State extends State<MygameUI1> {
         if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
           tapsounds.Correct();
           checker.add(createdWord);
+          wordCount += 1;
           setState(() {
             Score += 5;
           });
@@ -112,7 +137,7 @@ class _MygameUI1State extends State<MygameUI1> {
           tapsounds.Wrong();
         }
       } else {
-        showBanner();
+        showBanner(context);
         tapsounds.Invalid();
         print("Word used");
       }
@@ -130,6 +155,17 @@ class _MygameUI1State extends State<MygameUI1> {
     });
   }
 
+  void onClear() async {
+    await tapsounds.OntapSounds();
+    setState(() {
+      if (pressedLetters.isNotEmpty) {
+        pressedLetters.clear();
+        userInputController.text = '';
+      }
+      return;
+    });
+  }
+
 //reshuffle
   int num = 3;
 
@@ -137,6 +173,7 @@ class _MygameUI1State extends State<MygameUI1> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
+    Timerbanner.cancel();
   }
 
   //GameSounds
@@ -156,63 +193,88 @@ class _MygameUI1State extends State<MygameUI1> {
           Padding(
               padding: const EdgeInsets.only(left: 5.0, right: 5.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: IconButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () {
+                            return showOptions(context);
+                          },
                           icon: const Icon(
                             Icons.arrow_back_ios,
                             size: 30.0,
                             color: Colors.white70,
                           ))),
+                  SizedBox(
+                    width: 10.0,
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text(
-                        'Score: ${Score}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 65.0,
-                      ),
-                      Container(
-                        height: 30,
-                        width: 75,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.white70, width: 2.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.av_timer_sharp,
-                                color: Colors.white70,
-                              ),
-                              const SizedBox(
-                                width: 3.0,
-                              ),
-                              Obx(
-                                () => Text(
-                                  _timerform1.time.value,
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70),
-                                ),
-                              ),
-                            ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 80.0),
+                        child: Text(
+                          'Score: ${Score}',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Colors.white70,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return WordCollected(
+                                      Allwords: checker,
+                                    );
+                                  });
+                            },
+                            icon: Icon(Icons.library_add_check),
+                            iconSize: 30,
+                            color: Colors.white70,
+                          ),
+                          Container(
+                            height: 30,
+                            width: 75,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              border:
+                                  Border.all(color: Colors.white70, width: 2.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.av_timer_sharp,
+                                    color: Colors.white70,
+                                  ),
+                                  const SizedBox(
+                                    width: 3.0,
+                                  ),
+                                  Obx(
+                                    () => Text(
+                                      _timerform1.time.value,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white70),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ],
@@ -320,7 +382,7 @@ class _MygameUI1State extends State<MygameUI1> {
                     onTap: onDelete,
                     child: Container(
                       height: 40,
-                      width: 130,
+                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(12),
@@ -336,11 +398,33 @@ class _MygameUI1State extends State<MygameUI1> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: GestureDetector(
+                    onTap: onClear,
+                    child: Container(
+                      height: 40,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                          child: Text(
+                        'Clear',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.green[400]),
+                      )),
+                    ),
+                  ),
+                ),
                 GestureDetector(
                   onTap: onSubmit,
                   child: Container(
                     height: 40,
-                    width: 130,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(12),

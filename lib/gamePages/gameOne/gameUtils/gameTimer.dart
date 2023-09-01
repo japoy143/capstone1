@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions.dart';
 import 'package:get/get.dart';
 
 class TimerController {
   Timer? timer;
   int remainingSeconds = 0;
-  final time = '02.00'.obs;
+  final time = '03.00'.obs;
 
   startTimer(int seconds) {
     const duration = Duration(seconds: 1);
