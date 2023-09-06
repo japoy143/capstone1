@@ -64,11 +64,7 @@ class _GameOptions1State extends State<GameOptions1> {
               GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => GameCategory()),
-                  );
+                  Navigator.pop(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(

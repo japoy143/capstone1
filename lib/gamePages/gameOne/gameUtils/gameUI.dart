@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameBanner.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions2.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameScoresTable.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameWordsCollected.dart';
@@ -20,12 +22,15 @@ class MygameUI1 extends StatefulWidget {
 class _MygameUI1State extends State<MygameUI1> {
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
-  //Score
+
+  //Scores
   int Score = 0;
+  int compScore = 0;
+  int genScore = 0;
   //WordCount
   int wordCount = 0;
 
-  List<String> letters = 'QWERTYUIOPASDFGHJKLZXCVBNM.'.split("");
+  List<String> letters = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split("");
 
   List<String> pressedLetters = [];
   String createdWord = '';
@@ -46,6 +51,8 @@ class _MygameUI1State extends State<MygameUI1> {
     super.initState();
     _timerform1.startTimer(179);
     timerBanner();
+    keysLength();
+    letters.shuffle();
   }
 
   //Timer banner off
@@ -105,15 +112,19 @@ class _MygameUI1State extends State<MygameUI1> {
             print("Word Exist");
             tapsounds.Correct();
             wordCount += 1;
-
+            Future.delayed(Duration(seconds: 1), () {
+              return onClear();
+            });
             isWordExist = true;
             if (createdWord.length > 6) {
               setState(() {
                 Score += 15;
+                compScore += 15;
               });
             } else {
               setState(() {
                 Score += 10;
+                compScore += 10;
               });
             }
             return;
@@ -129,12 +140,19 @@ class _MygameUI1State extends State<MygameUI1> {
           tapsounds.Correct();
           checker.add(createdWord);
           wordCount += 1;
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
+          });
           setState(() {
             Score += 5;
+            genScore += 5;
           });
           return; // Exit the function
         } else {
           tapsounds.Wrong();
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
+          });
         }
       } else {
         showBanner(context);
@@ -166,6 +184,16 @@ class _MygameUI1State extends State<MygameUI1> {
     });
   }
 
+  //score division
+  void onScore() {
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return gameScoresDivision(compScore: compScore, genScore: genScore);
+        });
+  }
+
 //reshuffle
   int num = 3;
 
@@ -181,9 +209,17 @@ class _MygameUI1State extends State<MygameUI1> {
   //gameimgs
   IMGS imgs = IMGS();
 
+  //randomize the keyboardlenght
+
+  late int keyboardLength;
+  void keysLength() {
+    Random rand = Random();
+    keyboardLength = rand.nextInt(10) + 5;
+  }
+
   @override
   Widget build(BuildContext context) {
-    String collected = letters.take(27).join('');
+    String collected = letters.take(keyboardLength).join('');
 
     List<String> charlist = collected.split('');
 
@@ -212,12 +248,15 @@ class _MygameUI1State extends State<MygameUI1> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(left: 80.0),
-                        child: Text(
-                          'Score: ${Score}',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            color: Colors.white70,
-                            fontWeight: FontWeight.bold,
+                        child: GestureDetector(
+                          onTap: onScore,
+                          child: Text(
+                            'Score: ${Score}',
+                            style: TextStyle(
+                              fontSize: 22.0,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -338,6 +377,7 @@ class _MygameUI1State extends State<MygameUI1> {
                 height: 170,
                 width: 400,
                 child: Wrap(
+                  alignment: WrapAlignment.center,
                   children: charlist.map((e) {
                     return InkWell(
                       onTap: () async {
@@ -441,7 +481,37 @@ class _MygameUI1State extends State<MygameUI1> {
                 ),
               ],
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 3.0, top: 5.0),
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    letters.shuffle();
+                    onClear();
+                    return keysLength();
+                  });
+                },
+                child: Container(
+                  height: 40,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Reshuffle',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[400]),
+                  )),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
