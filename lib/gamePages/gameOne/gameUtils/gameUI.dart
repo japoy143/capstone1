@@ -53,6 +53,7 @@ class _MygameUI1State extends State<MygameUI1> {
     timerBanner();
     keysLength();
     letters.shuffle();
+    keysZero();
   }
 
   //Timer banner off
@@ -60,6 +61,15 @@ class _MygameUI1State extends State<MygameUI1> {
   void timerBanner() {
     Timerbanner = Timer(Duration(seconds: 179), () {
       return showOptions(context);
+    });
+  }
+
+  late Timer keysToZero;
+  void keysZero() {
+    keysToZero = Timer(Duration(seconds: 179), () {
+      setState(() {
+        keyboardLength = 0;
+      });
     });
   }
 
@@ -202,6 +212,7 @@ class _MygameUI1State extends State<MygameUI1> {
     super.dispose();
     userInputController.dispose();
     Timerbanner.cancel();
+    keysToZero.cancel();
   }
 
   //GameSounds
