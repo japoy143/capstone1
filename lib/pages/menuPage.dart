@@ -41,26 +41,6 @@ class _MenuPageState extends State<MenuPage> {
                         letterSpacing: 2.0),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 5.0),
-                  child: Container(
-                    height: 30,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      border: Border.all(color: Colors.green, width: 3),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'WPM: 100',
-                        style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
             const SizedBox(

@@ -361,22 +361,35 @@ class _MygameUI1State extends State<MygameUI1> {
           const SizedBox(
             height: 5.0,
           ),
-          Container(
-            height: 50,
-            width: 300,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(8.0)),
-            child: TextField(
-              controller: userInputController,
-              readOnly: true,
-              style: const TextStyle(color: Colors.green),
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                hintStyle: TextStyle(color: Colors.green),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(width: 30.0),
+              Container(
+                height: 50,
+                width: 300,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(8.0)),
+                child: TextField(
+                  controller: userInputController,
+                  readOnly: true,
+                  style: const TextStyle(color: Colors.green),
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    hintStyle: TextStyle(color: Colors.green),
+                  ),
+                ),
               ),
-            ),
+              IconButton(
+                onPressed: onClear,
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white70,
+                ),
+              )
+            ],
           ),
           const SizedBox(
             height: 45.0,
@@ -452,17 +465,23 @@ class _MygameUI1State extends State<MygameUI1> {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: GestureDetector(
-                    onTap: onClear,
+                    onTap: () {
+                      setState(() {
+                        letters.shuffle();
+                        onClear();
+                        return keysLength();
+                      });
+                    },
                     child: Container(
                       height: 40,
-                      width: 100,
+                      width: 120,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
                           child: Text(
-                        'Clear',
+                        'Reshuffle',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.0,
@@ -491,36 +510,6 @@ class _MygameUI1State extends State<MygameUI1> {
                   ),
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 3.0, top: 5.0),
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    letters.shuffle();
-                    onClear();
-                    return keysLength();
-                  });
-                },
-                child: Container(
-                  height: 40,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Reshuffle',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green[400]),
-                  )),
-                ),
-              ),
             ),
           ),
         ],

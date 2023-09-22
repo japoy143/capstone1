@@ -19,7 +19,7 @@ class gameScoresDivision extends StatelessWidget {
           children: <Widget>[
             Container(
               height: 200,
-              width: 140,
+              width: 130,
               decoration: BoxDecoration(
                 color: Colors.green[400],
                 borderRadius: BorderRadius.circular(8),
@@ -45,7 +45,7 @@ class gameScoresDivision extends StatelessWidget {
             ),
             Container(
               height: 200,
-              width: 140,
+              width: 130,
               decoration: BoxDecoration(
                 color: Colors.green[400],
                 borderRadius: BorderRadius.circular(8),

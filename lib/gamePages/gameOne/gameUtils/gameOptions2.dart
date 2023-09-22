@@ -84,6 +84,8 @@ class _GameOptionsTry1State extends State<GameOptionsTry1> {
               GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -92,7 +94,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry1> {
                   height: 50,
                   width: 170,
                   child: Center(
-                    child: Text('Close',
+                    child: Text('Main-Menu',
                         style: TextStyle(
                             fontSize: 24.0,
                             fontFamily: "Anton",

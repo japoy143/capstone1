@@ -46,7 +46,7 @@ class _GameCategoryState extends State<GameCategory> {
                       borderRadius: BorderRadius.circular(8.0)),
                   child: Center(
                     child: Text(
-                      'Normal',
+                      'Easy',
                       style: TextStyle(
                           fontSize: 23.0,
                           fontFamily: 'Anton',
@@ -69,7 +69,7 @@ class _GameCategoryState extends State<GameCategory> {
                       borderRadius: BorderRadius.circular(8.0)),
                   child: Center(
                       child: Text(
-                    'Time Pressure',
+                    'Intermediate',
                     style: TextStyle(
                         fontSize: 23.0,
                         fontFamily: 'Anton',
@@ -91,7 +91,7 @@ class _GameCategoryState extends State<GameCategory> {
                       borderRadius: BorderRadius.circular(8.0)),
                   child: Center(
                     child: Text(
-                      'Hard Mode',
+                      'Expert',
                       style: TextStyle(
                           fontSize: 23.0,
                           fontFamily: 'Anton',
