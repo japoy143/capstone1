@@ -1,10 +1,39 @@
 import 'package:capstoneapp1/pages/addusernameUtils.dart';
 import 'package:capstoneapp1/pages/menuPage.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
-class AddUsername extends StatelessWidget {
+class AddUsername extends StatefulWidget {
   AddUsername({Key? key});
+
+  @override
+  State<AddUsername> createState() => _AddUsernameState();
+}
+
+class _AddUsernameState extends State<AddUsername> {
   Note _note = Note();
+
+  TextEditingController usernameController = TextEditingController();
+
+  late Box userBox;
+
+  void Onsave() async {
+    try {
+      await userBox.add(usernameController.text);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MenuPage(nameUser: usernameController.text)));
+      print('Data Save Successfully');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userBox = Hive.box('newUsers');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +48,7 @@ class AddUsername extends StatelessWidget {
               height: 200,
             ),
             Text(
-              "Create Nickname",
+              "Create Username",
               style: TextStyle(
                   color: Colors.green[300],
                   fontSize: 20.0,
@@ -59,14 +88,12 @@ class AddUsername extends StatelessWidget {
                                   EdgeInsets.symmetric(horizontal: 10),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide.none)),
+                          controller: usernameController,
                         ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MenuPage()));
-                      },
+                      onPressed: Onsave,
                       icon: const Icon(
                         Icons.add,
                         color: Colors.white70,
@@ -76,10 +103,58 @@ class AddUsername extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 200.0,
+            SizedBox(
+              height: 50,
             ),
-            Note(),
+            Text(
+              'Select Users',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontFamily: 'Rubik',
+                  color: Colors.green[400],
+                  fontWeight: FontWeight.bold),
+            ),
+            Container(
+              height: 200,
+              width: 150,
+              child: ListView.builder(
+                  itemCount: userBox.length,
+                  itemBuilder: (context, index) {
+                    final newusers = userBox.getAt(index);
+
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  MenuPage(nameUser: newusers)));
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 130,
+                          decoration: BoxDecoration(
+                              color: Colors.green[400],
+                              borderRadius: BorderRadius.circular(9.0)),
+                          child: Center(
+                            child: Text(
+                              newusers,
+                              style: TextStyle(
+                                  fontFamily: 'Rubik',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white70),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Note(),
+            ),
           ],
         ),
       ),

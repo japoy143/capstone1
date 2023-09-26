@@ -10,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
+  MenuPage({super.key, required this.nameUser});
+  late String nameUser;
 
   @override
   State<MenuPage> createState() => _MenuPageState();
@@ -30,10 +31,10 @@ class _MenuPageState extends State<MenuPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 2.0),
                   child: Text(
-                    'Hi Rainier!',
+                    'Hi ${widget.nameUser.toString()}',
                     style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 25.0,

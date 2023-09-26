@@ -1,8 +1,18 @@
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
 import 'package:capstoneapp1/pages/loadingPage.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart' as path;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final dir = await path.getApplicationDocumentsDirectory();
+  Hive.init(dir.path);
+  Hive.initFlutter('UsersDb');
+
+  await Hive.openBox('newUsers');
+
   runApp(const MyApp());
 }
 
