@@ -1,4 +1,5 @@
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
+import 'package:capstoneapp1/models/scores.dart';
 import 'package:capstoneapp1/pages/loadingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -12,6 +13,10 @@ void main() async {
   Hive.initFlutter('UsersDb');
 
   await Hive.openBox('newUsers');
+
+  Hive.registerAdapter<scores>(scoresAdapter());
+
+  await Hive.openBox<scores>('scores');
 
   runApp(const MyApp());
 }

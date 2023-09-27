@@ -9,12 +9,16 @@ import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameWordsCollected.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
+import 'package:capstoneapp1/models/scores.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:hive/hive.dart';
 import 'gameAssets.dart';
 
 class MygameUI1 extends StatefulWidget {
+  late String username;
+  MygameUI1({required this.username});
   @override
   _MygameUI1State createState() => _MygameUI1State();
 }
@@ -22,6 +26,13 @@ class MygameUI1 extends StatefulWidget {
 class _MygameUI1State extends State<MygameUI1> {
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
+
+  //database
+  late Box<scores> scoreBox;
+
+  //wordPerminute
+  int initialWPM = 0;
+  int finalWPM = 0;
 
   //Scores
   int Score = 0;
@@ -54,12 +65,39 @@ class _MygameUI1State extends State<MygameUI1> {
     keysLength();
     letters.shuffle();
     keysZero();
+    randId();
+    timerWPM();
+    scoreBox = Hive.box<scores>('scores');
+  }
+
+  int randNum = 0;
+  //randomize id
+  void randId() {
+    var random = Random();
+    randNum = (random.nextDouble() * 10000).toInt() + 1;
+  }
+
+  //one minute for WPM
+  late Timer TimerWPM;
+
+  void timerWPM() {
+    TimerWPM = Timer(Duration(seconds: 60), () {
+      finalWPM = initialWPM;
+    });
   }
 
   //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 179), () {
+    Timerbanner = Timer(Duration(seconds: 181), () async {
+      await scoreBox.add(scores(
+          id: randNum,
+          username: widget.username,
+          compScore: compScore,
+          genScore: genScore,
+          totalScore: Score,
+          wordPerMinute: finalWPM));
+      print('data Save Successfully');
       return showOptions(context);
     });
   }
@@ -79,9 +117,15 @@ class _MygameUI1State extends State<MygameUI1> {
         context: context,
         builder: (context) {
           if (wordCount > 10) {
-            return GameOptions1(WordCount: wordCount);
+            return GameOptions1(
+              WordCount: wordCount,
+              username: widget.username,
+            );
           } else {
-            return GameOptionsTry1(WordCount: wordCount);
+            return GameOptionsTry1(
+              WordCount: wordCount,
+              username: widget.username,
+            );
           }
         });
   }
@@ -122,6 +166,7 @@ class _MygameUI1State extends State<MygameUI1> {
             print("Word Exist");
             tapsounds.Correct();
             wordCount += 1;
+            initialWPM += 1;
             Future.delayed(Duration(seconds: 1), () {
               return onClear();
             });
@@ -157,6 +202,7 @@ class _MygameUI1State extends State<MygameUI1> {
             Score += 5;
             genScore += 5;
           });
+          initialWPM += 1;
           return; // Exit the function
         } else {
           tapsounds.Wrong();
@@ -213,6 +259,7 @@ class _MygameUI1State extends State<MygameUI1> {
     userInputController.dispose();
     Timerbanner.cancel();
     keysToZero.cancel();
+    TimerWPM.cancel();
   }
 
   //GameSounds

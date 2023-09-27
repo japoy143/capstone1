@@ -158,8 +158,9 @@ class _MenuPageState extends State<MenuPage> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => GameCategory()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          GameCategory(username: widget.nameUser)));
                 },
                 child: Container(
                   height: 70,

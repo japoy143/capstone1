@@ -1,9 +1,15 @@
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameUI.dart';
 import 'package:flutter/material.dart';
 
-class Mygame1 extends StatelessWidget {
-  const Mygame1({super.key});
+class Mygame1 extends StatefulWidget {
+  Mygame1({super.key, required this.username});
+  late String username;
 
+  @override
+  State<Mygame1> createState() => _Mygame1State();
+}
+
+class _Mygame1State extends State<Mygame1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +18,9 @@ class Mygame1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          MygameUI1(),
+          MygameUI1(
+            username: widget.username,
+          ),
         ],
       ),
     );

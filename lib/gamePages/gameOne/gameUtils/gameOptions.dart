@@ -3,8 +3,10 @@ import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
 class GameOptions1 extends StatefulWidget {
-  GameOptions1({Key? key, required this.WordCount}) : super(key: key);
+  GameOptions1({Key? key, required this.WordCount, required this.username})
+      : super(key: key);
   late int WordCount;
+  late String username;
 
   @override
   State<GameOptions1> createState() => _GameOptions1State();
@@ -29,7 +31,7 @@ class _GameOptions1State extends State<GameOptions1> {
                   width: 165,
                   child: Center(
                     child: Text(
-                      "Congratulations You Got ${widget.WordCount} words",
+                      "Congratulations ${widget.username} You Got ${widget.WordCount} words",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -41,7 +43,9 @@ class _GameOptions1State extends State<GameOptions1> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Mygame1()),
+                        builder: (BuildContext context) => Mygame1(
+                              username: widget.username,
+                            )),
                   );
                 },
                 child: Container(

@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class GameCategory extends StatefulWidget {
-  const GameCategory({super.key});
+  GameCategory({super.key, required this.username});
+  late String username;
 
   @override
   State<GameCategory> createState() => _GameCategoryState();
@@ -36,8 +37,8 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 70,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Mygame1())),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Mygame1(username: widget.username))),
                 child: Container(
                   height: 80,
                   width: 200,
