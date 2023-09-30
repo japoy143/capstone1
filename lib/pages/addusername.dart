@@ -1,8 +1,9 @@
 import 'package:capstoneapp1/pages/addusernameUtils.dart';
 import 'package:capstoneapp1/pages/menuPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+
 import 'package:hive/hive.dart';
+import 'package:vibration/vibration.dart';
 
 class AddUsername extends StatefulWidget {
   AddUsername({Key? key});
@@ -142,32 +143,26 @@ class _AddUsernameState extends State<AddUsername> {
                               builder: (context) =>
                                   MenuPage(nameUser: newusers)));
                         },
-                        child: Slidable(
-                          endActionPane:
-                              ActionPane(motion: ScrollMotion(), children: [
-                            SlidableAction(
-                              onPressed: (index) {
-                                userBox.deleteAt(newusers[index]);
-                              },
-                              foregroundColor: Colors.green[400],
-                              icon: Icons.delete,
-                            )
-                          ]),
-                          child: Container(
-                            height: 50,
-                            width: 130,
-                            decoration: BoxDecoration(
-                                color: Colors.green[400],
-                                borderRadius: BorderRadius.circular(9.0)),
-                            child: Center(
-                              child: Text(
-                                newusers,
-                                style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white70),
-                              ),
+                        onLongPress: () {
+                          setState(() {
+                            userBox.deleteAt(index);
+                            Vibration.vibrate();
+                          });
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 130,
+                          decoration: BoxDecoration(
+                              color: Colors.green[400],
+                              borderRadius: BorderRadius.circular(9.0)),
+                          child: Center(
+                            child: Text(
+                              newusers,
+                              style: TextStyle(
+                                  fontFamily: 'Rubik',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white70),
                             ),
                           ),
                         ),

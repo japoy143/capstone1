@@ -1,6 +1,7 @@
 import 'package:capstoneapp1/models/scores.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:vibration/vibration.dart';
 
 class highScore extends StatefulWidget {
   const highScore({super.key});
@@ -40,22 +41,30 @@ class _highScoreState extends State<highScore> {
                 width: 200,
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      height: 40,
-                      width: 220,
-                      decoration: BoxDecoration(
-                        color: Colors.green[400],
-                        borderRadius: BorderRadius.circular(8.0),
+                    GestureDetector(
+                      onLongPress: () {
+                        setState(() {
+                          userScore.deleteAt(index);
+                        });
+                        Vibration.vibrate();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 220,
+                        decoration: BoxDecoration(
+                          color: Colors.green[400],
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Center(
+                            child: Text(
+                          Scores.username,
+                          style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white70,
+                              letterSpacing: 2.0),
+                        )),
                       ),
-                      child: Center(
-                          child: Text(
-                        Scores.username,
-                        style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white70,
-                            letterSpacing: 2.0),
-                      )),
                     ),
                     SizedBox(
                       height: 10.0,
