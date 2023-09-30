@@ -22,6 +22,9 @@ class _highScoreState extends State<highScore> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenStatusBar = MediaQuery.of(context).padding.top;
     return Scaffold(
       appBar: AppBar(
         title: Text('High Scores'),
@@ -32,13 +35,13 @@ class _highScoreState extends State<highScore> {
             final Scores = userScore.getAt(index) as scores;
 
             return Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(3),
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(10)),
-                height: 235,
-                width: 200,
+                height: (screenHeight - screenStatusBar) * .30,
+                width: screenWidth * .70,
                 child: Column(
                   children: <Widget>[
                     GestureDetector(
@@ -176,7 +179,7 @@ class _highScoreState extends State<highScore> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'Bonus Score ${Scores.compScore}',
+                                  'Bonus Score ',
                                   style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold,

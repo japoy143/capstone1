@@ -9,17 +9,19 @@ class gameScoresDivision extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return AlertDialog(
       content: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(6)),
-        height: 220,
-        width: 300,
+        height: screenHeight * .30,
+        width: screenWidth * .70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              height: 200,
-              width: 130,
+              height: screenHeight * .25,
+              width: screenWidth * .33,
               decoration: BoxDecoration(
                 color: Colors.green[400],
                 borderRadius: BorderRadius.circular(8),
@@ -28,11 +30,11 @@ class gameScoresDivision extends StatelessWidget {
                 Text(
                   "GenWords Score",
                   style: TextStyle(
-                      fontFamily: 'Anton',
-                      fontSize: 15,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 2.0),
+                    fontFamily: 'Anton',
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
                 SizedBox(
                   height: 50.0,
@@ -44,8 +46,8 @@ class gameScoresDivision extends StatelessWidget {
               ]),
             ),
             Container(
-              height: 200,
-              width: 130,
+              height: screenHeight * .25,
+              width: screenWidth * .33,
               decoration: BoxDecoration(
                 color: Colors.green[400],
                 borderRadius: BorderRadius.circular(8),
@@ -54,11 +56,11 @@ class gameScoresDivision extends StatelessWidget {
                 Text(
                   "CompWords Score",
                   style: TextStyle(
-                      fontFamily: 'Anton',
-                      fontSize: 15,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 2.0),
+                    fontFamily: 'Anton',
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
                 SizedBox(
                   height: 50.0,

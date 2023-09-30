@@ -20,13 +20,19 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
+    //screen height and width
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidht = MediaQuery.of(context).size.width;
+    //statusBar
+    //note this only work when scaffold is used because it has status bar automatically
+    final statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.green[200],
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            const SizedBox(
-              height: 10.0,
+            SizedBox(
+              height: (screenHeight - statusBarHeight) * .02,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,8 +50,8 @@ class _MenuPageState extends State<MenuPage> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 15.0,
+            SizedBox(
+              height: (screenHeight - statusBarHeight) * .02,
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -53,8 +59,8 @@ class _MenuPageState extends State<MenuPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    height: 250,
-                    width: 170,
+                    height: (screenHeight - statusBarHeight) * .35,
+                    width: (screenWidht) * .45,
                     decoration: BoxDecoration(
                       color: Colors.green[400],
                       borderRadius: BorderRadius.circular(20.0),
@@ -74,8 +80,8 @@ class _MenuPageState extends State<MenuPage> {
                         height: 10,
                       ),
                       Container(
-                        height: 165,
-                        width: 150,
+                        height: (screenHeight - statusBarHeight) * .24,
+                        width: (screenWidht) * .40,
                         decoration: BoxDecoration(
                             color: Colors.white24,
                             borderRadius: BorderRadius.circular(12.0)),
@@ -101,8 +107,8 @@ class _MenuPageState extends State<MenuPage> {
                     ]),
                   ),
                   Container(
-                    height: 250,
-                    width: 170,
+                    height: (screenHeight - statusBarHeight) * .35,
+                    width: (screenWidht) * .45,
                     decoration: BoxDecoration(
                       color: Colors.green[400],
                       borderRadius: BorderRadius.circular(20.0),
@@ -122,8 +128,8 @@ class _MenuPageState extends State<MenuPage> {
                         height: 10,
                       ),
                       Container(
-                        height: 165,
-                        width: 150,
+                        height: (screenHeight - statusBarHeight) * .24,
+                        width: (screenWidht) * .40,
                         decoration: BoxDecoration(
                             color: Colors.white24,
                             borderRadius: BorderRadius.circular(12.0)),
@@ -163,8 +169,8 @@ class _MenuPageState extends State<MenuPage> {
                           GameCategory(username: widget.nameUser)));
                 },
                 child: Container(
-                  height: 70,
-                  width: 200,
+                  height: (screenHeight - statusBarHeight) * .09,
+                  width: (screenWidht) * .50,
                   decoration: BoxDecoration(
                     color: Colors.green[400],
                     borderRadius: BorderRadius.circular(30.0),
@@ -190,8 +196,8 @@ class _MenuPageState extends State<MenuPage> {
                       MaterialPageRoute(builder: (context) => highScore()));
                 },
                 child: Container(
-                  height: 70,
-                  width: 200,
+                  height: (screenHeight - statusBarHeight) * .09,
+                  width: (screenWidht) * .50,
                   decoration: BoxDecoration(
                     color: Colors.green[400],
                     borderRadius: BorderRadius.circular(30.0),
@@ -213,11 +219,37 @@ class _MenuPageState extends State<MenuPage> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  height: (screenHeight - statusBarHeight) * .09,
+                  width: (screenWidht) * .50,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Back',
+                      style: TextStyle(
+                        fontFamily: 'Anton',
+                        fontSize: 30.0,
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () {
                   SystemNavigator.pop();
                 },
                 child: Container(
-                  height: 70,
-                  width: 200,
+                  height: (screenHeight - statusBarHeight) * .09,
+                  width: (screenWidht) * .50,
                   decoration: BoxDecoration(
                     color: Colors.green[400],
                     borderRadius: BorderRadius.circular(30.0),

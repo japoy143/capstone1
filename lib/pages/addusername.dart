@@ -45,6 +45,11 @@ class _AddUsernameState extends State<AddUsername> {
 
   @override
   Widget build(BuildContext context) {
+    ///screen height and width
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    //status bar
+    final screenStatusBar = MediaQuery.of(context).padding.top;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -52,8 +57,8 @@ class _AddUsernameState extends State<AddUsername> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             // Wrap the Column with Expanded
-            const SizedBox(
-              height: 200,
+            SizedBox(
+              height: (screenHeight - screenStatusBar) * .16,
             ),
             Text(
               "Create Username",
@@ -64,22 +69,22 @@ class _AddUsernameState extends State<AddUsername> {
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 10,
+              height: (screenHeight - screenStatusBar) * .01,
             ),
             Center(
               child: Container(
-                height: 80,
-                width: 330,
+                height: (screenHeight - screenStatusBar) * .10,
+                width: (screenWidth) * .85,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     color: Theme.of(context).primaryColor),
                 child: Row(
                   children: <Widget>[
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: (screenWidth) * .05,
                     ),
                     SizedBox(
-                      width: 260,
+                      width: (screenWidth) * .65,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextField(
@@ -117,7 +122,7 @@ class _AddUsernameState extends State<AddUsername> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: (screenHeight - screenStatusBar) * .08,
             ),
             Text(
               'Select Users',
@@ -128,8 +133,8 @@ class _AddUsernameState extends State<AddUsername> {
                   fontWeight: FontWeight.bold),
             ),
             Container(
-              height: 200,
-              width: 150,
+              height: (screenHeight - screenStatusBar) * .29,
+              width: (screenWidth) * .50,
               child: ListView.builder(
                   itemCount: userBox.length,
                   itemBuilder: (context, index) {
