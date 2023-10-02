@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameBanner.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameNotifs.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameOptions2.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameScoresTable.dart';
@@ -166,7 +167,7 @@ class _MygameUI1State extends State<MygameUI1> {
           if (key.toUpperCase() == createdWord.toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
-            gameNotifRight();
+            _gameNotifs.gameNotifRight(context);
             wordCount += 1;
             initialWPM += 1;
             Future.delayed(Duration(seconds: 1), () {
@@ -195,7 +196,7 @@ class _MygameUI1State extends State<MygameUI1> {
 
         if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
           tapsounds.Correct();
-          gameNotifRight();
+          _gameNotifs.gameNotifRight(context);
           checker.add(createdWord);
           wordCount += 1;
           Future.delayed(Duration(seconds: 1), () {
@@ -208,9 +209,8 @@ class _MygameUI1State extends State<MygameUI1> {
           initialWPM += 1;
           return; // Exit the function
         } else {
+          _gameNotifs.gameNotifWrong(context);
           tapsounds.Wrong();
-          gameNotifWrong();
-
           Vibration.vibrate();
           Future.delayed(Duration(seconds: 1), () {
             return onClear();
@@ -282,52 +282,7 @@ class _MygameUI1State extends State<MygameUI1> {
   }
 
   //gameNotifications
-
-  void gameNotifWrong() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Container(
-          padding: EdgeInsets.all(16),
-          height: MediaQuery.of(context).size.height * .08,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Center(child: Text('Create Another Word')),
-        ),
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 140,
-        ),
-        duration: Duration(seconds: 1, milliseconds: 5),
-      ),
-    );
-  }
-
-  void gameNotifRight() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Container(
-          padding: EdgeInsets.all(16),
-          height: MediaQuery.of(context).size.height * .08,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Center(child: Text('Correct Word')),
-        ),
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 140,
-        ),
-        duration: Duration(seconds: 1, milliseconds: 5),
-      ),
-    );
-  }
+  GameNotifs _gameNotifs = GameNotifs();
 
   @override
   Widget build(BuildContext context) {
