@@ -17,7 +17,7 @@ class _highScoreState extends State<highScore> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    userScore = Hive.box('scores');
+    userScore = Hive.box<scores>('scores');
   }
 
   @override

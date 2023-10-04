@@ -278,7 +278,7 @@ class _MygameUI1State extends State<MygameUI1> {
   late int keyboardLength;
   void keysLength() {
     Random rand = Random();
-    keyboardLength = rand.nextInt(10) + 5;
+    keyboardLength = rand.nextInt(12) + 8;
   }
 
   //gameNotifications

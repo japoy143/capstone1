@@ -1,22 +1,44 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameNotifs.dart';
+import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameOptions1.dart';
+import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameOptions2.dart';
+import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameScoreDivision.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameWordCollected.dart';
+import 'package:capstoneapp1/models/scores.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:vibration/vibration.dart';
 import '../../../components/Dictionaries/ComputerWordsList.dart';
 import '../../../helpers/gamesounds.dart';
 import 'gameAssets.dart';
 import 'gameBanner.dart';
 
 class MygameUI2 extends StatefulWidget {
+  late String userName;
+  MygameUI2({required this.userName});
   @override
   _MygameUI2State createState() => _MygameUI2State();
 }
 
 class _MygameUI2State extends State<MygameUI2> {
+  //database
+  late Box<scores> scoreBox;
+
+  //WPM
+  int initialWPM = 0;
+  int finalWPM = 0;
+
   //Score
   int Score = 0;
+  int compScore = 0;
+  int genScore = 0;
+
+  int wordCount = 0;
 
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
@@ -25,8 +47,7 @@ class _MygameUI2State extends State<MygameUI2> {
   TimerController2 _timerform = TimerController2();
 
   //
-  List<String> letters =
-      'AAABBCCDDEEEFFGGHHIIIJJKKLLMMNNOOOPPQQRRSSTTUUUVVWWXXYYZZ'.split("");
+  List<String> letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
   List<String> pressedLetters = [];
   String createdWord = '';
@@ -37,14 +58,19 @@ class _MygameUI2State extends State<MygameUI2> {
 
   TextEditingController userInputController = TextEditingController();
 
+  //classes
   CompWords compWords = CompWords();
+  GameNotifs2 _gameNotifs2 = GameNotifs2();
 
   @override
   void initState() {
     super.initState();
     letters.shuffle();
-
     _timerform.startTimer(119);
+    randId();
+    timerBanner();
+    timerWPM();
+    scoreBox = Hive.box<scores>('scores');
   }
 
   void onTapLetter(String letter) {
@@ -54,8 +80,54 @@ class _MygameUI2State extends State<MygameUI2> {
     });
   }
 
+  //one minute for WPM
+  late Timer TimerWPM;
+  void timerWPM() {
+    TimerWPM = Timer(Duration(seconds: 60), () {
+      finalWPM = initialWPM;
+    });
+  }
+
+  //randomize id
+  int randNum = 0;
+  void randId() {
+    var random = Random();
+    randNum = (random.nextDouble() * 10000).toInt() + 1;
+  }
+
+  //Timer banner off
+  late Timer Timerbanner;
+  void timerBanner() {
+    Timerbanner = Timer(Duration(seconds: 119), () async {
+      await scoreBox.add(scores(
+          id: randNum,
+          username: widget.userName,
+          compScore: compScore,
+          genScore: genScore,
+          totalScore: Score,
+          wordPerMinute: finalWPM));
+      print('data Save Successfully');
+      return showOptions(context);
+    });
+  }
+
   //game banner
-  void showBanner() {
+  void showOptions(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          if (wordCount > 10) {
+            return GameOptions2(
+                WordCount: wordCount, username: widget.userName);
+          } else {
+            return GameOptionsTry2(
+                WordCount: wordCount, username: widget.userName);
+          }
+        });
+  }
+
+  //game banner
+  void showBanner(BuildContext context) {
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -65,6 +137,16 @@ class _MygameUI2State extends State<MygameUI2> {
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pop();
     });
+  }
+
+  //score division
+  void onScore() {
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return gameScoresDivision2(compScore: compScore, genScore: genScore);
+        });
   }
 
   void onSubmit() async {
@@ -83,15 +165,22 @@ class _MygameUI2State extends State<MygameUI2> {
           if (key.toUpperCase() == createdWord.toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
-
+            _gameNotifs2.gameNotifRight(context);
+            wordCount += 1;
+            initialWPM += 1;
+            Future.delayed(Duration(seconds: 1), () {
+              return onClear();
+            });
             isWordExist = true;
             if (createdWord.length > 6) {
               setState(() {
                 Score += 15;
+                compScore += 15;
               });
             } else {
               setState(() {
                 Score += 10;
+                compScore += 10;
               });
             }
             return;
@@ -105,20 +194,44 @@ class _MygameUI2State extends State<MygameUI2> {
 
         if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
           tapsounds.Correct();
+          _gameNotifs2.gameNotifRight(context);
           checker.add(createdWord);
+          wordCount += 1;
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
+          });
           setState(() {
             Score += 5;
+            genScore += 5;
           });
+          initialWPM += 1;
           return; // Exit the function
         } else {
+          _gameNotifs2.gameNotifWrong(context);
           tapsounds.Wrong();
+          Vibration.vibrate();
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
+          });
         }
       } else {
-        showBanner();
+        showBanner(context);
         tapsounds.Invalid();
         print("Word used");
       }
     }
+  }
+
+  //delete all
+  void onClear() async {
+    await tapsounds.OntapSounds();
+    setState(() {
+      if (pressedLetters.isNotEmpty) {
+        pressedLetters.clear();
+        userInputController.text = '';
+      }
+      return;
+    });
   }
 
   void onDelete() async {
@@ -139,6 +252,8 @@ class _MygameUI2State extends State<MygameUI2> {
     super.dispose();
     userInputController.dispose();
     _timerform.timer?.cancel();
+    TimerWPM.cancel();
+    Timerbanner.cancel();
   }
 
   //GameSounds
@@ -148,235 +263,222 @@ class _MygameUI2State extends State<MygameUI2> {
 
   @override
   Widget build(BuildContext context) {
-    String collected = letters.take(20).join('');
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    String collected = letters.take(15).join('');
 
     List<String> charlist = collected.split('');
 
-    return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            size: 30.0,
-                            color: Colors.white70,
-                          ))),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        'Score:${Score}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 65.0,
-                      ),
-                      Container(
-                        height: 30,
-                        width: 75,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.white70, width: 2.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.av_timer_sharp,
-                                color: Colors.white70,
-                              ),
-                              const SizedBox(
-                                width: 3.0,
-                              ),
-                              Obx(
-                                () => Text(
-                                  _timerform.time.value,
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 5.0,
-          ),
-          Text(
-            'WORDY',
-            style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[300]),
-          ),
-          Text(
-            'woodpicker',
-            style: TextStyle(
-              fontFamily: 'Edusa',
-              fontSize: 30.0,
-              color: Colors.grey[300],
-            ),
-          ),
-          const SizedBox(
-            height: 5.0,
-          ),
-          Center(
-            child: Stack(
+    return Column(
+      children: [
+        Padding(
+            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+            child: Row(
               children: [
-                imgs.gameImg(true, 'assets/imgs/thief2.png'),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 5.0,
-          ),
-          Container(
-            height: 50,
-            width: 250,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(8.0)),
-            child: TextField(
-              controller: userInputController,
-              readOnly: true,
-              style: const TextStyle(color: Colors.green),
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                hintStyle: TextStyle(color: Colors.green),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15.0,
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 14.5),
-              child: SizedBox(
-                height: 230,
-                width: 400,
-                child: Wrap(
-                  children: charlist.map((e) {
-                    return InkWell(
-                      onTap: () async {
-                        await tapsounds.OntapSounds();
-                        onTapLetter(e);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Container(
-                          height: 50,
-                          width: 65,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(8.0),
+                Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: IconButton(
+                        onPressed: () {
+                          return showOptions(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                          size: 30.0,
+                          color: Colors.white70,
+                        ))),
+                SizedBox(
+                  width: (screenWidth) * .04,
+                ),
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: 70.0),
+                      child: GestureDetector(
+                        onTap: onScore,
+                        child: Text(
+                          'Score: ${Score}',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Colors.white70,
+                            fontWeight: FontWeight.bold,
                           ),
-                          child: Center(
-                            child: Text(
-                              e,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Colors.green[400]),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: (screenWidth) * .03,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return WordCollected2(Allwords: checker);
+                                });
+                          },
+                          icon: Icon(Icons.library_add_check),
+                          iconSize: 30,
+                          color: Colors.white70,
+                        ),
+                        Container(
+                          height: (screenHeight) * .04,
+                          width: (screenWidth) * .22,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border:
+                                Border.all(color: Colors.white70, width: 2.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.av_timer_sharp,
+                                  color: Colors.white70,
+                                ),
+                                SizedBox(
+                                  width: (screenWidth) * .01,
+                                ),
+                                Obx(
+                                  () => Text(
+                                    _timerform.time.value,
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white70),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            )),
+        SizedBox(
+          height: (screenHeight) * .02,
+        ),
+        Text(
+          'WORDY',
+          style: TextStyle(
+              fontFamily: 'Rubik',
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[300]),
+        ),
+        Text(
+          'woodpicker',
+          style: TextStyle(
+            fontFamily: 'Edusa',
+            fontSize: 30.0,
+            color: Colors.grey[300],
+          ),
+        ),
+        const SizedBox(
+          height: 5.0,
+        ),
+        Center(
+          child: Stack(
+            children: [
+              imgs.gameImg(true, 'assets/imgs/thief2.png'),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: screenHeight * .02,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(width: screenWidth * .10),
+            Container(
+              height: 50,
+              width: 300,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(8.0)),
+              child: TextField(
+                controller: userInputController,
+                readOnly: true,
+                style: const TextStyle(color: Colors.green),
+                textAlign: TextAlign.center,
+                decoration: const InputDecoration(
+                  hintStyle: TextStyle(color: Colors.green),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 5.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5.0, bottom: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: GestureDetector(
-                    onTap: onDelete,
-                    child: Container(
-                      height: 40,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Delete',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.green[400]),
-                      )),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: GestureDetector(
+            IconButton(
+              onPressed: onClear,
+              icon: Icon(
+                Icons.delete,
+                color: Colors.white70,
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: screenHeight * .04,
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 14.5),
+            child: SizedBox(
+              height: 230,
+              width: 400,
+              child: Wrap(
+                children: charlist.map((e) {
+                  return InkWell(
                     onTap: () async {
                       await tapsounds.OntapSounds();
-                      setState(() {
-                        letters.shuffle();
-                      });
+                      onTapLetter(e);
                     },
-                    child: Container(
-                      height: 40,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          const SizedBox(
-                            width: 35,
-                          ),
-                          Text(
-                            'Reshuffle',
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 50,
+                        width: 65,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            e,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.0,
                                 color: Colors.green[400]),
                           ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: onSubmit,
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: screenHeight * .04,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 24.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: GestureDetector(
+                  onTap: onDelete,
                   child: Container(
                     height: 40,
                     width: 100,
@@ -386,19 +488,74 @@ class _MygameUI2State extends State<MygameUI2> {
                     ),
                     child: Center(
                         child: Text(
-                      'Submit',
+                      'Delete',
                       style: TextStyle(
-                          fontSize: 20.0,
                           fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
                           color: Colors.green[400]),
                     )),
                   ),
                 ),
-              ],
-            ),
-          )
-        ],
-      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    await tapsounds.OntapSounds();
+                    setState(() {
+                      letters.shuffle();
+                    });
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        const SizedBox(
+                          width: 35,
+                        ),
+                        Text(
+                          'Reshuffle',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Colors.green[400]),
+                        ),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: onSubmit,
+                child: Container(
+                  height: 40,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Submit',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[400]),
+                  )),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
