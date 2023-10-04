@@ -1,5 +1,6 @@
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
+import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
 class GameOptions2 extends StatefulWidget {
@@ -43,9 +44,8 @@ class _GameOptions1State extends State<GameOptions2> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Mygame1(
-                              username: widget.username,
-                            )),
+                        builder: (BuildContext context) =>
+                            Mygame2(userName: widget.username)),
                   );
                 },
                 child: Container(

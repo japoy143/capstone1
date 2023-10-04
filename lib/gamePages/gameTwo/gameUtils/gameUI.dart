@@ -70,6 +70,7 @@ class _MygameUI2State extends State<MygameUI2> {
     randId();
     timerBanner();
     timerWPM();
+    keysZero();
     scoreBox = Hive.box<scores>('scores');
   }
 
@@ -95,10 +96,20 @@ class _MygameUI2State extends State<MygameUI2> {
     randNum = (random.nextDouble() * 10000).toInt() + 1;
   }
 
+  //keyboardLength to zero
+  late Timer keysToZero;
+  void keysZero() {
+    keysToZero = Timer(Duration(seconds: 120), () {
+      setState(() {
+        keyboardLength = 0;
+      });
+    });
+  }
+
   //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 119), () async {
+    Timerbanner = Timer(Duration(seconds: 121), () async {
       await scoreBox.add(scores(
           id: randNum,
           username: widget.userName,
@@ -200,10 +211,17 @@ class _MygameUI2State extends State<MygameUI2> {
           Future.delayed(Duration(seconds: 1), () {
             return onClear();
           });
-          setState(() {
-            Score += 5;
-            genScore += 5;
-          });
+          if (createdWord.length >= 6) {
+            setState(() {
+              Score += 10;
+              compScore += 10;
+            });
+          } else {
+            setState(() {
+              Score += 5;
+              compScore += 5;
+            });
+          }
           initialWPM += 1;
           return; // Exit the function
         } else {
@@ -254,6 +272,7 @@ class _MygameUI2State extends State<MygameUI2> {
     _timerform.timer?.cancel();
     TimerWPM.cancel();
     Timerbanner.cancel();
+    keysToZero.cancel();
   }
 
   //GameSounds
@@ -261,11 +280,14 @@ class _MygameUI2State extends State<MygameUI2> {
   //gameimgs
   IMGS imgs = IMGS();
 
+  //keyboardLength
+  int keyboardLength = 16;
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    String collected = letters.take(15).join('');
+    String collected = letters.take(keyboardLength).join('');
 
     List<String> charlist = collected.split('');
 
@@ -440,7 +462,8 @@ class _MygameUI2State extends State<MygameUI2> {
                       onTapLetter(e);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: EdgeInsets.only(
+                          left: 10, bottom: 10, top: 10, right: 20),
                       child: Container(
                         height: 50,
                         width: 65,

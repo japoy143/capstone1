@@ -1,19 +1,19 @@
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
-import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
-class GameOptionsTry2 extends StatefulWidget {
-  GameOptionsTry2({Key? key, required this.WordCount, required this.username})
+class GameOptionsTry3 extends StatefulWidget {
+  GameOptionsTry3({Key? key, required this.WordCount, required this.username})
       : super(key: key);
   late int WordCount;
   late String username;
 
   @override
-  State<GameOptionsTry2> createState() => _GameOptionsTry1State();
+  State<GameOptionsTry3> createState() => _GameOptionsTry1State();
 }
 
-class _GameOptionsTry1State extends State<GameOptionsTry2> {
+class _GameOptionsTry1State extends State<GameOptionsTry3> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -42,11 +42,10 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            Mygame2(userName: widget.username)),
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              Mygame3(userName: widget.username)));
                 },
                 child: Container(
                   decoration: BoxDecoration(

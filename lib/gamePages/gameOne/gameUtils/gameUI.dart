@@ -202,10 +202,17 @@ class _MygameUI1State extends State<MygameUI1> {
           Future.delayed(Duration(seconds: 1), () {
             return onClear();
           });
-          setState(() {
-            Score += 5;
-            genScore += 5;
-          });
+          if (createdWord.length >= 6) {
+            setState(() {
+              Score += 10;
+              compScore += 10;
+            });
+          } else {
+            setState(() {
+              Score += 5;
+              compScore += 5;
+            });
+          }
           initialWPM += 1;
           return; // Exit the function
         } else {

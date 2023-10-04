@@ -84,8 +84,10 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Mygame3())),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Mygame3(
+                          userName: widget.username,
+                        ))),
                 child: Container(
                   height: 100,
                   width: 200,

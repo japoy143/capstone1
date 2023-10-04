@@ -1,21 +1,43 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameNotifs.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameOptions1.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameOptions2.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameScoreDivision.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameTimer.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameWordCollected.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
+import 'package:capstoneapp1/models/scores.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:vibration/vibration.dart';
 import 'gameAssets.dart';
 import 'gameBanner.dart';
 
 class MygameUI3 extends StatefulWidget {
+  MygameUI3({required this.userName});
+  late String userName;
   @override
   _MygameUI3State createState() => _MygameUI3State();
 }
 
 class _MygameUI3State extends State<MygameUI3> {
+  //database
+  late Box<scores> scoreBox;
   //Score
   int Score = 0;
+  int compScore = 0;
+  int genScore = 0;
+
+  //WPM
+  int initialWPM = 0;
+  int finalWPM = 0;
+
+  //wordCount
+  int wordCount = 0;
 
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
@@ -25,8 +47,7 @@ class _MygameUI3State extends State<MygameUI3> {
   TimerController3 _timerform = TimerController3();
 
   //keys
-  List<String> letters =
-      'AAABBCCDDEEEFFGGHHIIIJJKKLLMMNNOOOPPQQRRSSTTUUUVVWWXXYYZZ'.split("");
+  List<String> letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
   List<String> pressedLetters = [];
   String createdWord = '';
@@ -36,14 +57,18 @@ class _MygameUI3State extends State<MygameUI3> {
   List<String> checker = [];
   TextEditingController userInputController = TextEditingController();
 
+  GameNotifs3 _gameNotifs3 = GameNotifs3();
   CompWords compWords = CompWords();
   @override
   void initState() {
     super.initState();
     letters.shuffle();
-
     _startMinusLetter();
-    _timerform.startTimer(224);
+    _timerform.startTimer(119);
+    timerBanner();
+    randId();
+    timerWPM();
+    scoreBox = Hive.box<scores>('scores');
   }
 
   void onTapLetter(String letter) {
@@ -54,7 +79,7 @@ class _MygameUI3State extends State<MygameUI3> {
   }
 
   //game banner
-  void showBanner() {
+  void showBanner(BuildContext context) {
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -82,15 +107,22 @@ class _MygameUI3State extends State<MygameUI3> {
           if (key.toUpperCase() == createdWord.toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
-
+            _gameNotifs3.gameNotifRight(context);
+            wordCount += 1;
+            initialWPM += 1;
+            Future.delayed(Duration(seconds: 1), () {
+              return onClear();
+            });
             isWordExist = true;
-            if (createdWord.length > 6) {
+            if (createdWord.length >= 6) {
               setState(() {
                 Score += 15;
+                compScore += 15;
               });
             } else {
               setState(() {
                 Score += 10;
+                compScore += 10;
               });
             }
             return;
@@ -104,16 +136,35 @@ class _MygameUI3State extends State<MygameUI3> {
 
         if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
           tapsounds.Correct();
+          _gameNotifs3.gameNotifRight(context);
           checker.add(createdWord);
-          setState(() {
-            Score += 5;
+          wordCount += 1;
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
           });
+          if (createdWord.length >= 6) {
+            setState(() {
+              Score += 10;
+              compScore += 10;
+            });
+          } else {
+            setState(() {
+              Score += 5;
+              compScore += 5;
+            });
+          }
+          initialWPM += 1;
           return; // Exit the function
         } else {
+          _gameNotifs3.gameNotifWrong(context);
           tapsounds.Wrong();
+          Vibration.vibrate();
+          Future.delayed(Duration(seconds: 1), () {
+            return onClear();
+          });
         }
       } else {
-        showBanner();
+        showBanner(context);
         tapsounds.Invalid();
         print("Word used");
       }
@@ -131,6 +182,66 @@ class _MygameUI3State extends State<MygameUI3> {
     });
   }
 
+  //onclear deletes all
+  void onClear() async {
+    await tapsounds.OntapSounds();
+    setState(() {
+      if (pressedLetters.isNotEmpty) {
+        pressedLetters.clear();
+        userInputController.text = '';
+      }
+      return;
+    });
+  }
+
+  //game banner
+  void showOptions(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          if (wordCount > 10) {
+            return GameOptions3(
+                WordCount: wordCount, username: widget.userName);
+          } else {
+            return GameOptionsTry3(
+                WordCount: wordCount, username: widget.userName);
+          }
+        });
+  }
+
+  //score division
+  void onScore() {
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return gameScoresDivision3(compScore: compScore, genScore: genScore);
+        });
+  }
+
+  //Timer banner off
+  late Timer Timerbanner;
+  void timerBanner() {
+    Timerbanner = Timer(Duration(seconds: 120), () async {
+      await scoreBox.add(scores(
+          id: randNum,
+          username: widget.userName,
+          compScore: compScore,
+          genScore: genScore,
+          totalScore: Score,
+          wordPerMinute: finalWPM));
+      print('data Save Successfully');
+      return showOptions(context);
+    });
+  }
+
+  int randNum = 0;
+  //randomize id
+  void randId() {
+    var random = Random();
+    randNum = (random.nextDouble() * 10000).toInt() + 1;
+  }
+
 //reshuffle
   int num = 3;
 
@@ -140,13 +251,15 @@ class _MygameUI3State extends State<MygameUI3> {
     userInputController.dispose();
     _timerform.timer?.cancel();
     _newtimer.cancel();
+    Timerbanner.cancel();
+    TimerWPM.cancel();
   }
 
   //length of letter iteration
   int LetterCount = 15;
   int numcount = 15;
   void _startMinusLetter() {
-    _newtimer = Timer.periodic(Duration(seconds: 15), (timer) {
+    _newtimer = Timer.periodic(Duration(seconds: 8), (timer) {
       if (numcount % 15 == 0) {
         if (LetterCount > 0) {
           setState(() {
@@ -154,6 +267,14 @@ class _MygameUI3State extends State<MygameUI3> {
           });
         }
       }
+    });
+  }
+
+  late Timer TimerWPM;
+
+  void timerWPM() {
+    TimerWPM = Timer(Duration(seconds: 60), () {
+      finalWPM = initialWPM;
     });
   }
 
@@ -165,6 +286,8 @@ class _MygameUI3State extends State<MygameUI3> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     String collected = letters.take(LetterCount).join('');
 
     List<String> charlist = collected.split('');
@@ -175,68 +298,95 @@ class _MygameUI3State extends State<MygameUI3> {
           Padding(
               padding: const EdgeInsets.only(left: 5.0, right: 5.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: IconButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () {
+                            return showOptions(context);
+                          },
                           icon: const Icon(
                             Icons.arrow_back_ios,
                             size: 30.0,
                             color: Colors.white70,
                           ))),
+                  SizedBox(
+                    width: (screenWidth) * .04,
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text(
-                        'Score:${Score}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 65.0,
-                      ),
-                      Container(
-                        height: 30,
-                        width: 75,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.white70, width: 2.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.av_timer_sharp,
-                                color: Colors.white70,
-                              ),
-                              const SizedBox(
-                                width: 3.0,
-                              ),
-                              Obx(
-                                () => Text(
-                                  _timerform.time.value,
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70),
-                                ),
-                              ),
-                            ],
+                      Padding(
+                        padding: EdgeInsets.only(left: 70.0),
+                        child: GestureDetector(
+                          onTap: onScore,
+                          child: Text(
+                            'Score: ${Score}',
+                            style: TextStyle(
+                              fontSize: 22.0,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: (screenWidth) * .03,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return WordCollected3(Allwords: checker);
+                                  });
+                            },
+                            icon: Icon(Icons.library_add_check),
+                            iconSize: 30,
+                            color: Colors.white70,
+                          ),
+                          Container(
+                            height: (screenHeight) * .04,
+                            width: (screenWidth) * .22,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              border:
+                                  Border.all(color: Colors.white70, width: 2.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.av_timer_sharp,
+                                    color: Colors.white70,
+                                  ),
+                                  SizedBox(
+                                    width: (screenWidth) * .01,
+                                  ),
+                                  Obx(
+                                    () => Text(
+                                      _timerform.time.value,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white70),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ],
               )),
-          const SizedBox(
-            height: 5.0,
+          SizedBox(
+            height: screenHeight * .03,
           ),
           Text(
             'WORDY',
@@ -267,25 +417,38 @@ class _MygameUI3State extends State<MygameUI3> {
           const SizedBox(
             height: 5.0,
           ),
-          Container(
-            height: 50,
-            width: 250,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(8.0)),
-            child: TextField(
-              controller: userInputController,
-              readOnly: true,
-              style: const TextStyle(color: Colors.green),
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                hintStyle: TextStyle(color: Colors.green),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(width: screenWidth * .10),
+              Container(
+                height: 50,
+                width: 300,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(8.0)),
+                child: TextField(
+                  controller: userInputController,
+                  readOnly: true,
+                  style: const TextStyle(color: Colors.green),
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    hintStyle: TextStyle(color: Colors.green),
+                  ),
+                ),
               ),
-            ),
+              IconButton(
+                onPressed: onClear,
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white70,
+                ),
+              )
+            ],
           ),
-          const SizedBox(
-            height: 15.0,
+          SizedBox(
+            height: screenHeight * .03,
           ),
           Center(
             child: Padding(
@@ -327,7 +490,7 @@ class _MygameUI3State extends State<MygameUI3> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 5.0, bottom: 15.0),
+            padding: const EdgeInsets.only(top: 35.0, bottom: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

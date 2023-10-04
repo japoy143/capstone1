@@ -1,19 +1,20 @@
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
+import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
-class GameOptionsTry2 extends StatefulWidget {
-  GameOptionsTry2({Key? key, required this.WordCount, required this.username})
+class GameOptions3 extends StatefulWidget {
+  GameOptions3({Key? key, required this.WordCount, required this.username})
       : super(key: key);
   late int WordCount;
   late String username;
 
   @override
-  State<GameOptionsTry2> createState() => _GameOptionsTry1State();
+  State<GameOptions3> createState() => _GameOptions1State();
 }
 
-class _GameOptionsTry1State extends State<GameOptionsTry2> {
+class _GameOptions1State extends State<GameOptions3> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -29,10 +30,10 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
                   height: 70,
-                  width: 130,
+                  width: 165,
                   child: Center(
                     child: Text(
-                      "Try Again ${widget.username} You Only Get ${widget.WordCount}",
+                      "Congratulations ${widget.username} You Got ${widget.WordCount} words",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -45,7 +46,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) =>
-                            Mygame2(userName: widget.username)),
+                            Mygame3(userName: widget.username)),
                   );
                 },
                 child: Container(
