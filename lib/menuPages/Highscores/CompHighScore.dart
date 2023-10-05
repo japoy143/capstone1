@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:vibration/vibration.dart';
 
-class highScore extends StatefulWidget {
-  const highScore({super.key});
+class ComphighScore extends StatefulWidget {
+  ComphighScore({super.key});
 
   @override
-  State<highScore> createState() => _highScoreState();
+  State<ComphighScore> createState() => _ComphighScoreState();
 }
 
-class _highScoreState extends State<highScore> {
+class _ComphighScoreState extends State<ComphighScore> {
   late Box<scores> userScore;
 
   @override
@@ -18,6 +18,13 @@ class _highScoreState extends State<highScore> {
     // TODO: implement initState
     super.initState();
     userScore = Hive.box<scores>('scores');
+    sort();
+  }
+
+  late List<scores> sortedScores;
+  void sort() {
+    sortedScores = userScore.values.toList()
+      ..sort((a, b) => b.compScore.compareTo(a.compScore));
   }
 
   @override
@@ -27,12 +34,15 @@ class _highScoreState extends State<highScore> {
     final screenStatusBar = MediaQuery.of(context).padding.top;
     return Scaffold(
       appBar: AppBar(
-        title: Text('High Scores'),
+        title: Text(
+          'Computer Words High Scores',
+          style: TextStyle(fontSize: 20.0),
+        ),
       ),
       body: ListView.builder(
           itemCount: userScore.length,
           itemBuilder: (context, index) {
-            final Scores = userScore.getAt(index) as scores;
+            final sorted = sortedScores[index] as scores;
 
             return Padding(
               padding: const EdgeInsets.all(3),
@@ -60,7 +70,7 @@ class _highScoreState extends State<highScore> {
                         ),
                         child: Center(
                             child: Text(
-                          Scores.username,
+                          sorted.username,
                           style: TextStyle(
                               fontSize: 24.0,
                               fontWeight: FontWeight.bold,
@@ -97,7 +107,7 @@ class _highScoreState extends State<highScore> {
                             Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Text(
-                                Scores.wordPerMinute.toString(),
+                                sorted.wordPerMinute.toString(),
                                 style: TextStyle(
                                     fontSize: 30.0,
                                     color: Colors.green[400],
@@ -126,7 +136,7 @@ class _highScoreState extends State<highScore> {
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
                               child: Text(
-                                Scores.totalScore.toString(),
+                                sorted.totalScore.toString(),
                                 style: TextStyle(
                                     fontSize: 30.0,
                                     color: Colors.green[400],
@@ -162,7 +172,7 @@ class _highScoreState extends State<highScore> {
                             Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: Text(
-                                Scores.compScore.toString(),
+                                sorted.compScore.toString(),
                                 style: TextStyle(
                                     fontSize: 30.0,
                                     color: Colors.green[400],
@@ -179,7 +189,7 @@ class _highScoreState extends State<highScore> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'Bonus Score ',
+                                  'Gen Score ',
                                   style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
@@ -191,7 +201,7 @@ class _highScoreState extends State<highScore> {
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
                               child: Text(
-                                Scores.genScore.toString(),
+                                sorted.genScore.toString(),
                                 style: TextStyle(
                                     fontSize: 30.0,
                                     color: Colors.green[400],
