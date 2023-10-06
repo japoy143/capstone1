@@ -53,14 +53,14 @@ dev_dependencies:
   #how to put icon and change name
   #flutter_launcher_icons:
   #flutter_app_name:
-#flutter_launcher_icons:
-#android: "launcher_icon"
-#ios: true
-#image_path: "assets/logo/WORDYwoodpicker.png"
-#min_sdk_android: 21
+  #flutter_launcher_icons:
+  #android: "launcher_icon"
+  #ios: true
+  #image_path: "assets/logo/WORDYwoodpicker.png"
+  #min_sdk_android: 21
 
-flutter_app_name:
-  name: "WORDYwoodpicker"
+  #flutter_app_name:
+  #name: "WORDY \n woodpicker"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

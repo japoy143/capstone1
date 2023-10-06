@@ -395,7 +395,7 @@ class _MygameUI1State extends State<MygameUI1> {
               ],
             )),
         SizedBox(
-          height: (screenHeight) * .04,
+          height: (screenHeight) * .02,
         ),
         Text(
           "WORDY",
@@ -424,7 +424,7 @@ class _MygameUI1State extends State<MygameUI1> {
           ),
         ),
         const SizedBox(
-          height: 5.0,
+          height: 2.0,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -463,7 +463,7 @@ class _MygameUI1State extends State<MygameUI1> {
           child: Padding(
             padding: const EdgeInsets.only(left: 5.0),
             child: SizedBox(
-              height: screenHeight * .20,
+              height: screenHeight * .23,
               width: screenWidth * .90,
               child: Wrap(
                 alignment: WrapAlignment.center,
@@ -501,7 +501,7 @@ class _MygameUI1State extends State<MygameUI1> {
           ),
         ),
         SizedBox(
-          height: screenHeight * .06,
+          height: screenHeight * .04,
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 5.0),

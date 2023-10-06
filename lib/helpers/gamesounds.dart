@@ -26,6 +26,10 @@ class Gamesounds {
     }
   }
 
+  OntapSoundsOff() {
+    player.stop();
+  }
+
   OntapStop() {
     player.stop();
   }
