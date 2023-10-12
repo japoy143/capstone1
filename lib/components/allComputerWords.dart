@@ -19,7 +19,13 @@ class AllComputerWords extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.search))
+                  IconButton(
+                      onPressed: () {
+                        showSearch(
+                            context: context,
+                            delegate: CustiomSearchDelegate());
+                      },
+                      icon: Icon(Icons.search))
                 ],
               ),
             ),
@@ -69,5 +75,75 @@ class AllComputerWords extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class CustiomSearchDelegate extends SearchDelegate {
+  CompWords _compWords = CompWords();
+
+  //clear the search bar
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: const Icon(Icons.clear),
+      ),
+    ];
+  }
+
+  //close the search bar
+  @override
+  Widget buildLeading(BuildContext context) {
+    return (IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(Icons.arrow_back),
+    ));
+  }
+
+  //the search funct
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchquery = [];
+    for (var key in _compWords.ComputerWordsList.keys) {
+      if (key.toLowerCase().contains(query.toLowerCase())) {
+        matchquery.add(key);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchquery.length,
+        itemBuilder: (context, index) {
+          var result = matchquery[index];
+
+          return ListTile(
+            title: Text(result),
+          );
+        });
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchquery = [];
+    for (var key in _compWords.ComputerWordsList.keys) {
+      if (key.toLowerCase().contains(query.toLowerCase())) {
+        matchquery.add(key);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchquery.length,
+        itemBuilder: (context, index) {
+          var result = matchquery[index];
+
+          return ListTile(
+            title: GestureDetector(
+                //needs funct
+                onTap: () {},
+                child: Text(result)),
+          );
+        });
   }
 }

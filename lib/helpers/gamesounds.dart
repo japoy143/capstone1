@@ -17,7 +17,7 @@ class Gamesounds {
     player.stop();
   }
 
-  OntapSounds() async {
+  Future<void> OntapSounds() async {
     try {
       String file = 'audios/tap.wav';
       await player.play(AssetSource(file));
