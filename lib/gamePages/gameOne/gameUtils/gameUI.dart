@@ -69,6 +69,8 @@ class _MygameUI1State extends State<MygameUI1> {
     keysZero();
     randId();
     timerWPM();
+    timerGameNotif2();
+    _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
   }
 
@@ -85,6 +87,14 @@ class _MygameUI1State extends State<MygameUI1> {
   void timerWPM() {
     TimerWPM = Timer(Duration(seconds: 60), () {
       finalWPM = initialWPM;
+    });
+  }
+
+  //Timer for gameNotif2
+  late Timer TimerGameNotif2;
+  void timerGameNotif2() {
+    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+      return _gameNotifs.gameNotifGameDescription2(context);
     });
   }
 
@@ -199,7 +209,10 @@ class _MygameUI1State extends State<MygameUI1> {
           _gameNotifs.gameNotifRight(context);
           checker.add(createdWord);
           wordCount += 1;
-          Future.delayed(Duration(seconds: 1), () {
+          Future.delayed(
+              Duration(
+                seconds: 1,
+              ), () {
             return onClear();
           });
           if (createdWord.length >= 6) {
@@ -273,6 +286,7 @@ class _MygameUI1State extends State<MygameUI1> {
     Timerbanner.cancel();
     keysToZero.cancel();
     TimerWPM.cancel();
+    TimerGameNotif2.cancel();
   }
 
   //GameSounds

@@ -71,6 +71,8 @@ class _MygameUI2State extends State<MygameUI2> {
     timerBanner();
     timerWPM();
     keysZero();
+    _gameNotifs2.gameNotifGameDescription(context);
+    timerGameNotif2();
     scoreBox = Hive.box<scores>('scores');
   }
 
@@ -103,6 +105,14 @@ class _MygameUI2State extends State<MygameUI2> {
       setState(() {
         keyboardLength = 0;
       });
+    });
+  }
+
+  //Timer for gameNotif2
+  late Timer TimerGameNotif2;
+  void timerGameNotif2() {
+    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+      return _gameNotifs2.gameNotifGameDescription2(context);
     });
   }
 
@@ -273,6 +283,7 @@ class _MygameUI2State extends State<MygameUI2> {
     TimerWPM.cancel();
     Timerbanner.cancel();
     keysToZero.cancel();
+    TimerGameNotif2.cancel();
   }
 
   //GameSounds

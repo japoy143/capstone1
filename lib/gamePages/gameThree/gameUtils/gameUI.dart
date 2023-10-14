@@ -66,6 +66,8 @@ class _MygameUI3State extends State<MygameUI3> {
     _startMinusLetter();
     _timerform.startTimer(119);
     timerBanner();
+    _gameNotifs3.gameNotifGameDescription(context);
+    timerGameNotif2();
     randId();
     timerWPM();
     scoreBox = Hive.box<scores>('scores');
@@ -219,6 +221,14 @@ class _MygameUI3State extends State<MygameUI3> {
         });
   }
 
+  //Timer for gameNotif2
+  late Timer TimerGameNotif2;
+  void timerGameNotif2() {
+    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+      return _gameNotifs3.gameNotifGameDescription2(context);
+    });
+  }
+
   //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
@@ -253,6 +263,7 @@ class _MygameUI3State extends State<MygameUI3> {
     _newtimer.cancel();
     Timerbanner.cancel();
     TimerWPM.cancel();
+    TimerGameNotif2.cancel();
   }
 
   //length of letter iteration

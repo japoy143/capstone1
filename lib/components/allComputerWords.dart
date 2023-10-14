@@ -1,4 +1,5 @@
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
+import 'package:capstoneapp1/components/SearchComponents/CompWordSearch.dart';
 import 'package:capstoneapp1/components/SelectedCompWord.dart';
 import 'package:flutter/material.dart';
 
@@ -10,25 +11,23 @@ class AllComputerWords extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Computer Words',
+          style: TextStyle(fontFamily: 'Rubik', fontSize: 20.0),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: CustiomSearchDelegate());
+              },
+              icon: Icon(Icons.search))
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 30,
-              width: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        showSearch(
-                            context: context,
-                            delegate: CustiomSearchDelegate());
-                      },
-                      icon: Icon(Icons.search))
-                ],
-              ),
-            ),
             Expanded(
               child: ListView.builder(
                   itemCount: computerWords.ComputerWordsList.length,
@@ -119,8 +118,14 @@ class CustiomSearchDelegate extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchquery[index];
 
-          return ListTile(
-            title: Text(result),
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CompWordSearch(value: result)));
+            },
+            child: ListTile(
+              title: Text(result),
+            ),
           );
         });
   }
@@ -138,11 +143,14 @@ class CustiomSearchDelegate extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchquery[index];
 
-          return ListTile(
-            title: GestureDetector(
-                //needs funct
-                onTap: () {},
-                child: Text(result)),
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CompWordSearch(value: result)));
+            },
+            child: ListTile(
+              title: Text(result),
+            ),
           );
         });
   }
