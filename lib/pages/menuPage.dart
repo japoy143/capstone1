@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/components/allComputerWords.dart';
 import 'package:capstoneapp1/components/allGeneralWords.dart';
 import 'package:capstoneapp1/components/computerwordsList.dart';
@@ -11,8 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MenuPage extends StatefulWidget {
-  MenuPage({super.key, required this.nameUser});
+  MenuPage({super.key, required this.nameUser, required this.audioPlayer});
   late String nameUser;
+  late AudioPlayer audioPlayer;
 
   @override
   State<MenuPage> createState() => _MenuPageState();
@@ -166,8 +168,10 @@ class _MenuPageState extends State<MenuPage> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          GameCategory(username: widget.nameUser)));
+                      builder: (context) => GameCategory(
+                            username: widget.nameUser,
+                            audioPlayer: widget.audioPlayer,
+                          )));
                 },
                 child: Container(
                   height: (screenHeight - statusBarHeight) * .09,

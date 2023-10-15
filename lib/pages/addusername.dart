@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:hive/hive.dart';
 import 'package:vibration/vibration.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class AddUsername extends StatefulWidget {
   AddUsername({Key? key});
@@ -17,6 +18,8 @@ class _AddUsernameState extends State<AddUsername> {
 
   TextEditingController usernameController = TextEditingController();
 
+  AudioPlayer audioPlayer = AudioPlayer();
+
   late Box userBox;
   bool isTextFieldEmpty = true;
 
@@ -24,7 +27,10 @@ class _AddUsernameState extends State<AddUsername> {
     try {
       await userBox.add(usernameController.text);
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MenuPage(nameUser: usernameController.text)));
+          builder: (context) => MenuPage(
+                nameUser: usernameController.text,
+                audioPlayer: audioPlayer,
+              )));
       print('Data Save Successfully');
     } catch (e) {
       print(e);
@@ -41,6 +47,16 @@ class _AddUsernameState extends State<AddUsername> {
     // TODO: implement initState
     super.initState();
     userBox = Hive.box('newUsers');
+    audioPlayer.play(
+      AssetSource('audios/Bgmusic/SadDay.mp3'),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    audioPlayer.stop();
   }
 
   @override
@@ -145,8 +161,10 @@ class _AddUsernameState extends State<AddUsername> {
                       child: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  MenuPage(nameUser: newusers)));
+                              builder: (context) => MenuPage(
+                                    nameUser: newusers,
+                                    audioPlayer: audioPlayer,
+                                  )));
                         },
                         onLongPress: () {
                           setState(() {

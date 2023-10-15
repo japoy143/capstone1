@@ -1,3 +1,4 @@
+import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:flutter/material.dart';
 
 class Note extends StatefulWidget {

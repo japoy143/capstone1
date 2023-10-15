@@ -1,20 +1,30 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
 
 import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
+import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:capstoneapp1/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class GameCategory extends StatefulWidget {
-  GameCategory({super.key, required this.username});
+  GameCategory({super.key, required this.username, required this.audioPlayer});
   late String username;
+  late AudioPlayer audioPlayer;
 
   @override
   State<GameCategory> createState() => _GameCategoryState();
 }
 
 class _GameCategoryState extends State<GameCategory> {
+  Gamesounds _gamesounds = Gamesounds();
+  @override
+  void initState() {
+    _gamesounds.Stop(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +47,12 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 70,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Mygame1(username: widget.username))),
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          Mygame1(username: widget.username)));
+                  widget.audioPlayer.stop();
+                },
                 child: Container(
                   height: 80,
                   width: 200,
@@ -60,10 +74,13 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Mygame2(
-                          userName: widget.username,
-                        ))),
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Mygame2(
+                            userName: widget.username,
+                          )));
+                  widget.audioPlayer.stop();
+                },
                 child: Container(
                   height: 100,
                   width: 200,
@@ -84,10 +101,13 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Mygame3(
-                          userName: widget.username,
-                        ))),
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Mygame3(
+                            userName: widget.username,
+                          )));
+                  widget.audioPlayer.stop();
+                },
                 child: Container(
                   height: 100,
                   width: 200,
@@ -109,7 +129,10 @@ class _GameCategoryState extends State<GameCategory> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
+                onTap: () {
+                  Navigator.pop(context);
+                  widget.audioPlayer.stop();
+                },
                 child: Container(
                   height: 100,
                   width: 200,

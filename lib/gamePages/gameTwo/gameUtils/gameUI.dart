@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameNotifs.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameOptions1.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gameUtils/gameOptions2.dart';
@@ -28,6 +29,9 @@ class MygameUI2 extends StatefulWidget {
 class _MygameUI2State extends State<MygameUI2> {
   //database
   late Box<scores> scoreBox;
+
+  //bgmusic
+  AudioPlayer bgmusic3 = AudioPlayer();
 
   //WPM
   int initialWPM = 0;
@@ -73,6 +77,7 @@ class _MygameUI2State extends State<MygameUI2> {
     keysZero();
     _gameNotifs2.gameNotifGameDescription(context);
     timerGameNotif2();
+    bgmusic3.play(AssetSource('audios/Bgmusic/Victorous.mp3'));
     scoreBox = Hive.box<scores>('scores');
   }
 
@@ -128,6 +133,7 @@ class _MygameUI2State extends State<MygameUI2> {
           totalScore: Score,
           wordPerMinute: finalWPM));
       print('data Save Successfully');
+      bgmusic3.stop();
       return showOptions(context);
     });
   }
@@ -284,12 +290,16 @@ class _MygameUI2State extends State<MygameUI2> {
     Timerbanner.cancel();
     keysToZero.cancel();
     TimerGameNotif2.cancel();
+    bgmusic3.stop();
   }
 
   //GameSounds
   Gamesounds tapsounds = Gamesounds();
   //gameimgs
   IMGS imgs = IMGS();
+
+  //mute button
+  bool? muteButtonPressed = false;
 
   //keyboardLength
   int keyboardLength = 16;
@@ -322,10 +332,30 @@ class _MygameUI2State extends State<MygameUI2> {
                 SizedBox(
                   width: (screenWidth) * .04,
                 ),
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        muteButtonPressed = !muteButtonPressed!;
+                        muteButtonPressed == true
+                            ? bgmusic3.pause()
+                            : bgmusic3.resume();
+                      });
+                    },
+                    icon: muteButtonPressed == false
+                        ? Icon(
+                            Icons.volume_up_rounded,
+                            size: 30.0,
+                            color: Colors.white70,
+                          )
+                        : Icon(
+                            Icons.volume_mute_rounded,
+                            size: 30.0,
+                            color: Colors.white70,
+                          )),
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 70.0),
+                      padding: EdgeInsets.only(left: 40.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
@@ -521,12 +551,10 @@ class _MygameUI2State extends State<MygameUI2> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                        child: Text(
-                      'Delete',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          color: Colors.green[400]),
+                        child: Icon(
+                      Icons.backspace,
+                      size: 24,
+                      color: Colors.green[400],
                     )),
                   ),
                 ),

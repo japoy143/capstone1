@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameBanner.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameNotifs.dart';
@@ -28,6 +29,9 @@ class MygameUI1 extends StatefulWidget {
 class _MygameUI1State extends State<MygameUI1> {
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
+
+  //Bg music
+  AudioPlayer bgMusic = AudioPlayer();
 
   //database
   late Box<scores> scoreBox;
@@ -70,6 +74,7 @@ class _MygameUI1State extends State<MygameUI1> {
     randId();
     timerWPM();
     timerGameNotif2();
+    bgMusic.play(AssetSource('audios/Bgmusic/Soar.mp3'));
     _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
   }
@@ -110,6 +115,7 @@ class _MygameUI1State extends State<MygameUI1> {
           totalScore: Score,
           wordPerMinute: finalWPM));
       print('data Save Successfully');
+      bgMusic.stop();
       return showOptions(context);
     });
   }
@@ -287,6 +293,7 @@ class _MygameUI1State extends State<MygameUI1> {
     keysToZero.cancel();
     TimerWPM.cancel();
     TimerGameNotif2.cancel();
+    bgMusic.stop();
   }
 
   //GameSounds
@@ -302,6 +309,8 @@ class _MygameUI1State extends State<MygameUI1> {
     keyboardLength = rand.nextInt(12) + 8;
   }
 
+  //mute button
+  bool? muteButtonPressed = false;
   //gameNotifications
   GameNotifs _gameNotifs = GameNotifs();
 
@@ -332,12 +341,32 @@ class _MygameUI1State extends State<MygameUI1> {
                           color: Colors.white70,
                         ))),
                 SizedBox(
-                  width: (screenWidth) * .04,
+                  width: (screenWidth) * .03,
                 ),
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        muteButtonPressed = !muteButtonPressed!;
+                        muteButtonPressed == true
+                            ? bgMusic.pause()
+                            : bgMusic.resume();
+                      });
+                    },
+                    icon: muteButtonPressed == false
+                        ? Icon(
+                            Icons.volume_up_rounded,
+                            size: 30.0,
+                            color: Colors.white70,
+                          )
+                        : Icon(
+                            Icons.volume_mute_rounded,
+                            size: 30.0,
+                            color: Colors.white70,
+                          )),
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 70.0),
+                      padding: EdgeInsets.only(left: 40.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
@@ -534,12 +563,10 @@ class _MygameUI1State extends State<MygameUI1> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                        child: Text(
-                      'Delete',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          color: Colors.green[400]),
+                        child: Icon(
+                      Icons.backspace,
+                      color: Colors.green[400],
+                      size: 24,
                     )),
                   ),
                 ),

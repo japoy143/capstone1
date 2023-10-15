@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameNotifs.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gameUtils/gameOptions1.dart';
@@ -57,6 +59,9 @@ class _MygameUI3State extends State<MygameUI3> {
   List<String> checker = [];
   TextEditingController userInputController = TextEditingController();
 
+  //bgmusic2
+  AudioPlayer bgMusic3 = AudioPlayer();
+
   GameNotifs3 _gameNotifs3 = GameNotifs3();
   CompWords compWords = CompWords();
   @override
@@ -70,6 +75,7 @@ class _MygameUI3State extends State<MygameUI3> {
     timerGameNotif2();
     randId();
     timerWPM();
+    bgMusic3.play(AssetSource('audios/Bgmusic/FastRun.mp3'));
     scoreBox = Hive.box<scores>('scores');
   }
 
@@ -241,6 +247,7 @@ class _MygameUI3State extends State<MygameUI3> {
           totalScore: Score,
           wordPerMinute: finalWPM));
       print('data Save Successfully');
+      bgMusic3.stop();
       return showOptions(context);
     });
   }
@@ -250,6 +257,31 @@ class _MygameUI3State extends State<MygameUI3> {
   void randId() {
     var random = Random();
     randNum = (random.nextDouble() * 10000).toInt() + 1;
+  }
+
+/*
+  //timer for state img
+  late StreamSubscription? timerThiefImgSubscription;
+
+  void timerThiefimgs() {
+    timerThiefImgSubscription =
+        Future.delayed(Duration(seconds: 1, milliseconds: 5))
+            .asStream()
+            .listen((_) {
+      setState(() {
+        thiefImg = true;
+        thiefImg2 = false;
+      });
+    });
+  }
+  */
+  void thiefImgsStates() {
+    Future.delayed(Duration(seconds: 1, milliseconds: 5), () {
+      setState(() {
+        thiefImg = true;
+        thiefImg2 = false;
+      });
+    });
   }
 
 //reshuffle
@@ -264,6 +296,7 @@ class _MygameUI3State extends State<MygameUI3> {
     Timerbanner.cancel();
     TimerWPM.cancel();
     TimerGameNotif2.cancel();
+    bgMusic3.stop();
   }
 
   //length of letter iteration
@@ -275,7 +308,10 @@ class _MygameUI3State extends State<MygameUI3> {
         if (LetterCount > 0) {
           setState(() {
             LetterCount--;
+            thiefImg = false;
+            thiefImg2 = true;
           });
+          thiefImgsStates();
         }
       }
     });
@@ -288,6 +324,13 @@ class _MygameUI3State extends State<MygameUI3> {
       finalWPM = initialWPM;
     });
   }
+
+  // thiefimgs
+  var thiefImg = true;
+  var thiefImg2 = false;
+
+  // mute button
+  bool? muteButtonPressed = false;
 
   //GameSounds
   Gamesounds tapsounds = Gamesounds();
@@ -322,12 +365,32 @@ class _MygameUI3State extends State<MygameUI3> {
                             color: Colors.white70,
                           ))),
                   SizedBox(
-                    width: (screenWidth) * .04,
+                    width: (screenWidth) * .03,
                   ),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          muteButtonPressed = !muteButtonPressed!;
+                          muteButtonPressed == true
+                              ? bgMusic3.pause()
+                              : bgMusic3.resume();
+                        });
+                      },
+                      icon: muteButtonPressed == false
+                          ? Icon(
+                              Icons.volume_up_rounded,
+                              size: 30.0,
+                              color: Colors.white70,
+                            )
+                          : Icon(
+                              Icons.volume_mute_rounded,
+                              size: 30.0,
+                              color: Colors.white70,
+                            )),
                   Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(left: 70.0),
+                        padding: EdgeInsets.only(left: 30.0),
                         child: GestureDetector(
                           onTap: onScore,
                           child: Text(
@@ -421,7 +484,8 @@ class _MygameUI3State extends State<MygameUI3> {
           Center(
             child: Stack(
               children: [
-                imgs.gameImg(true, 'assets/imgs/thief2.png'),
+                imgs.gameImg(thiefImg, 'assets/imgs/thief3.png'),
+                imgs.gameImg(thiefImg2, 'assets/imgs/thief2.png'),
               ],
             ),
           ),
@@ -517,12 +581,10 @@ class _MygameUI3State extends State<MygameUI3> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
-                          child: Text(
-                        'Delete',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.green[400]),
+                          child: Icon(
+                        Icons.backspace,
+                        size: 24,
+                        color: Colors.green[400],
                       )),
                     ),
                   ),
