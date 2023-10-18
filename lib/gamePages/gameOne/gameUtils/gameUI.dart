@@ -10,6 +10,7 @@ import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameScoresTable.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimer.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameTimerUI.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameWordsCollected.dart';
+import 'package:capstoneapp1/gamePages/gameOne/gameUtils/wordHint.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:capstoneapp1/models/scores.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
@@ -76,6 +77,8 @@ class _MygameUI1State extends State<MygameUI1> {
     timerGameNotif2();
     randHintIndex();
     getCompWordIndex();
+    shuffleWordHint();
+
     bgMusic.play(AssetSource('audios/Bgmusic/Soar.mp3'));
     _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
@@ -108,7 +111,7 @@ class _MygameUI1State extends State<MygameUI1> {
   //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 181), () async {
+    Timerbanner = Timer(Duration(seconds: 179), () async {
       await scoreBox.add(scores(
           id: randNum,
           username: widget.username,
@@ -127,6 +130,7 @@ class _MygameUI1State extends State<MygameUI1> {
     keysToZero = Timer(Duration(seconds: 179), () {
       setState(() {
         keyboardLength = 0;
+        shuffledWordHint = '';
       });
     });
   }
@@ -308,7 +312,7 @@ class _MygameUI1State extends State<MygameUI1> {
   late int keyboardLength;
   void keysLength() {
     Random rand = Random();
-    keyboardLength = rand.nextInt(12) + 8;
+    keyboardLength = rand.nextInt(8) + 8;
   }
 
   //game Hint
@@ -316,10 +320,10 @@ class _MygameUI1State extends State<MygameUI1> {
   //randomize id
   void randHintIndex() {
     var random = Random();
-    randHint = (random.nextDouble() * 150).toInt() + 1;
+    randHint = (random.nextInt(80)) + 1;
   }
 
-  String wordHint = '';
+  String wordHint = "";
   bool wordHintPressed = false;
 
   void getCompWordIndex() {
@@ -328,6 +332,26 @@ class _MygameUI1State extends State<MygameUI1> {
         wordHint = compWords.ComputerWordsList.keys.elementAt(i);
       }
     }
+  }
+
+  //shuffle Hint
+  String shuffledWordHint = "";
+
+  void shuffleWordHint() {
+    String str = wordHint;
+    List<String> newListHint = str.split('');
+    newListHint.shuffle();
+    String jointStr = newListHint.join();
+    shuffledWordHint = jointStr;
+  }
+
+  void showHintWord() {
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return wordHints(hintWord: wordHint);
+        });
   }
 
   //mute button
@@ -341,8 +365,8 @@ class _MygameUI1State extends State<MygameUI1> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     String collected = letters.take(keyboardLength).join('');
-
-    List<String> charlist = collected.split('');
+    String newCollected = collected + shuffledWordHint.toUpperCase();
+    List<String> charlist = newCollected.split('');
 
     return Column(
       children: [
@@ -374,12 +398,12 @@ class _MygameUI1State extends State<MygameUI1> {
                       });
                     },
                     icon: muteButtonPressed == false
-                        ? Icon(
+                        ? const Icon(
                             Icons.volume_up_rounded,
                             size: 35.0,
                             color: Colors.white70,
                           )
-                        : Icon(
+                        : const Icon(
                             Icons.volume_mute_rounded,
                             size: 35.0,
                             color: Colors.white70,
@@ -390,8 +414,9 @@ class _MygameUI1State extends State<MygameUI1> {
                           setState(() {
                             wordHintPressed = true;
                           });
+                          showHintWord();
                         },
-                        child: Container(
+                        child: const SizedBox(
                           height: 32,
                           width: 50,
                           child: Image(
@@ -402,7 +427,7 @@ class _MygameUI1State extends State<MygameUI1> {
                           ),
                         ),
                       )
-                    : Container(
+                    : const SizedBox(
                         height: 32,
                         width: 50,
                         child: Image(
@@ -413,7 +438,7 @@ class _MygameUI1State extends State<MygameUI1> {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.only(left: 5.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
@@ -427,7 +452,7 @@ class _MygameUI1State extends State<MygameUI1> {
                       ),
                     ),
                     SizedBox(
-                      width: (screenWidth) * .03,
+                      width: (screenWidth) * .01,
                     ),
                     Row(
                       children: <Widget>[
@@ -624,6 +649,10 @@ class _MygameUI1State extends State<MygameUI1> {
                   onTap: () {
                     setState(() {
                       letters.shuffle();
+                      randHintIndex();
+                      getCompWordIndex();
+                      shuffleWordHint();
+                      wordHintPressed = false;
                       onClear();
                       return keysLength();
                     });
