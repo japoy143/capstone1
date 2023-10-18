@@ -493,8 +493,8 @@ class _MygameUI2State extends State<MygameUI2> {
           child: Padding(
             padding: const EdgeInsets.only(left: 14.5),
             child: SizedBox(
-              height: 230,
-              width: 400,
+              height: screenHeight * .27,
+              width: screenWidth * .95,
               child: Wrap(
                 children: charlist.map((e) {
                   return InkWell(

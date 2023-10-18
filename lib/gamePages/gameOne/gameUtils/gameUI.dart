@@ -74,6 +74,8 @@ class _MygameUI1State extends State<MygameUI1> {
     randId();
     timerWPM();
     timerGameNotif2();
+    randHintIndex();
+    getCompWordIndex();
     bgMusic.play(AssetSource('audios/Bgmusic/Soar.mp3'));
     _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
@@ -309,6 +311,25 @@ class _MygameUI1State extends State<MygameUI1> {
     keyboardLength = rand.nextInt(12) + 8;
   }
 
+  //game Hint
+  int randHint = 0;
+  //randomize id
+  void randHintIndex() {
+    var random = Random();
+    randHint = (random.nextDouble() * 150).toInt() + 1;
+  }
+
+  String wordHint = '';
+  bool wordHintPressed = false;
+
+  void getCompWordIndex() {
+    for (int i = 0; i <= compWords.ComputerWordsList.keys.length; i++) {
+      if (i == randHint) {
+        wordHint = compWords.ComputerWordsList.keys.elementAt(i);
+      }
+    }
+  }
+
   //mute button
   bool? muteButtonPressed = false;
   //gameNotifications
@@ -326,11 +347,11 @@ class _MygameUI1State extends State<MygameUI1> {
     return Column(
       children: [
         Padding(
-            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+            padding: const EdgeInsets.only(left: 3.0, right: 5.0),
             child: Row(
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(left: 5.0),
+                    padding: const EdgeInsets.only(left: 2.0),
                     child: IconButton(
                         onPressed: () {
                           return showOptions(context);
@@ -341,7 +362,7 @@ class _MygameUI1State extends State<MygameUI1> {
                           color: Colors.white70,
                         ))),
                 SizedBox(
-                  width: (screenWidth) * .03,
+                  width: (screenWidth) * .01,
                 ),
                 IconButton(
                     onPressed: () {
@@ -355,18 +376,44 @@ class _MygameUI1State extends State<MygameUI1> {
                     icon: muteButtonPressed == false
                         ? Icon(
                             Icons.volume_up_rounded,
-                            size: 30.0,
+                            size: 35.0,
                             color: Colors.white70,
                           )
                         : Icon(
                             Icons.volume_mute_rounded,
-                            size: 30.0,
+                            size: 35.0,
                             color: Colors.white70,
                           )),
+                wordHintPressed == false
+                    ? GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            wordHintPressed = true;
+                          });
+                        },
+                        child: Container(
+                          height: 32,
+                          width: 50,
+                          child: Image(
+                            image: AssetImage(
+                              'assets/icons/lightbulb.png',
+                            ),
+                            color: Colors.white70,
+                          ),
+                        ),
+                      )
+                    : Container(
+                        height: 32,
+                        width: 50,
+                        child: Image(
+                          image: AssetImage('assets/icons/lightbulbused.png'),
+                          color: Colors.white70,
+                        ),
+                      ),
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 40.0),
+                      padding: EdgeInsets.only(left: 10.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
