@@ -20,8 +20,9 @@ import 'gameAssets.dart';
 import 'gameBanner.dart';
 
 class MygameUI3 extends StatefulWidget {
-  MygameUI3({required this.userName});
+  MygameUI3({required this.userName, required this.audioPlayer});
   late String userName;
+  late AudioPlayer audioPlayer;
   @override
   _MygameUI3State createState() => _MygameUI3State();
 }
@@ -153,12 +154,12 @@ class _MygameUI3State extends State<MygameUI3> {
           if (createdWord.length >= 6) {
             setState(() {
               Score += 10;
-              compScore += 10;
+              genScore += 10;
             });
           } else {
             setState(() {
               Score += 5;
-              compScore += 5;
+              genScore += 5;
             });
           }
           initialWPM += 1;
@@ -209,10 +210,16 @@ class _MygameUI3State extends State<MygameUI3> {
         builder: (context) {
           if (wordCount > 10) {
             return GameOptions3(
-                WordCount: wordCount, username: widget.userName);
+              WordCount: wordCount,
+              username: widget.userName,
+              audioPlayer: widget.audioPlayer,
+            );
           } else {
             return GameOptionsTry3(
-                WordCount: wordCount, username: widget.userName);
+              WordCount: wordCount,
+              username: widget.userName,
+              audioPlayer: widget.audioPlayer,
+            );
           }
         });
   }
@@ -297,6 +304,7 @@ class _MygameUI3State extends State<MygameUI3> {
     TimerWPM.cancel();
     TimerGameNotif2.cancel();
     bgMusic3.stop();
+    widget.audioPlayer.resume();
   }
 
   //length of letter iteration
@@ -350,20 +358,18 @@ class _MygameUI3State extends State<MygameUI3> {
       child: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+              padding: const EdgeInsets.only(bottom: 5.0, left: 10.0),
               child: Row(
                 children: [
-                  Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: IconButton(
-                          onPressed: () {
-                            return showOptions(context);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            size: 30.0,
-                            color: Colors.white70,
-                          ))),
+                  IconButton(
+                      onPressed: () {
+                        return showOptions(context);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 30.0,
+                        color: Colors.white70,
+                      )),
                   SizedBox(
                     width: (screenWidth) * .03,
                   ),
@@ -390,7 +396,7 @@ class _MygameUI3State extends State<MygameUI3> {
                   Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(left: 30.0),
+                        padding: EdgeInsets.only(left: 20.0),
                         child: GestureDetector(
                           onTap: onScore,
                           child: Text(
@@ -404,7 +410,7 @@ class _MygameUI3State extends State<MygameUI3> {
                         ),
                       ),
                       SizedBox(
-                        width: (screenWidth) * .03,
+                        width: (screenWidth) * .02,
                       ),
                       Row(
                         children: <Widget>[

@@ -21,7 +21,8 @@ import 'gameBanner.dart';
 
 class MygameUI2 extends StatefulWidget {
   late String userName;
-  MygameUI2({required this.userName});
+  late AudioPlayer audioPlayer;
+  MygameUI2({required this.userName, required this.audioPlayer});
   @override
   _MygameUI2State createState() => _MygameUI2State();
 }
@@ -145,10 +146,16 @@ class _MygameUI2State extends State<MygameUI2> {
         builder: (context) {
           if (wordCount > 10) {
             return GameOptions2(
-                WordCount: wordCount, username: widget.userName);
+              WordCount: wordCount,
+              username: widget.userName,
+              audioPlayer: widget.audioPlayer,
+            );
           } else {
             return GameOptionsTry2(
-                WordCount: wordCount, username: widget.userName);
+              WordCount: wordCount,
+              username: widget.userName,
+              audioPlayer: widget.audioPlayer,
+            );
           }
         });
   }
@@ -230,12 +237,12 @@ class _MygameUI2State extends State<MygameUI2> {
           if (createdWord.length >= 6) {
             setState(() {
               Score += 10;
-              compScore += 10;
+              genScore += 10;
             });
           } else {
             setState(() {
               Score += 5;
-              compScore += 5;
+              genScore += 5;
             });
           }
           initialWPM += 1;
@@ -291,6 +298,7 @@ class _MygameUI2State extends State<MygameUI2> {
     keysToZero.cancel();
     TimerGameNotif2.cancel();
     bgmusic3.stop();
+    widget.audioPlayer.resume();
   }
 
   //GameSounds
@@ -315,22 +323,20 @@ class _MygameUI2State extends State<MygameUI2> {
     return Column(
       children: [
         Padding(
-            padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+            padding: const EdgeInsets.only(top: 10, left: 10.0),
             child: Row(
               children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 5.0),
-                    child: IconButton(
-                        onPressed: () {
-                          return showOptions(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          size: 30.0,
-                          color: Colors.white70,
-                        ))),
+                IconButton(
+                    onPressed: () {
+                      return showOptions(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      size: 30.0,
+                      color: Colors.white70,
+                    )),
                 SizedBox(
-                  width: (screenWidth) * .04,
+                  width: (screenWidth) * .01,
                 ),
                 IconButton(
                     onPressed: () {
@@ -355,7 +361,7 @@ class _MygameUI2State extends State<MygameUI2> {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 40.0),
+                      padding: EdgeInsets.only(left: 20.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
@@ -369,7 +375,7 @@ class _MygameUI2State extends State<MygameUI2> {
                       ),
                     ),
                     SizedBox(
-                      width: (screenWidth) * .03,
+                      width: (screenWidth) * .01,
                     ),
                     Row(
                       children: <Widget>[
@@ -491,7 +497,7 @@ class _MygameUI2State extends State<MygameUI2> {
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 14.5),
+            padding: const EdgeInsets.only(left: 40.5),
             child: SizedBox(
               height: screenHeight * .27,
               width: screenWidth * .95,
@@ -504,7 +510,7 @@ class _MygameUI2State extends State<MygameUI2> {
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: 10, bottom: 10, top: 10, right: 20),
+                          left: 5, bottom: 5, top: 5, right: 15),
                       child: Container(
                         height: 50,
                         width: 65,

@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
@@ -5,10 +6,15 @@ import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
 class GameOptions3 extends StatefulWidget {
-  GameOptions3({Key? key, required this.WordCount, required this.username})
+  GameOptions3(
+      {Key? key,
+      required this.WordCount,
+      required this.username,
+      required this.audioPlayer})
       : super(key: key);
   late int WordCount;
   late String username;
+  late AudioPlayer audioPlayer;
 
   @override
   State<GameOptions3> createState() => _GameOptions1State();
@@ -45,8 +51,10 @@ class _GameOptions1State extends State<GameOptions3> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            Mygame3(userName: widget.username)),
+                        builder: (BuildContext context) => Mygame3(
+                              userName: widget.username,
+                              audioPlayer: widget.audioPlayer,
+                            )),
                   );
                 },
                 child: Container(

@@ -22,7 +22,9 @@ import 'gameAssets.dart';
 
 class MygameUI1 extends StatefulWidget {
   late String username;
-  MygameUI1({required this.username});
+  late AudioPlayer audioPlayer;
+  MygameUI1({required this.username, required this.audioPlayer});
+
   @override
   _MygameUI1State createState() => _MygameUI1State();
 }
@@ -144,11 +146,13 @@ class _MygameUI1State extends State<MygameUI1> {
             return GameOptions1(
               WordCount: wordCount,
               username: widget.username,
+              audioPlayer: widget.audioPlayer,
             );
           } else {
             return GameOptionsTry1(
               WordCount: wordCount,
               username: widget.username,
+              audioPlayer: widget.audioPlayer,
             );
           }
         });
@@ -230,12 +234,12 @@ class _MygameUI1State extends State<MygameUI1> {
           if (createdWord.length >= 6) {
             setState(() {
               Score += 10;
-              compScore += 10;
+              genScore += 10;
             });
           } else {
             setState(() {
               Score += 5;
-              compScore += 5;
+              genScore += 5;
             });
           }
           initialWPM += 1;
@@ -300,6 +304,7 @@ class _MygameUI1State extends State<MygameUI1> {
     TimerWPM.cancel();
     TimerGameNotif2.cancel();
     bgMusic.stop();
+    widget.audioPlayer.resume();
   }
 
   //GameSounds
@@ -371,144 +376,141 @@ class _MygameUI1State extends State<MygameUI1> {
     return Column(
       children: [
         Padding(
-            padding: const EdgeInsets.only(left: 3.0, right: 5.0),
-            child: Row(
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 2.0),
-                    child: IconButton(
-                        onPressed: () {
-                          return showOptions(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          size: 30.0,
+          padding: const EdgeInsets.all(3.0),
+          child: Row(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.only(left: 2.0),
+                  child: IconButton(
+                      onPressed: () {
+                        return showOptions(context);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 30.0,
+                        color: Colors.white70,
+                      ))),
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      muteButtonPressed = !muteButtonPressed!;
+                      muteButtonPressed == true
+                          ? bgMusic.pause()
+                          : bgMusic.resume();
+                    });
+                  },
+                  icon: muteButtonPressed == false
+                      ? const Icon(
+                          Icons.volume_up_rounded,
+                          size: 35.0,
                           color: Colors.white70,
-                        ))),
-                SizedBox(
-                  width: (screenWidth) * .01,
-                ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        muteButtonPressed = !muteButtonPressed!;
-                        muteButtonPressed == true
-                            ? bgMusic.pause()
-                            : bgMusic.resume();
-                      });
-                    },
-                    icon: muteButtonPressed == false
-                        ? const Icon(
-                            Icons.volume_up_rounded,
-                            size: 35.0,
-                            color: Colors.white70,
-                          )
-                        : const Icon(
-                            Icons.volume_mute_rounded,
-                            size: 35.0,
-                            color: Colors.white70,
-                          )),
-                wordHintPressed == false
-                    ? GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            wordHintPressed = true;
-                          });
-                          showHintWord();
-                        },
-                        child: const SizedBox(
-                          height: 32,
-                          width: 50,
-                          child: Image(
-                            image: AssetImage(
-                              'assets/icons/lightbulb.png',
-                            ),
-                            color: Colors.white70,
-                          ),
-                        ),
-                      )
-                    : const SizedBox(
+                        )
+                      : const Icon(
+                          Icons.volume_mute_rounded,
+                          size: 35.0,
+                          color: Colors.white70,
+                        )),
+              wordHintPressed == false
+                  ? GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          wordHintPressed = true;
+                        });
+                        showHintWord();
+                      },
+                      child: const SizedBox(
                         height: 32,
                         width: 50,
                         child: Image(
-                          image: AssetImage('assets/icons/lightbulbused.png'),
+                          image: AssetImage(
+                            'assets/icons/lightbulb.png',
+                          ),
                           color: Colors.white70,
                         ),
                       ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.0),
-                      child: GestureDetector(
-                        onTap: onScore,
-                        child: Text(
-                          'Score: ${Score}',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            color: Colors.white70,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: (screenWidth) * .01,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        IconButton(
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return WordCollected(
-                                    Allwords: checker,
-                                  );
-                                });
-                          },
-                          icon: Icon(Icons.library_add_check),
-                          iconSize: 30,
-                          color: Colors.white70,
-                        ),
-                        Container(
-                          height: (screenHeight) * .04,
-                          width: (screenWidth) * .22,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border:
-                                Border.all(color: Colors.white70, width: 2.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.av_timer_sharp,
-                                  color: Colors.white70,
-                                ),
-                                SizedBox(
-                                  width: (screenWidth) * .01,
-                                ),
-                                Obx(
-                                  () => Text(
-                                    _timerform1.time.value,
-                                    style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white70),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
                     )
-                  ],
-                ),
-              ],
-            )),
+                  : const SizedBox(
+                      height: 32,
+                      width: 50,
+                      child: Image(
+                        image: AssetImage('assets/icons/lightbulbused.png'),
+                        color: Colors.white70,
+                      ),
+                    ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 5.0),
+                    child: GestureDetector(
+                      onTap: onScore,
+                      child: Text(
+                        'Score: ${Score}',
+                        style: TextStyle(
+                          fontSize: 22.0,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: (screenWidth) * .01,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return WordCollected(
+                                  Allwords: checker,
+                                );
+                              });
+                        },
+                        icon: Icon(Icons.library_add_check),
+                        iconSize: 30,
+                        color: Colors.white70,
+                      ),
+                      Container(
+                        height: (screenHeight) * .04,
+                        width: (screenWidth) * .20,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white70, width: 2.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.av_timer_sharp,
+                                color: Colors.white70,
+                              ),
+                              SizedBox(
+                                width: (screenWidth) * .01,
+                              ),
+                              Obx(
+                                () => Text(
+                                  _timerform1.time.value,
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white70),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
         SizedBox(
           height: (screenHeight) * .02,
         ),

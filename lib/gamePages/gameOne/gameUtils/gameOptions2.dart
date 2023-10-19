@@ -1,12 +1,18 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
 class GameOptionsTry1 extends StatefulWidget {
-  GameOptionsTry1({Key? key, required this.WordCount, required this.username})
+  GameOptionsTry1(
+      {Key? key,
+      required this.WordCount,
+      required this.username,
+      required this.audioPlayer})
       : super(key: key);
   late int WordCount;
   late String username;
+  late AudioPlayer audioPlayer;
 
   @override
   State<GameOptionsTry1> createState() => _GameOptionsTry1State();
@@ -45,6 +51,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry1> {
                     MaterialPageRoute(
                         builder: (BuildContext context) => Mygame1(
                               username: widget.username,
+                              audioPlayer: widget.audioPlayer,
                             )),
                   );
                 },
