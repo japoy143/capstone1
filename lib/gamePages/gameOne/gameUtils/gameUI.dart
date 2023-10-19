@@ -431,7 +431,7 @@ class _MygameUI1State extends State<MygameUI1> {
                     )
                   : const SizedBox(
                       height: 32,
-                      width: 50,
+                      width: 40,
                       child: Image(
                         image: AssetImage('assets/icons/lightbulbused.png'),
                         color: Colors.white70,
@@ -439,17 +439,14 @@ class _MygameUI1State extends State<MygameUI1> {
                     ),
               Row(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0),
-                    child: GestureDetector(
-                      onTap: onScore,
-                      child: Text(
-                        'Score: ${Score}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  GestureDetector(
+                    onTap: onScore,
+                    child: Text(
+                      'Score: ${Score}',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

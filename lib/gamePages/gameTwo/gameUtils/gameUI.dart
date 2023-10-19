@@ -361,7 +361,7 @@ class _MygameUI2State extends State<MygameUI2> {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 20.0),
+                      padding: EdgeInsets.only(left: 33.0),
                       child: GestureDetector(
                         onTap: onScore,
                         child: Text(
@@ -393,7 +393,7 @@ class _MygameUI2State extends State<MygameUI2> {
                         ),
                         Container(
                           height: (screenHeight) * .04,
-                          width: (screenWidth) * .22,
+                          width: (screenWidth) * .20,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             border:
