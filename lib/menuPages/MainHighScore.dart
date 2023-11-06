@@ -14,8 +14,6 @@ class MainHighScores extends StatefulWidget {
 class _MainHighScoresState extends State<MainHighScores> {
   List pages = [
     TotalhighScore(),
-    ComphighScore(),
-    GenhighScore(),
     WPMhighScore(),
   ];
   int index = 0;
@@ -39,10 +37,6 @@ class _MainHighScoresState extends State<MainHighScores> {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.leaderboard), label: 'Total High Score'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.leaderboard), label: 'CompWords High Score'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.leaderboard), label: 'GenWords High Score'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.leaderboard), label: 'WPM High Score'),
           ]),

@@ -45,12 +45,12 @@ class _WPMhighScoreState extends State<WPMhighScore> {
             final sorted = sortedScores[index] as scores;
 
             return Padding(
-              padding: const EdgeInsets.all(3),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white70,
+                    color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(10)),
-                height: (screenHeight - screenStatusBar) * .30,
+                height: (screenHeight - screenStatusBar) * .32,
                 width: screenWidth * .70,
                 child: Column(
                   children: <Widget>[
@@ -61,22 +61,25 @@ class _WPMhighScoreState extends State<WPMhighScore> {
                         });
                         Vibration.vibrate();
                       },
-                      child: Container(
-                        height: 40,
-                        width: 220,
-                        decoration: BoxDecoration(
-                          color: Colors.green[400],
-                          borderRadius: BorderRadius.circular(8.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 40,
+                          width: 220,
+                          decoration: BoxDecoration(
+                            color: Colors.green[400],
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Center(
+                              child: Text(
+                            sorted.username,
+                            style: TextStyle(
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white70,
+                                letterSpacing: 2.0),
+                          )),
                         ),
-                        child: Center(
-                            child: Text(
-                          sorted.username,
-                          style: TextStyle(
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white70,
-                              letterSpacing: 2.0),
-                        )),
                       ),
                     ),
                     SizedBox(

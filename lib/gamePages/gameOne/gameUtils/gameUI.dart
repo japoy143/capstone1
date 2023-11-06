@@ -113,15 +113,34 @@ class _MygameUI1State extends State<MygameUI1> {
   //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 179), () async {
-      await scoreBox.add(scores(
-          id: randNum,
-          username: widget.username,
-          compScore: compScore,
-          genScore: genScore,
-          totalScore: Score,
-          wordPerMinute: finalWPM));
-      print('data Save Successfully');
+    Timerbanner = Timer(Duration(seconds: 181), () async {
+      if (scoreBox.containsKey(widget.username)) {
+        final user = await scoreBox.get(widget.username);
+        if (Score > user!.totalScore) {
+          await scoreBox.put(
+              widget.username,
+              scores(
+                  id: randNum,
+                  username: widget.username,
+                  compScore: compScore,
+                  genScore: genScore,
+                  totalScore: Score,
+                  wordPerMinute: finalWPM));
+        }
+      }
+      if (!scoreBox.containsKey(widget.username)) {
+        await scoreBox.put(
+            widget.username,
+            scores(
+                id: randNum,
+                username: widget.username,
+                compScore: compScore,
+                genScore: genScore,
+                totalScore: Score,
+                wordPerMinute: finalWPM));
+        print('Data saved successfully');
+      }
+
       bgMusic.stop();
       return showOptions(context);
     });
@@ -129,7 +148,7 @@ class _MygameUI1State extends State<MygameUI1> {
 
   late Timer keysToZero;
   void keysZero() {
-    keysToZero = Timer(Duration(seconds: 179), () {
+    keysToZero = Timer(Duration(seconds: 181), () {
       setState(() {
         keyboardLength = 0;
         shuffledWordHint = '';
@@ -325,7 +344,7 @@ class _MygameUI1State extends State<MygameUI1> {
   //randomize id
   void randHintIndex() {
     var random = Random();
-    randHint = (random.nextInt(80)) + 1;
+    randHint = (random.nextInt(50)) + 1;
   }
 
   String wordHint = "";
