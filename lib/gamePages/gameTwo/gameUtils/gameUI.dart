@@ -107,7 +107,7 @@ class _MygameUI2State extends State<MygameUI2> {
   //keyboardLength to zero
   late Timer keysToZero;
   void keysZero() {
-    keysToZero = Timer(Duration(seconds: 120), () {
+    keysToZero = Timer(Duration(seconds: 121), () {
       setState(() {
         keyboardLength = 0;
       });
@@ -126,14 +126,33 @@ class _MygameUI2State extends State<MygameUI2> {
   late Timer Timerbanner;
   void timerBanner() {
     Timerbanner = Timer(Duration(seconds: 121), () async {
-      await scoreBox.add(scores(
-          id: randNum,
-          username: widget.userName,
-          compScore: compScore,
-          genScore: genScore,
-          totalScore: Score,
-          wordPerMinute: finalWPM));
-      print('data Save Successfully');
+      if (scoreBox.containsKey(widget.userName)) {
+        final user = await scoreBox.get(widget.userName);
+        if (Score > user!.totalScore) {
+          await scoreBox.put(
+              widget.userName,
+              scores(
+                  id: randNum,
+                  username: widget.userName,
+                  compScore: compScore,
+                  genScore: genScore,
+                  totalScore: Score,
+                  wordPerMinute: finalWPM));
+        }
+      }
+      if (!scoreBox.containsKey(widget.userName)) {
+        await scoreBox.put(
+            widget.userName,
+            scores(
+                id: randNum,
+                username: widget.userName,
+                compScore: compScore,
+                genScore: genScore,
+                totalScore: Score,
+                wordPerMinute: finalWPM));
+        print('Data saved successfully');
+      }
+
       bgmusic3.stop();
       return showOptions(context);
     });

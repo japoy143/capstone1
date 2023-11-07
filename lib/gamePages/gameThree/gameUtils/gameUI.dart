@@ -242,18 +242,36 @@ class _MygameUI3State extends State<MygameUI3> {
     });
   }
 
-  //Timer banner off
   late Timer Timerbanner;
   void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 120), () async {
-      await scoreBox.add(scores(
-          id: randNum,
-          username: widget.userName,
-          compScore: compScore,
-          genScore: genScore,
-          totalScore: Score,
-          wordPerMinute: finalWPM));
-      print('data Save Successfully');
+    Timerbanner = Timer(Duration(seconds: 121), () async {
+      if (scoreBox.containsKey(widget.userName)) {
+        final user = await scoreBox.get(widget.userName);
+        if (Score > user!.totalScore) {
+          await scoreBox.put(
+              widget.userName,
+              scores(
+                  id: randNum,
+                  username: widget.userName,
+                  compScore: compScore,
+                  genScore: genScore,
+                  totalScore: Score,
+                  wordPerMinute: finalWPM));
+        }
+      }
+      if (!scoreBox.containsKey(widget.userName)) {
+        await scoreBox.put(
+            widget.userName,
+            scores(
+                id: randNum,
+                username: widget.userName,
+                compScore: compScore,
+                genScore: genScore,
+                totalScore: Score,
+                wordPerMinute: finalWPM));
+        print('Data saved successfully');
+      }
+
       bgMusic3.stop();
       return showOptions(context);
     });

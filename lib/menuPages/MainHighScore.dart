@@ -2,6 +2,7 @@ import 'package:capstoneapp1/menuPages/Highscores/CompHighScore.dart';
 import 'package:capstoneapp1/menuPages/Highscores/GenHighScore.dart';
 import 'package:capstoneapp1/menuPages/Highscores/TotalhighScore.dart';
 import 'package:capstoneapp1/menuPages/Highscores/WPMHighScore.dart';
+import 'package:capstoneapp1/menuPages/newHighScore/tableScores.dart';
 import 'package:flutter/material.dart';
 
 class MainHighScores extends StatefulWidget {
@@ -12,10 +13,7 @@ class MainHighScores extends StatefulWidget {
 }
 
 class _MainHighScoresState extends State<MainHighScores> {
-  List pages = [
-    TotalhighScore(),
-    WPMhighScore(),
-  ];
+  List pages = [TotalhighScore(), TableScore()];
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,8 @@ class _MainHighScoresState extends State<MainHighScores> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.leaderboard), label: 'Total High Score'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.leaderboard), label: 'WPM High Score'),
+                icon: Icon(Icons.table_chart_outlined),
+                label: 'Score History Table'),
           ]),
     );
   }
