@@ -5,22 +5,46 @@ class GameNotifs {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Container(
-            padding: EdgeInsets.all(16),
-            height: MediaQuery.of(context as BuildContext).size.height * .08,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(12.0),
+          content: GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Container(
+                height: MediaQuery.of(context as BuildContext).size.width * 2,
+                width: MediaQuery.of(context as BuildContext).size.width * .98,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        height:
+                            MediaQuery.of(context as BuildContext).size.height *
+                                .08,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Center(child: Text('Create Another Word')),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            child: Center(child: Text('Create Another Word')),
           ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context as BuildContext).size.height - 140,
+          duration: Duration(
+            seconds: 5,
           ),
-          duration: Duration(seconds: 1, milliseconds: 5),
         ),
       );
     });
@@ -30,35 +54,59 @@ class GameNotifs {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Container(
-            padding: EdgeInsets.all(16),
-            height: MediaQuery.of(context as BuildContext).size.height * .08,
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Image.asset('assets/imgs/con1.png')),
-                Text('Congratulations Correct Word'),
-                SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Image.asset('assets/imgs/con1.png')),
-              ],
+          content: GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Container(
+                height: MediaQuery.of(context as BuildContext).size.width * 2,
+                width: MediaQuery.of(context as BuildContext).size.width * .98,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        height:
+                            MediaQuery.of(context as BuildContext).size.height *
+                                .08,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Image.asset('assets/imgs/con1.png')),
+                            Text('Congratulations Correct Word'),
+                            SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Image.asset('assets/imgs/con1.png')),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context as BuildContext).size.height - 140,
+          duration: Duration(
+            seconds: 5,
           ),
-          duration: Duration(seconds: 1, milliseconds: 5),
         ),
       );
     });
@@ -68,21 +116,45 @@ class GameNotifs {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Container(
-            height: MediaQuery.of(context as BuildContext).size.height * .12,
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: const Center(
-              child: Padding(
-                padding: EdgeInsets.all(2.0),
-                child: Text(
-                  'Create a Word That is Computer related word  Other words is accepted considered as Bonus words ',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 15.0,
+          content: GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Container(
+                height: MediaQuery.of(context as BuildContext).size.width * 2,
+                width: MediaQuery.of(context as BuildContext).size.width * .98,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height:
+                            MediaQuery.of(context as BuildContext).size.height *
+                                .12,
+                        width:
+                            MediaQuery.of(context as BuildContext).size.width *
+                                .98,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: Center(
+                          child: Text(
+                            'Create a Word That is Computer related word  Other words is accepted considered as Bonus words ',
+                            style: TextStyle(
+                              fontFamily: 'Rubik',
+                              fontSize: 15.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -91,10 +163,9 @@ class GameNotifs {
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context as BuildContext).size.height - 200,
+          duration: Duration(
+            seconds: 5,
           ),
-          duration: Duration(seconds: 2, milliseconds: 5),
         ),
       );
     });
@@ -104,21 +175,45 @@ class GameNotifs {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Container(
-            height: MediaQuery.of(context as BuildContext).size.height * .12,
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: const Center(
-              child: Padding(
-                padding: EdgeInsets.all(2.0),
-                child: Text(
-                  'Computer Words has a higher equivalent points and points also varies on its word length',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 15.0,
+          content: GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Container(
+                height: MediaQuery.of(context as BuildContext).size.width * 2,
+                width: MediaQuery.of(context as BuildContext).size.width * .98,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height:
+                            MediaQuery.of(context as BuildContext).size.height *
+                                .12,
+                        width:
+                            MediaQuery.of(context as BuildContext).size.width *
+                                .98,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: Center(
+                          child: Text(
+                            'Computer Words has a higher equivalent points and points also varies on its word length',
+                            style: TextStyle(
+                              fontFamily: 'Rubik',
+                              fontSize: 15.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -127,10 +222,9 @@ class GameNotifs {
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context as BuildContext).size.height - 200,
+          duration: Duration(
+            seconds: 5,
           ),
-          duration: Duration(seconds: 2, milliseconds: 5),
         ),
       );
     });

@@ -98,9 +98,9 @@ class CompWords {
     "LAN": "Network that is confined to a relatively small area.",
     "CPU":
         "Central processing unit; the brain of the computer; controls the other elements of the computer",
-    "Disk Drive":
+    "DiskDrive":
         "A peripheral device that reads and/or writes information on a disk",
-    "Hard Drive":
+    "HardDrive":
         "A device (usually within the computer case) that reads and writes information, including the operating system, program files, and data files",
     "Monitor": "A device used to display information visually",
     "Mouse": "A peripheral device used to point to items on a monitor",
