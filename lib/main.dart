@@ -1,4 +1,5 @@
 import 'package:capstoneapp1/models/scores.dart';
+import 'package:capstoneapp1/models/wordcollection.dart';
 import 'package:capstoneapp1/pages/loadingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -13,9 +14,13 @@ void main() async {
 
   await Hive.openBox('newUsers');
 
+  //score adapter
   Hive.registerAdapter<scores>(scoresAdapter());
+  //wordcollection
+  Hive.registerAdapter<WordCollection>(WordCollectionAdapter());
 
   await Hive.openBox<scores>('scores');
+  await Hive.openBox<WordCollection>('wordcollection');
 
   runApp(const MyApp());
 }

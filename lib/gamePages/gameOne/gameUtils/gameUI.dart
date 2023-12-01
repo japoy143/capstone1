@@ -13,12 +13,14 @@ import 'package:capstoneapp1/gamePages/gameOne/gameUtils/gameWordsCollected.dart
 import 'package:capstoneapp1/gamePages/gameOne/gameUtils/wordHint.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:capstoneapp1/models/scores.dart';
+import 'package:capstoneapp1/models/wordcollection.dart';
 import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:hive/hive.dart';
 import 'package:vibration/vibration.dart';
 import 'gameAssets.dart';
+import 'package:intl/intl.dart';
 
 class MygameUI1 extends StatefulWidget {
   late String username;
@@ -38,10 +40,14 @@ class _MygameUI1State extends State<MygameUI1> {
 
   //database
   late Box<scores> scoreBox;
+  late Box<WordCollection> wordcollectionBox;
 
   //wordPerminute
   int initialWPM = 0;
   int finalWPM = 0;
+
+  //Date now
+  DateTime date = DateTime.now();
 
   //Scores
   int Score = 0;
@@ -84,6 +90,7 @@ class _MygameUI1State extends State<MygameUI1> {
     bgMusic.play(AssetSource('audios/Bgmusic/Soar.mp3'));
     _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
+    wordcollectionBox = Hive.box<WordCollection>('wordcollection');
   }
 
   int randNum = 0;
@@ -140,7 +147,8 @@ class _MygameUI1State extends State<MygameUI1> {
                 wordPerMinute: finalWPM));
         print('Data saved successfully');
       }
-
+      await wordcollectionBox.add(WordCollection(
+          username: widget.username, wordcollected: checker, date: date));
       bgMusic.stop();
       return showOptions(context);
     });

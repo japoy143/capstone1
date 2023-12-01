@@ -59,7 +59,7 @@ class CompWords {
         "Software provided at a minimal cost to users who are on their honor to send in payment to the programmer",
     "Spreadsheet":
         "A program arranged in rows and columns that manipulates numbers",
-    "Tool Bar":
+    "ToolBar":
         "A graphical representation of program activities; a row of icons used to perform tasks in a program",
     "URL":
         "Uniform resource locator; the address of a site on the World Wide Web; a standard way of locating objects on the Internet",
@@ -89,7 +89,7 @@ class CompWords {
     "Client":
         "Device or software application that requests services from a server.",
     "Code": "Set of instructions that a computer can understand.",
-    "Data Mining": "Process of extracting patterns from large data sets.",
+    "DataMining": "Process of extracting patterns from large data sets.",
     "Database": "Collection of data that can be accessed by computers.",
     "Firewall":
         "Device or software application that filters traffic between two networks or between a device and a network",
@@ -119,7 +119,7 @@ class CompWords {
     "Click":
         "Occurs when a user presses a button on a mouse which in turn, generates a command to the computer",
     "Diskette": "A small flexible disk used for storing computer data",
-    "Double Click":
+    "DoubleClick":
         "Occurs when a user presses a button on the mouse twice in quick succession; this generates a command to the computer",
     "Download": "Transferring data from another computer to your computer",
     "Drag":
