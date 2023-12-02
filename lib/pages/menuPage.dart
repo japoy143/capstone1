@@ -94,61 +94,13 @@ class _MenuPageState extends State<MenuPage> {
                 height: (screenHeight - statusBarHeight) * .02,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.only(left: 20, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
                       height: (screenHeight - statusBarHeight) * .35,
-                      width: (screenWidht) * .45,
-                      decoration: BoxDecoration(
-                        color: Colors.green[400],
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Column(children: <Widget>[
-                        const SizedBox(
-                          height: 7.0,
-                        ),
-                        const Text(
-                          'General Words',
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          height: (screenHeight - statusBarHeight) * .24,
-                          width: (screenWidht) * .40,
-                          decoration: BoxDecoration(
-                              color: Colors.white24,
-                              borderRadius: BorderRadius.circular(12.0)),
-                          child: GeneralDict(),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => AllGeneralWords()));
-                          },
-                          child: const Text(
-                            'More',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Rubik',
-                              color: Colors.white70,
-                            ),
-                          ),
-                        ),
-                      ]),
-                    ),
-                    Container(
-                      height: (screenHeight - statusBarHeight) * .35,
-                      width: (screenWidht) * .45,
+                      width: (screenWidht) * .90,
                       decoration: BoxDecoration(
                         color: Colors.green[400],
                         borderRadius: BorderRadius.circular(20.0),
@@ -160,16 +112,17 @@ class _MenuPageState extends State<MenuPage> {
                         const Text(
                           'Computer Words',
                           style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 22.0,
                               fontFamily: 'Rubik',
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Container(
                           height: (screenHeight - statusBarHeight) * .24,
-                          width: (screenWidht) * .40,
+                          width: (screenWidht) * .80,
                           decoration: BoxDecoration(
                               color: Colors.white24,
                               borderRadius: BorderRadius.circular(12.0)),
@@ -186,10 +139,11 @@ class _MenuPageState extends State<MenuPage> {
                           child: const Text(
                             'More',
                             style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Rubik',
-                              color: Colors.white70,
-                            ),
+                                fontSize: 20.0,
+                                fontFamily: 'Rubik',
+                                color: Colors.white70,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0),
                           ),
                         ),
                       ]),
