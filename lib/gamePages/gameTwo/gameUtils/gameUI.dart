@@ -244,39 +244,13 @@ class _MygameUI2State extends State<MygameUI2> {
           checker.add(createdWord);
           return; // Exit the function if the word exists
         }
-
-        if (await dMSAJson.hasEntry(createdWord.toLowerCase())) {
-          tapsounds.Correct();
-          _gameNotifs2.gameNotifRight(context);
-          checker.add(createdWord);
-          wordCount += 1;
-          Future.delayed(Duration(seconds: 1), () {
-            return onClear();
-          });
-          if (createdWord.length >= 6) {
-            setState(() {
-              Score += 10;
-              genScore += 10;
-            });
-          } else {
-            setState(() {
-              Score += 5;
-              genScore += 5;
-            });
-          }
-          initialWPM += 1;
-          return; // Exit the function
-        } else {
-          _gameNotifs2.gameNotifWrong(context);
-          tapsounds.Wrong();
-          Vibration.vibrate();
-          Future.delayed(Duration(seconds: 1), () {
-            return onClear();
-          });
-        }
+        Future.delayed(Duration(seconds: 1), () {
+          return onClear();
+        });
       } else {
         showBanner(context);
         tapsounds.Invalid();
+
         print("Word used");
       }
     }
@@ -606,7 +580,7 @@ class _MygameUI2State extends State<MygameUI2> {
                           width: 35,
                         ),
                         Text(
-                          'Reshuffle',
+                          'Next Word',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
