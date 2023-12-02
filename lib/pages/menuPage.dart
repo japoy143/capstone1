@@ -5,11 +5,15 @@ import 'package:capstoneapp1/components/computerwordsList.dart';
 import 'package:capstoneapp1/components/generalWordsList.dart';
 
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
+import 'package:capstoneapp1/gamePages/GameCategory1.dart';
 import 'package:capstoneapp1/menuPages/Highscores/TotalhighScore.dart';
 import 'package:capstoneapp1/menuPages/MainHighScore.dart';
+import 'package:capstoneapp1/models/scores.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({super.key, required this.nameUser, required this.audioPlayer});
@@ -21,11 +25,32 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  late Box<scores> userBox;
+  @override
+  void initState() {
+    userBox = Hive.box<scores>('scores');
+    super.initState();
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     widget.audioPlayer.stop();
+  }
+
+  void gamecategory() async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => GameCategory(
+              username: widget.nameUser,
+              audioPlayer: widget.audioPlayer,
+            )));
+  }
+
+  void gamecategory1() async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => GameCategory1(
+            username: widget.nameUser, audioPlayer: widget.audioPlayer)));
   }
 
   @override
@@ -178,13 +203,9 @@ class _MenuPageState extends State<MenuPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => GameCategory(
-                              username: widget.nameUser,
-                              audioPlayer: widget.audioPlayer,
-                            )));
-                  },
+                  onTap: userBox.containsKey(widget.nameUser)
+                      ? () => gamecategory()
+                      : () => gamecategory1(),
                   child: Container(
                     height: (screenHeight - statusBarHeight) * .09,
                     width: (screenWidht) * .50,

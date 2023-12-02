@@ -10,23 +10,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 
-class GameCategory extends StatefulWidget {
-  GameCategory({super.key, required this.username, required this.audioPlayer});
+class GameCategory1 extends StatefulWidget {
+  GameCategory1({super.key, required this.username, required this.audioPlayer});
   late String username;
   late AudioPlayer audioPlayer;
 
   @override
-  State<GameCategory> createState() => _GameCategoryState();
+  State<GameCategory1> createState() => _GameCategory1State();
 }
 
-class _GameCategoryState extends State<GameCategory> {
-  late Box<scores> userScoreBox;
-
+class _GameCategory1State extends State<GameCategory1> {
   Gamesounds _gamesounds = Gamesounds();
 
   @override
   void initState() {
-    userScoreBox = Hive.box<scores>('scores');
     _gamesounds.Stop(context);
     super.initState();
   }
@@ -58,7 +55,6 @@ class _GameCategoryState extends State<GameCategory> {
 
   @override
   Widget build(BuildContext context) {
-    final userScore = userScoreBox.get(widget.username);
     return WillPopScope(
       onWillPop: () async {
         widget.audioPlayer.pause();
@@ -113,16 +109,11 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 40.0,
                 ),
                 GestureDetector(
-                  onTap: userScore!.totalScore > 50
-                      ? () => targetScoreIntermediate()
-                      : null,
                   child: Container(
                     height: 100,
                     width: 200,
                     decoration: BoxDecoration(
-                        color: userScore!.totalScore > 50
-                            ? Colors.green[400]
-                            : Colors.grey,
+                        color: Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
                     child: Center(
                         child: Text(
@@ -138,23 +129,18 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 50 \n              Youre totalscore ${userScore!.totalScore}",
+                  "Youre total score must reach atleast 50 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
                   height: 15.0,
                 ),
                 GestureDetector(
-                  onTap: userScore!.totalScore > 100
-                      ? () => targetScoreExpert()
-                      : null,
                   child: Container(
                     height: 100,
                     width: 200,
                     decoration: BoxDecoration(
-                        color: userScore!.totalScore > 100
-                            ? Colors.green[400]
-                            : Colors.grey,
+                        color: Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
                     child: Center(
                       child: Text(
@@ -171,7 +157,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 100 \n              Youre totalscore ${userScore!.totalScore}",
+                  "Youre total score must reach atleast 100 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
