@@ -227,17 +227,45 @@ class _MygameUI1State extends State<MygameUI1> {
               return onClear();
             });
             isWordExist = true;
-            if (createdWord.length > 6) {
-              setState(() {
-                Score += 15;
-                compScore += 15;
-              });
-            } else {
-              setState(() {
-                Score += 10;
-                compScore += 10;
-              });
+
+            switch (createdWord.length) {
+              case <= 4:
+                setState(() {
+                  Score += 5;
+                  compScore += 5;
+                });
+                break;
+              case <= 6:
+                setState(() {
+                  Score += 15;
+                  compScore += 15;
+                });
+                break;
+              case <= 10:
+                setState(() {
+                  Score += 25;
+                  compScore += 25;
+                });
+                break;
+              case >= 11:
+                setState(() {
+                  Score += 40;
+                  compScore += 40;
+                });
+                break;
             }
+
+            // if (createdWord.length > 6) {
+            //   setState(() {
+            //     Score += 15;
+            //     compScore += 15;
+            //   });
+            // } else {
+            //   setState(() {
+            //     Score += 10;
+            //     compScore += 10;
+            //   });
+            // }
             return;
           }
         });
@@ -551,7 +579,10 @@ class _MygameUI1State extends State<MygameUI1> {
               child: TextField(
                 controller: userInputController,
                 readOnly: true,
-                style: const TextStyle(color: Colors.green),
+                style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   hintStyle: TextStyle(color: Colors.green),

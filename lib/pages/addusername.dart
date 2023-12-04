@@ -117,7 +117,10 @@ class _AddUsernameState extends State<AddUsername> {
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();
                             },
-                            style: const TextStyle(color: Colors.white70),
+                            style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                             decoration: const InputDecoration(
                                 focusColor: Colors.white70,
                                 enabledBorder: OutlineInputBorder(
