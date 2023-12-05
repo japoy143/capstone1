@@ -150,8 +150,6 @@ class CompWords {
     "antivirus":
         "a piece of software designed to prevent viruses entering a computer system or network",
     "applet": "a computer program that runs within a page on the internet",
-    "applicationprogram":
-        "a computer program that is written and designed for a specific need or purpose",
     "architecture":
         "the internal organization of a computer's components with particular reference to the way in which data is transmitted",
     "archivalstorage":
@@ -160,8 +158,6 @@ class CompWords {
         "any part of a computer memory assigned to store data of a specified type",
     "array":
         "a regular data structure in which individual elements may be located by reference to one or more integer index variables, the number of such indices being the number of dimensions in the array",
-    "artificialintelligenceorAI":
-        "the study of the modeling of human mental functions by computer programs",
     "ASCII":
         "a standard computer code used to facilitate the interchange of information among various types of data-processing equipment",
     "assemble":
@@ -225,8 +221,6 @@ class CompWords {
     "CAM": "computer-aided manufacture",
     "capture":
         "the act or process of inserting or transferring data into a computer",
-    "CD-ROM":
-        "compact disc read-only memory; a compact disc used with a computer system as a read-only optical disk",
     "character":
         "any letter, numeral, etc, which is a unit of information and can be represented uniquely by a binary pattern",
     "chipset":
@@ -862,7 +856,7 @@ class CompWords {
         "A breakthrough in gene editing technology with profound implications for genetics.",
     "3DPrinting":
         "Additive manufacturing technology that creates objects layer by layer.",
-    "ArtificialIntelligence":
+    "AI":
         "The development of machines capable of performing tasks that typically require human intelligence.",
     "Blockchain":
         "A decentralized and secure technology that underlies cryptocurrencies like Bitcoin.",
@@ -1571,5 +1565,449 @@ class CompWords {
         "a multi-model, globally distributed database service by Microsoft Azure",
     "JanusGraph": "an open-source, distributed graph database",
     "OracleNoSQLDatabase": "a NoSQL database by Oracle",
+    '5GTechnology': 'Faster and more reliable wireless communication.',
+    'EdgeComputing':
+        'Processing data closer to the source for quicker response times.',
+    'ArtificialIntelligence': 'Simulating human intelligence in machines.',
+    'AugmentedReality(AR)':
+        'Integrating digital information with the real world.',
+    'VirtualReality(VR)':
+        'Creating immersive, computer-generated environments.',
+    'InternetofThings(IoT)': 'Connecting everyday devices to the internet.',
+    'BiometricAuthentication':
+        'Using unique biological traits for identity verification.',
+    'CRISPRTechnology': 'Gene editing for genetic modifications.',
+    'AutonomousVehicles': 'Self-driving cars and drones.',
+    'Robotics': 'Automated machines capable of various tasks.',
+    'NeuromorphicComputing':
+        'Mimicking the human brain in computer architecture.',
+    'AdvancedRobotics': 'Humanoid robots with enhanced capabilities.',
+    'SmartCities': 'Integrating technology for efficient urban living.',
+    'WearableTechnology': 'Devices like smartwatches and fitness trackers.',
+    '6GTechnology': 'The next generation of wireless communication.',
+    'Li-Fi(LightFidelity)': 'Internet communication through light signals.',
+    'SpaceTourism': 'Commercial travel beyond Earth\'s atmosphere.',
+    'Brain-ComputerInterfaces(BCI)':
+        'Direct communication between the brain and computers.',
+    'Self-HealingMaterials': 'Materials that can repair themselves.',
+    'Nanotechnology': 'Manipulating matter at the nanoscale.',
+    'SustainableEnergyTechnologies': 'Renewable energy innovations.',
+    'HydrogenFuelCells': 'Clean energy production for various applications.',
+    'AdvancedMaterials': 'High-performance materials for various industries.',
+    'CRISPR-basedDiagnostics': 'Gene-editing tools for medical diagnosis.',
+    'Bioinformatics':
+        'Analyzing biological data using computational techniques.',
+    'RoboticProcessAutomation(RPA)': 'Automating routine business processes.',
+    'QuantumCryptography': 'Secure communication using quantum principles.',
+    'SwarmRobotics': 'Coordination of multiple robots to perform tasks.',
+    'DigitalTwinTechnology':
+        'Virtual replicas of physical objects for analysis.',
+    'GestureControl': 'Interacting with devices through gestures.',
+    'VoiceAssistants': 'AI-powered virtual assistants for voice commands.',
+    'BiometricWearables': 'Wearable devices with biometric sensors.',
+    '4DPrinting': '3D printing with materials that can change over time.',
+    'HolographicDisplays': 'Creating 3D holographic images for display.',
+    'CognitiveComputing':
+        'Systems that learn and adapt without explicit programming.',
+    'NeuromarketingTechnology':
+        'Analyzing brain responses for marketing insights.',
+    'In-MemoryComputing': 'Processing data in random-access memory for speed.',
+    'IPAddress':
+        'A numerical label assigned to each device participating in a computer network.',
+    'SubnetMask': 'Divides an IP address into network and host portions.',
+    'Router': 'A device that forwards data packets between computer networks.',
+    'Switch':
+        'A device that connects devices within the same local area network (LAN).',
+    'Hub': 'A basic networking device that connects multiple devices in a LAN.',
+    'Gateway':
+        'A node that serves as an entry or exit point for data traffic between different networks.',
+    'DNS(DomainNameSystem)':
+        'Resolves human-readable domain names to IP addresses.',
+    'DHCP(DynamicHostConfigurationProtocol)':
+        'Automatically assigns IP addresses to devices in a network.',
+    'LAN(LocalAreaNetwork)':
+        'A network that is limited to a small geographic area.',
+    'WAN(WideAreaNetwork)':
+        'A network that covers a broad area, such as a city or country.',
+    'VPN(VirtualPrivateNetwork)':
+        'Secures communication over a public network by encrypting data.',
+    'TCP(TransmissionControlProtocol)':
+        'Provides reliable, connection-oriented communication between devices.',
+    'UDP(UserDatagramProtocol)':
+        'A connectionless protocol for faster, but less reliable, communication.',
+    'HTTP(HypertextTransferProtocol)':
+        'Used for transferring hypertext documents on the World Wide Web.',
+    'HTTPS(HypertextTransferProtocolSecure)':
+        'Secured version of HTTP with data encryption.',
+    'FTP(FileTransferProtocol)':
+        'Used to transfer files between a server and a client on a network.',
+    'SSL/TLS(SecureSocketsLayer/TransportLayerSecurity)':
+        'Protocols for secure data transmission over a network.',
+    'Packet': 'A unit of data transmitted over a network.',
+    'Routing':
+        'The process of determining the optimal path for data to travel in a network.',
+    'Bandwidth': 'The maximum rate of data transfer across a network.',
+    'Latency':
+        'The time delay between the initiation and execution of a network operation.',
+    'MACAddress(MediaAccessControlAddress)':
+        'A unique identifier assigned to network interfaces.',
+    'ARP(AddressResolutionProtocol)':
+        'Maps IP addresses to MAC addresses in a local network.',
+    'NAT(NetworkAddressTranslation)':
+        'Maps private IP addresses to a public IP address.',
+    'LoadBalancing':
+        'Distributing network traffic across multiple servers to ensure optimal resource usage.',
+    'ProxyServer':
+        'An intermediary server that acts as a gateway between a local network and the internet.',
+    'Caching':
+        'Storing copies of frequently accessed data to improve retrieval speed.',
+    'PacketSniffing':
+        'Capturing and analyzing packets of data flowing across a network.',
+    'QoS(QualityofService)':
+        'Measures the performance and reliability of a network service.',
+    'IPv6(InternetProtocolversion6)':
+        'An updated version of the Internet Protocol with a larger address space.',
+    'CIDR(ClasslessInter-DomainRouting)':
+        'A method for allocating IP addresses and routing Internet Protocol packets.',
+    'Ping':
+        'A network utility tool used to test the reachability of a host on an internet protocol network.',
+    'Traceroute':
+        'A tool for displaying the route and measuring transit delays of packets across a network.',
+    'DNSSpoofing':
+        'Redirecting website traffic to a malicious site by manipulating DNS responses.',
+    'MIMO(MultipleInput,MultipleOutput)':
+        'A wireless communication technology using multiple antennas for improved performance.',
+    'VoIP(VoiceoverInternetProtocol)':
+        'Enables voice communication and multimedia sessions over the internet.',
+    'MACSpoofing':
+        'Changing the media access control address of a networked device.',
+    'SSID(ServiceSetIdentifier)':
+        'A unique identifier that names a wireless network.',
+    'Algorithm': 'A step-by-step procedure or formula for solving a problem.',
+    'Variable':
+        'A named storage location capable of holding data during program execution.',
+    'Function': 'A reusable block of code that performs a specific task.',
+    'Class': 'A blueprint for creating objects with attributes and methods.',
+    'Object': 'An instance of a class, encapsulating data and behavior.',
+    'Method':
+        'A function associated with an object in object-oriented programming.',
+    'Array': 'A collection of elements, each identified by an index or key.',
+    'Loop':
+        'A control flow statement that allows code to be executed repeatedly.',
+    'ConditionalStatement':
+        'A statement that performs different actions based on a condition.',
+    'Syntax':
+        'The set of rules that define the combinations of symbols that are considered correctly structured programs.',
+    'VariableScope':
+        'The context in which a variable is declared, determining its visibility and accessibility.',
+    'Compiler':
+        'A program that translates source code into machine code or an intermediate code.',
+    'Interpreter':
+        'A program that directly executes instructions written in a programming or scripting language.',
+    'Bug': 'An error, flaw, or unintended behavior in a computer program.',
+    'Debugging':
+        'The process of finding and fixing bugs or errors in a program.',
+    'Exception':
+        'An event that occurs during the execution of a program and disrupts normal flow.',
+    'API(ApplicationProgrammingInterface)':
+        'A set of rules and protocols for building and interacting with software applications.',
+    'Library':
+        'A collection of pre-written code and routines that can be used by other programs.',
+    'Framework':
+        'A pre-built set of tools and practices for developing software applications.',
+    'VersionControl':
+        'The management of changes to documents, programs, and other collections of information.',
+    'Repository':
+        'A storage location where software packages are stored and managed.',
+    'Merge':
+        'Combining changes from different branches or versions of a program.',
+    'SQL(StructuredQueryLanguage)':
+        'A domain-specific language used for managing and manipulating relational databases.',
+    'APIEndpoint': 'A specific URL or URI where API requests are sent.',
+    'WebDevelopment':
+        'The process of building and maintaining websites or web applications.',
+    'Frontend':
+        'The part of a software application with which the user interacts directly.',
+    'Backend':
+        'The server-side of a software application that handles data processing and storage.',
+    'ResponsiveDesign':
+        'Designing websites to provide an optimal viewing and interaction experience across various devices and screen sizes.',
+    'AgileDevelopment':
+        'An iterative and collaborative approach to software development.',
+    'Scrum':
+        'An agile framework for managing and organizing work on complex projects.',
+    'Object-OrientedProgramming(OOP)':
+        'A programming paradigm based on the concept of "objects".',
+    'Inheritance':
+        'The mechanism in OOP where a class inherits properties and behaviors from another class.',
+    'Polymorphism':
+        'The ability of a single function or method to work in different ways based on context.',
+    'Encapsulation':
+        'The bundling of data and methods that operate on the data into a single unit or class.',
+    'Abstraction':
+        'The concept of simplifying complex systems by modeling classes based on their essential features.',
+    'SymmetricEncryption':
+        'Uses a single key for both encryption and decryption.',
+    'AsymmetricEncryption':
+        'Uses a pair of public and private keys for encryption and decryption.',
+    'AES(AdvancedEncryptionStandard)':
+        'A widely used symmetric encryption algorithm.',
+    'RSA(Rivest–Shamir–Adleman)':
+        'A widely used asymmetric encryption algorithm.',
+    'DES(DataEncryptionStandard)': 'An early symmetric encryption standard.',
+    '3DES(TripleDES)':
+        'A symmetric encryption algorithm that applies DES three times.',
+    'Blowfish': 'A symmetric block cipher designed for fast encryption.',
+    'Twofish': 'A symmetric key block cipher with a block size of 128 bits.',
+    'RC4':
+        'A symmetric stream cipher widely used in network security protocols.',
+    'Diffie-Hellman':
+        'A key exchange algorithm for secure communication over an untrusted network.',
+    'EllipticCurveCryptography(ECC)':
+        'A public-key cryptography based on elliptic curves.',
+    'PGP(PrettyGoodPrivacy)':
+        'A data encryption and decryption program used for secure communication.',
+    'OpenPGP':
+        'An open standard for PGP encryption that supports various encryption methods.',
+    'MD5(MessageDigestAlgorithm5)':
+        'A widely used hash function for producing a 128-bit hash value.',
+    'SHA-1(SecureHashAlgorithm1)':
+        'A cryptographic hash function producing a 160-bit hash value.',
+    'SHA-256': 'A member of the SHA-2 family, producing a 256-bit hash value.',
+    'SHA-3': 'The latest member of the Secure Hash Algorithm family.',
+    'Whirlpool': 'A hash function offering a high level of security.',
+    'AES-GCM':
+        'A mode of operation for symmetric key cryptographic block ciphers.',
+    'RSA-OAEP':
+        'A padding scheme often used with RSA for secure data transmission.',
+    'Diffie-HellmanKeyExchange':
+        'A method for two parties to agree on a shared secret key.',
+    'QuantumKeyDistribution(QKD)':
+        'A cryptographic technique using quantum mechanics for secure communication.',
+    'HomomorphicEncryption':
+        'Allows computation on encrypted data without decrypting it.',
+    'One-TimePad': 'A symmetric encryption algorithm using a key only once.',
+    'Lattice-basedCryptography':
+        'Uses mathematical structures called lattices for encryption.',
+    'Chacha20-Poly1305':
+        'A symmetric encryption algorithm and an authenticated encryption mode.',
+    'XORCipher': 'A simple encryption algorithm using the XOR operation.',
+    'HMAC(Hash-basedMessageAuthenticationCode)':
+        'A mechanism for message authentication using cryptographic hash functions.',
+    'Camellia':
+        'A symmetric key block cipher developed by NTT and Mitsubishi Electric.',
+    'Skipjack':
+        'An algorithm used in the Clipper chip for encrypting voice and data.',
+    'FeistelNetwork':
+        'A structure used in many symmetric key block cipher algorithms.',
+    'ElGamalEncryption':
+        'An asymmetric key encryption algorithm based on the Diffie-Hellman key exchange.',
+    'Zero-KnowledgeProof':
+        'A method to prove the possession of a secret without revealing the secret itself.',
+    'SubstitutionCipher':
+        'Replaces each plaintext character with another character.',
+    'TranspositionCipher':
+        'Rearranges the positions of characters in the plaintext.',
+    'EnigmaMachine':
+        'A famous encryption device used by the Germans during World War II.',
+    'Hash-BasedMessageAuthenticationCode(HMAC)':
+        'A specific type of message authentication code involving a cryptographic hash function.',
+    'Fernet':
+        'A symmetric key encryption method that uses a combination of symmetric and asymmetric encryption.',
+    'AdiShamir':
+        'Co-inventor of the RSA algorithm, one of the pioneers in modern cryptography.',
+    'ls': 'List directory contents.',
+    'cd': 'Change the current working directory.',
+    'pwd': 'Print the current working directory.',
+    'cp': 'Copy files or directories.',
+    'mv': 'Move or rename files or directories.',
+    'rm': 'Remove files or directories.',
+    'mkdir': 'Create a new directory.',
+    'rmdir': 'Remove an empty directory.',
+    'touch':
+        'Create an empty file or update the access and modification times of a file.',
+    'cat': 'Concatenate and display the content of files.',
+    'nano': 'A simple text editor for the terminal.',
+    'vim': 'A powerful text editor for the terminal.',
+    'grep': 'Search for a pattern in files.',
+    'find': 'Search for files and directories in a directory hierarchy.',
+    'chmod': 'Change file permissions.',
+    'chown': 'Change file owner and group.',
+    'ps': 'Display information about running processes.',
+    'kill': 'Terminate a process or send a signal to a process.',
+    'top': 'Display real-time system statistics.',
+    'df': 'Display disk space usage.',
+    'du': 'Estimate file space usage.',
+    'uname': 'Display system information.',
+    'ifconfig': 'Configure network interfaces.',
+    'ping': 'Send ICMP ECHO_REQUEST to network hosts.',
+    'traceroute': 'Print the route packets take to network host.',
+    'ssh': 'Connect to a remote server securely.',
+    'scp': 'Copy files between hosts securely.',
+    'tar': 'Create, view, or extract files from a tar archive.',
+    'gzip': 'Compress or decompress files.',
+    'wget': 'Download files from the internet.',
+    'curl': 'Transfer data with URLs.',
+    'echo': 'Display a message or a variable value.',
+    'export': 'Set an environment variable.',
+    'env': 'Display environment variables.',
+    'history': 'Display command history.',
+    'man': 'Display the manual page for a command.',
+    'alias': 'Create an alias for a command.',
+    'sudo': 'Execute a command as a superuser or another user.',
+    'passwd': 'Change user password.',
+    'shutdown': 'Shut down or restart the system.',
+    'awk':
+        'A versatile programming language for pattern scanning and text processing.',
+    'sed': 'A stream editor for filtering and transforming text.',
+    'nc':
+        'Netcat, a versatile networking utility for reading and writing data across network connections.',
+    'tcpdump': 'A packet analyzer for network monitoring and troubleshooting.',
+    'wireshark':
+        'A network protocol analyzer for capturing and analyzing packets.',
+    'htop': 'An interactive process viewer and system monitor.',
+    'iotop': 'A utility for tracking disk I/O usage in real-time.',
+    'ncdu': 'A disk usage analyzer with an ncurses interface.',
+    'glances': 'A cross-platform system monitoring tool.',
+    'screen':
+        'A terminal multiplexer that allows multiple terminal sessions in a single window.',
+    'tmux': 'A terminal multiplexer similar to screen but with more features.',
+    'httrack':
+        'A website copier that allows downloading a website from the internet.',
+    'nmap': 'A powerful network discovery and security auditing tool.',
+    'lynx': 'A text-based web browser.',
+    'rsync':
+        'A utility for efficiently copying and synchronizing files locally or remotely.',
+    'git':
+        'A distributed version control system for tracking changes in source code during software development.',
+    'docker':
+        'A platform for developing, shipping, and running applications in containers.',
+    'kubectl': 'A command-line tool for interacting with Kubernetes clusters.',
+    'ansible':
+        'An automation tool for configuration management, application deployment, and task automation.',
+    'terraform':
+        'An infrastructure as code tool for building, changing, and versioning infrastructure.',
+    'jq': 'A lightweight and flexible command-line JSON processor.',
+    'ipconfig': 'Display IP configuration for all network interfaces.',
+    'ping': 'Test network connectivity to a specific IP address or domain.',
+    'tracert': 'Trace the route that packets take to a destination.',
+    'nslookup': 'Query DNS for information about a domain or IP address.',
+    'netstat': 'Display active network connections and listening ports.',
+    'arp': 'Display and modify the ARP cache.',
+    'route': 'Display or modify the local IP routing table.',
+    'shutdown': 'Shut down or restart the computer.',
+    'tasklist': 'List all running processes on the computer.',
+    'taskkill': 'Terminate a running process or application.',
+    'systeminfo':
+        'Display detailed information about the computer\'s hardware and software.',
+    'sfc': 'System File Checker - scan and repair protected system files.',
+    'chkdsk': 'Check and repair the file system on a disk.',
+    'diskpart': 'Disk Partition Manager - manage disk partitions.',
+    'format': 'Format a disk for use with Windows.',
+    'xcopy': 'Copy files and directories with extended options.',
+    'robocopy':
+        'Robust File Copy - advanced file copy tool with more options than xcopy.',
+    'regedit': 'Registry Editor - edit the Windows registry.',
+    'regsvr32': 'Register or unregister DLL files.',
+    'msconfig': 'System Configuration - configure system startup settings.',
+    'gpupdate': 'Update Group Policy settings.',
+    'gpresult':
+        'Display Group Policy settings and Resultant Set of Policy (RSOP) information.',
+    'net': 'Various networking commands (e.g., net user, net share).',
+    'sc': 'Service Control - communicate with the Service Control Manager.',
+    'schtasks': 'Schedule tasks to run automatically at specified times.',
+    'assoc': 'Display or modify file associations.',
+    'ftype':
+        'Display or modify file types used in file extension associations.',
+    'bcdedit': 'Boot Configuration Data Editor - configure boot options.',
+    'wevtutil': 'Event Viewer Utility - retrieve information about event logs.',
+    'fsutil': 'File System Utility - perform tasks related to the file system.',
+    'wmic':
+        'Windows Management Instrumentation Command-line - access system resources.',
+    'cipher': 'Encrypt or decrypt files and folders.',
+    'netsh': 'Network Shell - configure network settings.',
+    'defaults': 'Access the macOS user defaults system.',
+    'system_profiler':
+        'Gather detailed information about the hardware and software configuration.',
+    'diskutil': 'Disk Utility - manage local disks and volumes.',
+    'caffeinate': 'Prevent the system from sleeping or screen from dimming.',
+    'say': 'Convert text to audible speech.',
+    'osascript': 'Execute AppleScript commands.',
+    'tmutil': 'Time Machine Utility - control Time Machine backup.',
+    'softwareupdate': 'Check for and install macOS updates.',
+    'killall': 'Terminate processes by name.',
+    'Facebook':
+        'Connect with friends and family, share updates, and discover content.',
+    'Instagram':
+        'Share photos and videos, discover visual content, and connect with users.',
+    'Twitter': 'Share thoughts and updates in short messages called tweets.',
+    'LinkedIn':
+        'Build professional connections and network with other professionals.',
+    'Snapchat': 'Send disappearing photos and videos, and share moments.',
+    'TikTok': 'Create and discover short-form videos set to music.',
+    'WhatsApp':
+        'Send text messages, make voice and video calls, and share media.',
+    'Messenger':
+        'Facebooks messaging app for text, voice, and video communication.',
+    'Pinterest': 'Discover and save creative ideas, recipes, and inspiration.',
+    'Reddit':
+        'Discover and discuss content on various topics in community-driven forums.',
+    'Tumblr':
+        'A microblogging platform for sharing multimedia content and thoughts.',
+    'YouTube': 'Watch and share videos on a wide range of topics.',
+    'Flickr': 'Share and discover photos with a photography community.',
+    'Vimeo': 'A video-sharing platform for high-quality content.',
+    'Snapseed': 'Photo editing app with a variety of filters and tools.',
+    'VSCO': 'Photo and video editing app with a focus on creativity.',
+    'WhatsApp Business':
+        'A business-oriented version of WhatsApp for customer communication.',
+    'Clubhouse':
+        'Audio-based social networking app for conversations and discussions.',
+    'LinkedIn Learning':
+        'Access online courses and educational content on LinkedIn.',
+    'Quora':
+        'Ask questions and get answers from the community on various topics.',
+    'Periscope': 'Live video streaming app for sharing real-time moments.',
+    'WeChat':
+        'All-in-one messaging and social media app with various features.',
+    'Signal': 'Secure messaging app with a focus on privacy and encryption.',
+    'Telegram': 'Messaging app with a focus on speed and security.',
+    'LINE': 'Messaging app with free voice and video calls.',
+    'Kik': 'Chat with friends and explore an interactive world of chatbots.',
+    'Meetup': 'Discover and join local groups and events based on interests.',
+    'Nextdoor':
+        'Connect with neighbors and stay informed about local activities.',
+    'Strava':
+        'Track and share your running and cycling activities with a fitness community.',
+    'Goodreads':
+        'Discover and share books, track reading progress, and find recommendations.',
+    'Last.fm':
+        'Discover and share music, track listening habits, and connect with other music lovers.',
+    'SoundCloud': 'Discover and share music, and connect with artists.',
+    'Myspace':
+        'A classic social networking platform for connecting with friends and sharing content.',
+    'Twitch': 'Livestream and watch gaming and other content.',
+    'Wattpad':
+        'Read and write stories, connect with writers, and discover new content.',
+    'MicrosoftOffice':
+        'Suite of productivity software (Word, Excel, PowerPoint, etc.).',
+    'Keynote': 'Apples presentation software.',
+    'Numbers': 'Apples spreadsheet software.',
+    'Pages': 'Apples word processing software.',
+    'MicrosoftTeams':
+        'Collaboration platform for chat, video, and file sharing.',
+    'Sketch': 'Digital design toolkit.',
+    'AffinityDesigner': 'Vector graphic design software.',
+    'AffinityPhoto': 'Photo editing software.',
+    'Excel': 'Spreadsheet software by Microsoft.',
+    'PowerPoint': 'Presentation software by Microsoft.',
+    'OneNote': 'Note-taking software by Microsoft.',
+    'AdobeAcrobatReader': 'PDF viewer and editor.',
+    'Preview': 'Built-in PDF and image viewer on macOS.',
+    'HandBrake': 'Open-source video transcoder.',
+    'VLC': 'Media player capable of playing various multimedia files.',
+    'Transmission': 'Open-source BitTorrent client.',
+    '1Password': 'Password manager and secure wallet.',
+    'CleanMyMac': 'Mac optimization and cleanup tool.',
   };
 }

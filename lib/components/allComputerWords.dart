@@ -20,7 +20,7 @@ class AllComputerWords extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                showSearch(context: context, delegate: CustiomSearchDelegate());
+                showSearch(context: context, delegate: CustomSearchDelegate());
               },
               icon: Icon(Icons.search))
         ],
@@ -87,7 +87,7 @@ class AllComputerWords extends StatelessWidget {
   }
 }
 
-class CustiomSearchDelegate extends SearchDelegate {
+class CustomSearchDelegate extends SearchDelegate {
   CompWords _compWords = CompWords();
 
   //clear the search bar

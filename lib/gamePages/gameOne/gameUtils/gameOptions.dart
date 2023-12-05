@@ -26,7 +26,7 @@ class _GameOptions1State extends State<GameOptions1> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 270,
-          width: 250,
+          width: 350,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -34,10 +34,10 @@ class _GameOptions1State extends State<GameOptions1> {
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
                   height: 70,
-                  width: 165,
+                  width: 300,
                   child: Center(
                     child: Text(
-                      "Congratulations ${widget.username} You Got ${widget.WordCount} words",
+                      "Congratulations ${widget.username} \n You Got ${widget.WordCount} words",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

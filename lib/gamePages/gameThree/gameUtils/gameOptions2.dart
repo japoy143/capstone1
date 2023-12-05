@@ -28,7 +28,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry3> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 270,
-          width: 250,
+          width: 350,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -36,10 +36,10 @@ class _GameOptionsTry1State extends State<GameOptionsTry3> {
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
                   height: 70,
-                  width: 130,
+                  width: 300,
                   child: Center(
                     child: Text(
-                      "Try Again ${widget.username} You Only Get ${widget.WordCount}",
+                      "Try Again ${widget.username} \n You Only Get ${widget.WordCount}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

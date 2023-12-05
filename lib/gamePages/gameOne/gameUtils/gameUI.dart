@@ -342,7 +342,7 @@ class _MygameUI1State extends State<MygameUI1> {
   late int keyboardLength;
   void keysLength() {
     Random rand = Random();
-    keyboardLength = rand.nextInt(8) + 3;
+    keyboardLength = rand.nextInt(7) + 3;
   }
 
   //game Hint
@@ -350,7 +350,7 @@ class _MygameUI1State extends State<MygameUI1> {
   //randomize id
   void randHintIndex() {
     var random = Random();
-    randHint = (random.nextInt(50)) + 1;
+    randHint = (random.nextInt(100)) + 1;
   }
 
   String wordHint = "";

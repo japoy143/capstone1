@@ -33,43 +33,48 @@ class _ShowSelectedComWordsState extends State<ShowSelectedComWords> {
                   SizedBox(
                     height: 80,
                   ),
-                  Container(
-                    height: 200,
-                    width: 350,
-                    decoration: BoxDecoration(
-                        color: Colors.green[400],
-                        borderRadius: BorderRadius.circular(8.0)),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          key,
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2.0),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          height: 145,
-                          width: 320,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white54),
-                          child: Text(
-                            value,
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontSize: 18.0,
-                            ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.green[400],
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 5,
                           ),
-                        )
-                      ],
+                          Text(
+                            key,
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                fontFamily: 'Rubik',
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.white54),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  value,
+                                  style: TextStyle(
+                                    fontFamily: 'Rubik',
+                                    fontSize: 18.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
