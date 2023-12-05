@@ -51,20 +51,30 @@ class AllComputerWords extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12.0)),
                           tileColor: Colors.green[400],
                           selectedColor: Colors.amber,
-                          leading: Text(
-                            key,
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontFamily: 'Rubik',
-                                fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(
-                            value,
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontSize: 18.0,
+                          leading: Container(
+                            width: 150,
+                            child: Text(
+                              key,
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: 'Rubik',
+                                  fontWeight: FontWeight.bold),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
                           ),
+                          subtitle: SingleChildScrollView(
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 18.0,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
+                          isThreeLine: true,
                         ),
                       ),
                     );
