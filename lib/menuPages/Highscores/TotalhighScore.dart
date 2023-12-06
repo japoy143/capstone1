@@ -82,13 +82,12 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
                     Row(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 2),
+                          child: Column(children: <Widget>[
                             Container(
                               height: 40,
                               width: 200,
@@ -118,103 +117,83 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                                     fontFamily: 'Rubik'),
                               ),
                             ),
-                            Container(
-                              height: 40,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.green[400],
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Total Score',
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70,
-                                      letterSpacing: 2.0),
+                          ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                height: 40,
+                                width: 180,
+                                decoration: BoxDecoration(
+                                  color: Colors.green[400],
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'CompScore',
+                                    style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white70,
+                                        letterSpacing: 2.0),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                sorted.totalScore.toString(),
-                                style: TextStyle(
-                                    fontSize: 30.0,
-                                    color: Colors.green[400],
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Rubik'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 4.0,
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              height: 40,
-                              width: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.green[400],
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Center(
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
                                 child: Text(
-                                  'CompScore',
+                                  sorted.compScore.toString(),
                                   style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 30.0,
+                                      color: Colors.green[400],
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white70,
-                                      letterSpacing: 2.0),
+                                      fontFamily: 'Rubik'),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 4.0),
-                              child: Text(
-                                sorted.compScore.toString(),
-                                style: TextStyle(
-                                    fontSize: 30.0,
-                                    color: Colors.green[400],
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Rubik'),
-                              ),
-                            ),
-                            Container(
-                              height: 40,
-                              width: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.green[400],
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Gen Score ',
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70,
-                                      letterSpacing: 2.0),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                sorted.genScore.toString(),
-                                style: TextStyle(
-                                    fontSize: 30.0,
-                                    color: Colors.green[400],
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Rubik'),
-                              ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        )
                       ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: 40,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.green[400],
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Total Score',
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white70,
+                                    letterSpacing: 2.0),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5.0),
+                            child: Text(
+                              sorted.totalScore.toString(),
+                              style: TextStyle(
+                                  fontSize: 30.0,
+                                  color: Colors.green[400],
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Rubik'),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),

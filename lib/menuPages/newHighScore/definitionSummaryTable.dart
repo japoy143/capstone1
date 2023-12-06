@@ -83,12 +83,15 @@ class _DefinitionSummaryState extends State<DefinitionSummary> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          formatted_Date,
-                          style: TextStyle(
-                              fontFamily: 'rubik',
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10, bottom: 5),
+                          child: Text(
+                            formatted_Date,
+                            style: TextStyle(
+                                fontFamily: 'rubik',
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
                         )
                       ],
                     )

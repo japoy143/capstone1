@@ -133,8 +133,6 @@ class CompWords {
     "Folder":
         "A graphical representation used to organize a collection of computer files; as in the concept of a filing cabinet (computer's hard drive) with files (folders)",
     "Freeware": "Software provided at no cost to the user",
-    "Application":
-        "a program dedicated to a specific task e.g., word processing, graphics, etc.",
     "Access": "to obtain or retrieve (information) from a storage device",
     "Accesstime": "the time required to retrieve a piece of stored information",
     "address": "a number giving the location of a piece of stored information",
@@ -502,8 +500,6 @@ class CompWords {
         "allowing or relating to continuous two-way transfer of information between a user and the central point of a communication system, such as a computer or television",
     "interactivevideo":
         "a computer-optical disk system that displays still or moving video images as determined by computer program and user needs",
-    "Internet":
-        "the single worldwide computer network that interconnects other computer networks, on which end-user services, such as World Wide Web sites or data archives, are located, enabling data and other information to be exchanged",
     "interpreter":
         "a program that translates a second program to machine code one statement at a time and causes the execution of the resulting code as soon as the translation is completed",
     "interrupt":
@@ -520,7 +516,6 @@ class CompWords {
     "keyin":
         "to enter (information or instructions) in a computer or other device by means of a keyboard or keypad",
     "kilobyte": "1024 bytes",
-    "LAN": "local area network",
     "lapheld":
         "(especially of a personal computer) small enough to be used on one's lap; portable",
     "laptop":
@@ -1889,13 +1884,11 @@ class CompWords {
         'An infrastructure as code tool for building, changing, and versioning infrastructure.',
     'jq': 'A lightweight and flexible command-line JSON processor.',
     'ipconfig': 'Display IP configuration for all network interfaces.',
-    'ping': 'Test network connectivity to a specific IP address or domain.',
     'tracert': 'Trace the route that packets take to a destination.',
     'nslookup': 'Query DNS for information about a domain or IP address.',
     'netstat': 'Display active network connections and listening ports.',
     'arp': 'Display and modify the ARP cache.',
     'route': 'Display or modify the local IP routing table.',
-    'shutdown': 'Shut down or restart the computer.',
     'tasklist': 'List all running processes on the computer.',
     'taskkill': 'Terminate a running process or application.',
     'systeminfo':

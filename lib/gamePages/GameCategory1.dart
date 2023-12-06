@@ -129,7 +129,7 @@ class _GameCategory1State extends State<GameCategory1> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 50 ",
+                  "Your total score must reach atleast 50 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -157,7 +157,7 @@ class _GameCategory1State extends State<GameCategory1> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 100 ",
+                  "Your total score must reach atleast 100 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(

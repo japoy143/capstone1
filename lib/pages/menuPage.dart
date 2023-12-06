@@ -6,6 +6,7 @@ import 'package:capstoneapp1/components/generalWordsList.dart';
 
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
 import 'package:capstoneapp1/gamePages/GameCategory1.dart';
+import 'package:capstoneapp1/gamePages/Gameauth.dart';
 import 'package:capstoneapp1/menuPages/Highscores/TotalhighScore.dart';
 import 'package:capstoneapp1/menuPages/MainHighScore.dart';
 import 'package:capstoneapp1/models/scores.dart';
@@ -157,9 +158,10 @@ class _MenuPageState extends State<MenuPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: userBox.containsKey(widget.nameUser)
-                      ? () => gamecategory()
-                      : () => gamecategory1(),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => GameAuth(
+                          username: widget.nameUser,
+                          audioPlayer: widget.audioPlayer))),
                   child: Container(
                     height: (screenHeight - statusBarHeight) * .09,
                     width: (screenWidht) * .50,

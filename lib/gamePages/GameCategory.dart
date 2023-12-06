@@ -138,7 +138,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 50 \n              Youre totalscore ${userScore!.totalScore}",
+                  "Your total score must reach atleast 50 \n              Your totalscore ${userScore!.totalScore}",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -171,7 +171,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Youre total score must reach atleast 100 \n              Youre totalscore ${userScore!.totalScore}",
+                  "Your total score must reach atleast 100 \n              Your totalscore ${userScore!.totalScore}",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(

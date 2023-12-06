@@ -203,7 +203,6 @@ class _MygameUI2State extends State<MygameUI2> {
   }
 
   void onSubmit() async {
-    await tapsounds.OntapSounds();
     if (pressedLetters.isNotEmpty && pressedLetters.length > 1) {
       createdWord = pressedLetters.join('');
       bool isWordExist = false;
@@ -214,7 +213,7 @@ class _MygameUI2State extends State<MygameUI2> {
         }
       });
       if (!isWordUsed) {
-        compWords.ComputerWordsList.forEach((key, value) {
+        for (var key in compWords.ComputerWordsList.keys) {
           if (key.toUpperCase() == createdWord.toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
@@ -225,58 +224,37 @@ class _MygameUI2State extends State<MygameUI2> {
               return onClear();
             });
             isWordExist = true;
-            switch (createdWord.length) {
-              case <= 4:
-                setState(() {
-                  Score += 5;
-                  compScore += 5;
-                });
-                break;
-              case <= 6:
-                setState(() {
-                  Score += 15;
-                  compScore += 15;
-                });
-                break;
-              case <= 10:
-                setState(() {
-                  Score += 25;
-                  compScore += 25;
-                });
-                break;
-              case >= 11:
-                setState(() {
-                  Score += 40;
-                  compScore += 40;
-                });
-                break;
+            if (createdWord.length <= 3) {
+              setState(() {
+                Score += 5;
+                compScore += 5;
+              });
+            } else if (createdWord.length > 3 && createdWord.length <= 6) {
+              setState(() {
+                Score += 15;
+                compScore += 15;
+              });
+            } else if (createdWord.length > 6 && createdWord.length <= 9) {
+              setState(() {
+                Score += 25;
+                compScore += 25;
+              });
+            } else {
+              setState(() {
+                Score += 45;
+                compScore += 45;
+              });
             }
-            // if (createdWord.length > 6) {
-            //   setState(() {
-            //     Score += 15;
-            //     compScore += 15;
-            //   });
-            // } else {
-            //   setState(() {
-            //     Score += 10;
-            //     compScore += 10;
-            //   });
-            // }
-            return;
-          }
-        });
 
-        if (isWordExist) {
-          checker.add(createdWord);
-          return; // Exit the function if the word exists
+            if (isWordExist) {
+              checker.add(createdWord);
+              break; // Exit the loop and the function if the word exists
+            }
+          }
         }
-        Future.delayed(Duration(seconds: 1), () {
-          return onClear();
-        });
       } else {
         showBanner(context);
         tapsounds.Invalid();
-
         print("Word used");
       }
     }

@@ -1,6 +1,8 @@
+import 'package:capstoneapp1/models/scores.dart';
 import 'package:capstoneapp1/pages/addusernameUtils.dart';
 import 'package:capstoneapp1/pages/menuPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:hive/hive.dart';
 import 'package:vibration/vibration.dart';
@@ -24,17 +26,43 @@ class _AddUsernameState extends State<AddUsername> {
   bool isTextFieldEmpty = true;
 
   void Onsave() async {
-    try {
-      await userBox.add(usernameController.text);
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MenuPage(
-                nameUser: usernameController.text,
-                audioPlayer: audioPlayer,
-              )));
-      print('Data Save Successfully');
-    } catch (e) {
-      print(e);
+    bool userExist = await userBox.containsKey(usernameController.text);
+    if (!userExist) {
+      try {
+        await userBox.put(usernameController.text, usernameController.text);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => MenuPage(
+                  nameUser: usernameController.text,
+                  audioPlayer: audioPlayer,
+                )));
+        print('Data Save Successfully');
+      } catch (e) {
+        print(e);
+      }
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                height: 40,
+                width: 300,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(7.0)),
+                child: Center(
+                    child: Text(
+                  'Username already used',
+                  style: TextStyle(
+                      color: Colors.green[300],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
+                )),
+              ),
+            );
+          });
     }
+    print(userExist);
+    print(usernameController.text);
   }
 
   void onDelete(int index) {
