@@ -6,6 +6,7 @@ import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/helpers/gamesounds.dart';
 import 'package:capstoneapp1/main.dart';
 import 'package:capstoneapp1/models/scores.dart';
+import 'package:capstoneapp1/pages/menuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
@@ -129,7 +130,7 @@ class _GameCategory1State extends State<GameCategory1> {
                   height: 5,
                 ),
                 Text(
-                  "Your total score must reach atleast 50 ",
+                  "Your total score must reach atleast 100 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -157,7 +158,7 @@ class _GameCategory1State extends State<GameCategory1> {
                   height: 5,
                 ),
                 Text(
-                  "Your total score must reach atleast 100 ",
+                  "Your total score must reach atleast 150 ",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -165,8 +166,10 @@ class _GameCategory1State extends State<GameCategory1> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
-                    widget.audioPlayer.stop();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MenuPage(
+                            nameUser: widget.username,
+                            audioPlayer: widget.audioPlayer)));
                   },
                   child: Container(
                     height: 100,

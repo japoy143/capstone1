@@ -55,7 +55,7 @@ class _AddUsernameState extends State<AddUsername> {
                   style: TextStyle(
                       color: Colors.green[300],
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 22),
                 )),
               ),
             );

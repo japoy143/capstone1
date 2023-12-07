@@ -5,6 +5,8 @@ import 'package:capstoneapp1/gamePages/gameThree/gamePage/gamePlay.dart';
 import 'package:capstoneapp1/gamePages/gameTwo/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
+import '../../Gameauth.dart';
+
 class GameOptions3 extends StatefulWidget {
   GameOptions3(
       {Key? key,
@@ -76,8 +78,14 @@ class _GameOptions1State extends State<GameOptions3> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  setState(() {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => GameAuth(
+                            username: widget.username,
+                            audioPlayer: widget.audioPlayer)));
+                  });
                 },
                 child: Container(
                   decoration: BoxDecoration(

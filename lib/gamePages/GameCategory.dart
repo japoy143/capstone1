@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 
+import '../pages/menuPage.dart';
+
 class GameCategory extends StatefulWidget {
   GameCategory({super.key, required this.username, required this.audioPlayer});
   late String username;
@@ -120,7 +122,7 @@ class _GameCategoryState extends State<GameCategory> {
                     height: 100,
                     width: 200,
                     decoration: BoxDecoration(
-                        color: userScore!.totalScore > 50
+                        color: userScore!.totalScore >= 100
                             ? Colors.green[400]
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
@@ -138,7 +140,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Your total score must reach atleast 50 \n              Your totalscore ${userScore!.totalScore}",
+                  "Your total score must reach atleast 100 \n              Your totalscore ${userScore!.totalScore}",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -152,7 +154,7 @@ class _GameCategoryState extends State<GameCategory> {
                     height: 100,
                     width: 200,
                     decoration: BoxDecoration(
-                        color: userScore!.totalScore > 100
+                        color: userScore!.totalScore > 150
                             ? Colors.green[400]
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
@@ -171,7 +173,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 5,
                 ),
                 Text(
-                  "Your total score must reach atleast 100 \n              Your totalscore ${userScore!.totalScore}",
+                  "Your total score must reach atleast 150 \n              Your totalscore ${userScore!.totalScore}",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(
@@ -179,8 +181,10 @@ class _GameCategoryState extends State<GameCategory> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
-                    widget.audioPlayer.stop();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MenuPage(
+                            nameUser: widget.username,
+                            audioPlayer: widget.audioPlayer)));
                   },
                   child: Container(
                     height: 100,

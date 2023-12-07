@@ -10,6 +10,7 @@ import 'package:capstoneapp1/gamePages/Gameauth.dart';
 import 'package:capstoneapp1/menuPages/Highscores/TotalhighScore.dart';
 import 'package:capstoneapp1/menuPages/MainHighScore.dart';
 import 'package:capstoneapp1/models/scores.dart';
+import 'package:capstoneapp1/pages/addusername.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -213,7 +214,9 @@ class _MenuPageState extends State<MenuPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AddUsername()));
+                    widget.audioPlayer.stop();
                   },
                   child: Container(
                     height: (screenHeight - statusBarHeight) * .09,

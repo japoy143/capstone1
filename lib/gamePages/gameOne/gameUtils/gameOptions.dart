@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/gamePages/GameCategory.dart';
+import 'package:capstoneapp1/gamePages/Gameauth.dart';
 import 'package:capstoneapp1/gamePages/gameOne/gamePage/gamePlay.dart';
 import 'package:flutter/material.dart';
 
@@ -74,8 +75,14 @@ class _GameOptions1State extends State<GameOptions1> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  setState(() {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => GameAuth(
+                            username: widget.username,
+                            audioPlayer: widget.audioPlayer)));
+                  });
                 },
                 child: Container(
                   decoration: BoxDecoration(

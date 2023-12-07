@@ -23,7 +23,7 @@ class WordCollected extends StatelessWidget {
           Container(
               decoration: BoxDecoration(color: Colors.green[400]),
               height: 250,
-              width: 250,
+              width: 280,
               child: ListView(
                 children: Allwords.map((e) {
                   return Container(
@@ -39,7 +39,7 @@ class WordCollected extends StatelessWidget {
                                 color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 2,
-                                fontSize: 25.0),
+                                fontSize: 20.0),
                           ),
                         ),
                       ],
