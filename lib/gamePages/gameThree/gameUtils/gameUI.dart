@@ -58,6 +58,7 @@ class _MygameUI3State extends State<MygameUI3> {
 
   //checker if the word is already used
   List<String> checker = [];
+  List<int> scoreList = [];
   TextEditingController userInputController = TextEditingController();
 
   //bgmusic2
@@ -126,21 +127,25 @@ class _MygameUI3State extends State<MygameUI3> {
               setState(() {
                 Score += 5;
                 compScore += 5;
+                scoreList.add(5);
               });
             } else if (createdWord.length > 3 && createdWord.length <= 6) {
               setState(() {
                 Score += 15;
                 compScore += 15;
+                scoreList.add(15);
               });
             } else if (createdWord.length > 6 && createdWord.length <= 9) {
               setState(() {
                 Score += 25;
                 compScore += 25;
+                scoreList.add(25);
               });
             } else {
               setState(() {
                 Score += 45;
                 compScore += 45;
+                scoreList.add(45);
               });
             }
 
@@ -415,7 +420,10 @@ class _MygameUI3State extends State<MygameUI3> {
                               showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return WordCollected3(Allwords: checker);
+                                    return WordCollected3(
+                                      allwords: checker,
+                                      allscore: scoreList,
+                                    );
                                   });
                             },
                             icon: Icon(Icons.library_add_check),

@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
 
 class WordCollected extends StatelessWidget {
-  WordCollected({Key, key, required this.Allwords}) : super(key: key);
+  WordCollected({Key, key, required this.allwords, required this.allscore})
+      : super(key: key);
 
-  late List<String> Allwords;
+  late List<String> allwords;
+  late List<int> allscore;
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> combined = allwords.map((word) {
+      int index = allwords.indexOf(word);
+      String score = allscore[index].toString();
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '$word - $score',
+            style: TextStyle(
+                fontFamily: 'Rubik',
+                color: Colors.white70,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                fontSize: 20.0),
+          ),
+        ],
+      );
+    }).toList();
     return AlertDialog(
       content: Container(
         height: 300,
@@ -24,29 +44,7 @@ class WordCollected extends StatelessWidget {
               decoration: BoxDecoration(color: Colors.green[400]),
               height: 250,
               width: 280,
-              child: ListView(
-                children: Allwords.map((e) {
-                  return Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            e,
-                            style: TextStyle(
-                                fontFamily: 'Rubik',
-                                color: Colors.white70,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2,
-                                fontSize: 20.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
-              ))
+              child: ListView(children: combined))
         ]),
       ),
     );

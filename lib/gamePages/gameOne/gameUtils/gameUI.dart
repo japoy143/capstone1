@@ -63,6 +63,7 @@ class _MygameUI1State extends State<MygameUI1> {
   String meaning = '';
   //if word already exist
   List<String> checker = [];
+  List<int> ScoreList = [];
   TextEditingController userInputController = TextEditingController();
 
   //Computer Words List
@@ -230,21 +231,25 @@ class _MygameUI1State extends State<MygameUI1> {
               setState(() {
                 Score += 5;
                 compScore += 5;
+                ScoreList.add(5);
               });
             } else if (createdWord.length > 3 && createdWord.length <= 6) {
               setState(() {
                 Score += 15;
                 compScore += 15;
+                ScoreList.add(15);
               });
             } else if (createdWord.length > 6 && createdWord.length <= 9) {
               setState(() {
                 Score += 25;
                 compScore += 25;
+                ScoreList.add(25);
               });
             } else {
               setState(() {
                 Score += 45;
                 compScore += 45;
+                ScoreList.add(45);
               });
             }
 
@@ -463,8 +468,7 @@ class _MygameUI1State extends State<MygameUI1> {
                               context: context,
                               builder: (context) {
                                 return WordCollected(
-                                  Allwords: checker,
-                                );
+                                    allwords: checker, allscore: ScoreList);
                               });
                         },
                         icon: Icon(Icons.library_add_check),
