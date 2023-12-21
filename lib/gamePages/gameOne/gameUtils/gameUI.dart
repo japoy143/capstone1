@@ -377,7 +377,8 @@ class _MygameUI1State extends State<MygameUI1> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     String collected = letters.take(keyboardLength).join('');
-    String newCollected = collected + shuffledWordHint.toUpperCase();
+    String newCollected =
+        collected + shuffledWordHint.toUpperCase().replaceAll(" ", '');
     List<String> charlist = newCollected.split('');
 
     return Column(

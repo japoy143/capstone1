@@ -64,7 +64,7 @@ class _NoteState extends State<Note> {
                 ),
                 Center(
                   child: SizedBox(
-                    height: 150,
+                    height: 180,
                     width: 240,
                     child: Center(
                       child: Text(
@@ -106,17 +106,16 @@ class _NoteState extends State<Note> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        myNote(nextPage == 0, 'The Goal of the game is to make computer words'),
-        myNote(nextPage == 1,
-            'General words is accepted but it has low corresponding score'),
-        myNote(nextPage == 2, 'The Score depends on the length of the word '),
-        myNote(nextPage == 3, 'The Game Has different level of difficulty'),
+        myNote(nextPage == 0,
+            'The Goal of the game is to guess a computer related words to earn more points'),
+        myNote(nextPage == 1, 'The Score depends on the length of the word '),
+        myNote(nextPage == 2, 'The Game Has different category of difficulty'),
+        myNote(nextPage == 3,
+            'Easy offers a longer timer duration and includes a hint feature'),
         myNote(nextPage == 4,
-            'Normal Mode doenst have timer and has a complete set of keyboard'),
+            'Intermediate offers a shorter timer duration and doesnt have a hint feature'),
         myNote(nextPage == 5,
-            'Time Pressure has a complete set of keys but every 15sec it removes a letter'),
-        myNote(nextPage == 6,
-            'Hard Mode has a timer and a randomize keys that makes it harder to create a word'),
+            'Expert is similar to Intermediate, but it includes a feature that removes a letter every 8 seconds.'),
       ],
     );
   }

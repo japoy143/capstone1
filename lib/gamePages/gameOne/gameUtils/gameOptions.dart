@@ -38,7 +38,7 @@ class _GameOptions1State extends State<GameOptions1> {
                   width: 300,
                   child: Center(
                     child: Text(
-                      "Congratulations ${widget.username} \n You Got ${widget.WordCount} words",
+                      "Congratulations ${widget.username} \n you've reach the minimum guessed words",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

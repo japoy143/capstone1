@@ -10,9 +10,9 @@ class CompWords {
         "8 bits - kilobyte (approx. 1,000 bytes), megabyte (1 million), gigabyte (1 billion)",
     "Email":
         "electronic mail; system of sending messages through the internet; e-mail",
-    "Floppydisk":
+    "Floppy Disk":
         "small, removable magnetic disc for (permanent) storing of data; diskette",
-    "Harddisk":
+    "Hard Disk":
         "fixed, magnetic disc inside a PC for (permanent) storing of data",
     "Hardware":
         "the mechanical and electronic parts of a computer, not the software",
@@ -23,7 +23,7 @@ class CompWords {
     "Memory": "part of a computer for (temporary) storing of data - see ram",
     "Modem":
         "device that converts data to a form that can be transmitted by telephone etc",
-    "OperatingSystem":
+    "Operating System":
         "software that communicates with hardware, enabling applications to run",
     "Output": "data delivered by a computer by printer, screen etc - also v.",
     "Peripheral":
@@ -67,7 +67,7 @@ class CompWords {
         "A deliberately harmful computer program designed to create annoying glitches or destroy data",
     "Window":
         "A screen in a software program that permits the user to view several programs at one time",
-    "WordProcessor":
+    "Word Processor":
         "A program that allows the user to create primarily text documents",
     "3G":
         "Third generation of mobile telecommunications technology, typically offering higher data rates than earlier generations.",
@@ -89,7 +89,7 @@ class CompWords {
     "Client":
         "Device or software application that requests services from a server.",
     "Code": "Set of instructions that a computer can understand.",
-    "DataMining": "Process of extracting patterns from large data sets.",
+    "Data Mining": "Process of extracting patterns from large data sets.",
     "Database": "Collection of data that can be accessed by computers.",
     "Firewall":
         "Device or software application that filters traffic between two networks or between a device and a network",
@@ -98,9 +98,9 @@ class CompWords {
     "LAN": "Network that is confined to a relatively small area.",
     "CPU":
         "Central processing unit; the brain of the computer; controls the other elements of the computer",
-    "DiskDrive":
+    "Disk Drive":
         "A peripheral device that reads and/or writes information on a disk",
-    "HardDrive":
+    "Hard Drive":
         "A device (usually within the computer case) that reads and writes information, including the operating system, program files, and data files",
     "Monitor": "A device used to display information visually",
     "Mouse": "A peripheral device used to point to items on a monitor",
@@ -145,71 +145,62 @@ class CompWords {
         "an in-house test of a new or modified piece of computer software analogue computer",
     "ANDgate":
         "an electrical circuit that combines two signals so that the output is on if both signals are present",
-    "antivirus":
+    "Antivirus":
         "a piece of software designed to prevent viruses entering a computer system or network",
-    "applet": "a computer program that runs within a page on the internet",
-    "architecture":
+    "Applet": "a computer program that runs within a page on the internet",
+    "Architecture":
         "the internal organization of a computer's components with particular reference to the way in which data is transmitted",
-    "archivalstorage":
+    "Archival Storage":
         "a method of retaining information outside of the internal memory of a computer",
-    "area":
+    "Area":
         "any part of a computer memory assigned to store data of a specified type",
-    "array":
+    "Array":
         "a regular data structure in which individual elements may be located by reference to one or more integer index variables, the number of such indices being the number of dimensions in the array",
     "ASCII":
         "a standard computer code used to facilitate the interchange of information among various types of data-processing equipment",
-    "assemble":
+    "Assemble":
         "to run (a computer program) that converts a set of symbolic data, usually in the form of specific single-step instructions, into machine language",
-    "assembler":
+    "Assembler":
         "a type of computer program that converts a program written in assembly language into machine code",
-    "assemblylanguage":
+    "Assembly Language":
         "a low-level programming language that allows a programmer complete control of the machine code to be generated",
-    "audioresponse":
+    "Audio Response":
         "a computer response that is audible rather than textual or graphical",
-    "automaticrepeat":
+    "Automatic Repeat":
         "a key on the keyboard of a typewriter, computer, etc., which, when depressed continuously, produces the character repeatedly until the key is released",
-    "backbone":
+    "Backbone":
         "(in computer networks) a large-capacity, high-speed central section by which other network segments are connected",
-    "backingstore":
+    "Backingstore":
         "a computer storage device, usually a disk, that provides additional storage space for information so that it can be accessed and referred to when required and may be copied into the processor if needed",
-    "backup": "a file or set of files copied for security purposes",
-    "bandwidth":
+    "Backup": "a file or set of files copied for security purposes",
+    "Bandwidth":
         "the rate at which information can be transmitted along or to an electronic communications line, device, etc.",
-    "batchprocessing":
+    "Batch Processing":
         "a system by which the computer programs of a number of individual users are submitted to the computer as a single batch",
     "beta-test":
         "a test of a new or modified piece of computer software by customers who volunteer to do so",
-    "binarynotation":
+    "Binary Notation":
         "a number system having a base of two, numbers being expressed by sequences of the digits 0 and 1: used in computing, as 0 and 1 can be represented electrically as off and on",
-    "bitorbinarydigit":
-        "a unit of capacity of a computer, consisting of an element of its physical structure capable of being in either of two states, such as a switch with on and off positions, or a microscopic magnet capable of alignment in two directions",
     "BitTorrent(trademark)":
         "a file transfer protocol that enables users to upload and download large files on the internet in the form of software, games, film, video, music, etc., from other users rather than from a central server",
-    "blackbox":
+    "Blackbox":
         "a self-contained unit in an electronic or computer system whose circuitry need not be known to understand its function",
     "Bluetooth":
         "a short-range radio technology that allows wireless communication between a computer and a keyboard, between mobile phones, etc.",
-    "boilerplate":
+    "Boilerplate":
         "a set of instructions incorporated in several places in a computer program or a standard form of words used repeatedly in drafting contracts, guarantees, etc.",
-    "branchinstruction":
+    "Branch Instruction":
         "a machine-language or assembly-language instruction that causes the computer to branch to another instruction",
-    "broadband":
+    "Broadband":
         "a transmission technique using a wide range of frequencies that enables messages to be sent simultaneously, used in fast internet connections",
-    "buffer": "a memory device for temporarily storing data",
-    "bug":
-        "an error or fault, as in a machine or system, especially in a computer or computer program",
-    "buggy":
+    "Buggy":
         "(of a system or machine, especially a computer program) containing errors or faults",
-    "bulletinboard":
+    "Bulletin Board":
         "a facility on a computer network allowing any user to leave messages that can be read by any other user, and to download software and information to the user's own computer",
-    "bundle":
+    "Bundle":
         "to sell (computer hardware and software) as one indivisible package an electrical conductor, maintained at a specific voltage and capable of carrying a high current, usually used to make a common connection between several circuits in a system a group of such electrical conductors at a low voltage, used for carrying data in binary form between the various parts of a computer or its peripherals",
-    "byte":
-        "a group of bits, usually eight, processed as a single unit of data",
-    "cachememory":
+    "Cache Memory":
         "a small area of memory in a computer that can be accessed very quickly",
-    "bootorbootstrap":
-        "a protective covering over a mechanical device, such as a rubber sheath protecting a coupling joining two shafts",
     "bottom-upprocessing":
         "a processing technique, either in the brain or in a computer, in which incoming information is analyzed in successive steps and later-stage processing does not affect processing in earlier stages",
     "bpi": "bits per inch (used of a computer tape or disk surface)",
@@ -217,294 +208,276 @@ class CompWords {
     "CAl": "computer-aided instruction",
     "CAL": "computer-aided (or -assisted) learning",
     "CAM": "computer-aided manufacture",
-    "capture":
+    "Capture":
         "the act or process of inserting or transferring data into a computer",
-    "character":
+    "Character":
         "any letter, numeral, etc, which is a unit of information and can be represented uniquely by a binary pattern",
-    "chipset":
+    "Chipset":
         "a highly integrated circuit on the motherboard of a computer that controls many of its data transfer functions",
     "CIM": "computer input on microfilm; computer integrated manufacture",
-    "clipart":
+    "Clipart":
         "a large collection of simple drawings stored in a computer from which items can be selected for incorporation into documents",
-    "clock":
+    "Clock":
         "an electronic pulse generator that transmits streams of regular pulses to which various parts of the computer and its operations are synchronized",
-    "code": "to write computer programs",
     "COM":
         "a process in which a computer output is converted direct to microfiche or film, especially 35 or 16 millimeter film",
-    "command":
+    "Command":
         "a military unit or units commanding a specific area or function, as in the RAF",
-    "commandlanguage": "the language used to access a computer system",
-    "communications":
+    "Commandlanguage": "the language used to access a computer system",
+    "Communications":
         "the system of routes and facilities by which forces, supplies, etc, are moved up to or within an area of operations",
-    "compatible":
+    "Compatible":
         "capable of being used together without special modification or adaptation",
-    "compiler":
+    "Compiler":
         "a computer program by which a high-level programming language, such as COBOL or FORTRAN, is converted into machine language that can be acted upon by a computer",
-    "computer-aidedengineering":
+    "Computer-aidedengineering":
         "the use of computers to automate manufacturing processes",
-    "computerate": "able to use computers",
+    "Computerate": "able to use computers",
     "СВТ": "computer-based training",
-    "computerconferencing":
+    "Computer Conferencing":
         "the conduct of meetings through the use of computer-based telecommunications",
-    "computergraphics":
+    "Computer Graphics":
         "the use of a computer to produce and manipulate pictorial images on a video screen, as in animation techniques or the production of audiovisual aids",
-    "computerize":
+    "Computerize":
         "to cause (certain operations) to be performed by a computer, especially as a replacement for human labor",
-    "computerscience": "the study of computers and their application",
-    "computertypesetting":
+    "Computer Science": "the study of computers and their application",
+    "Computer Type Setting":
         "a system for the high-speed composition of type by a device driven by punched paper tape or magnetic tape that has been processed by a computer",
-    "concordance":
+    "Concordance":
         "an index produced by computer or machine, alphabetically listing every word in a text",
-    "concurrentprocessing":
+    "Con Current Processing":
         "the ability of a computer to process two or more programs in parallel",
-    "conditioncodes":
+    "Condition Codes":
         "a set of single bits that indicate specific conditions within a computer. The values of the condition codes are often determined by the outcome of a prior software operation and their principal use is to govern choices between alternative instruction sequences",
-    "configuration":
+    "Configuration":
         "the particular choice of hardware items and their interconnection that make up a particular computer system",
-    "connectivity":
+    "Connectivity":
         "the state of being connected to the internet; computing the capacity of a machine or appliance to be connected to other machines, appliances, or facilities",
-    "constant": "a specific quantity that is always invariable",
-    "controlcommands":
+    "Constant": "a specific quantity that is always invariable",
+    "Control Commands":
         "keyed instructions conveyed to a computer by using the control key in conjunction with the standard keys",
-    "cookie":
+    "Cookie":
         "a piece of data downloaded to a computer by a website, containing details of the preferences of that computer's user which identify the user when revisiting that website",
-    "corememory":
+    "Core Memory":
         "the main memory of a computer that uses the magnetization of small ferrite rings to store data",
-    "co-routine":
+    "Co-routine":
         "a section of a computer program similar to but differing from a subroutine in that it can be left and re-entered at any point",
-    "corrupt": "(of computer programs or data) containing errors",
-    "crash":
+    "Corrupt": "(of computer programs or data) containing errors",
+    "Crash":
         "(of a computer system or program) to fail suddenly and completely because of a malfunction",
-    "crossassembler":
+    "Cross Assembler":
         "an assembler that runs on a computer other than the one for which it assembles programs",
-    "cursor":
+    "Cursor":
         "any of various means, typically a flashing bar or underline, of identifying a particular position on a computer screen, such as the insertion point for text",
-    "cutandpaste":
+    "Cut and Paste":
         "a technique used in word processing by which a section of text can be moved within a document",
-    "cybercafé":
+    "Cybercafé":
         "a café with computer equipment that gives public access to the internet",
-    "cyberpunk":
+    "Cyberpunk":
         "a genre of science fiction that features rebellious computer hackers and is set in a dystopian society integrated by computer networks",
-    "cyberspace":
+    "Cyberspace":
         "all of the data stored in a large computer or network represented as a three-dimensional model through which a virtual-reality user can move",
-    "cycle":
+    "Cycle":
         "one oscillation of the regular voltage waveform used to synchronize processes in a digital computer",
-    "data": "the information operated on by a computer program",
-    "database":
-        "a systematized collection of data that can be accessed immediately and manipulated by a data-processing system for a specific purpose",
-    "databasemanagement":
+    "Data": "the information operated on by a computer program",
+    "Database Management":
         "the maintenance of information stored in a computer system",
-    "databus":
+    "Databus":
         "the electrical pathway used to transfer data between components of a computer",
-    "datacapture":
+    "Data Capture":
         "any process for converting information into a form that can be handled by a computer",
-    "dataflowarchitecture":
+    "Data Flow Architecture":
         "a means of arranging computer data processing in which operations are governed by the data present and the processing it requires rather than by a rewritten program that awaits data to be processed",
-    "dataprocessing":
+    "Data Processing":
         "a sequence of operations performed on data, especially by a computer, in order to extract information, reorder files, etc",
-    "dataprotection":
+    "Data Protection":
         "(in Britain) safeguards for individuals relating to personal data stored on a computer",
-    "datastructure":
+    "Data Structure":
         "an organized form, such as an array list or string, in which connected data items are held in a computer",
     "Date(trademark)":
         "a British Telecom service providing for the direct transmission of data from one computer to another",
-    "debugging":
+    "Debugging":
         "the process of locating and removing faults in computer programs",
-    "decisionsupportsystem":
+    "Decision Dupport System":
         "a system in which one or more computers and computer programs assist in decision-making by providing information",
-    "Decisiontable":
+    "Decision Table":
         "a table within a computer program that specifies the actions to be taken when certain conditions arise",
-    "default":
+    "Default":
         "obtaink the preset selection of an option offered by a system, which will always be followed except when explicitly altered",
-    "desktop":
+    "Desktop":
         "the main screen display on a personal computer, from which windows may be opened and programs run",
-    "desktoppublishingorDTP":
+    "Desktop Publishing or DTP":
         "a means of publishing reports, advertising, etc, to typeset quality using a desktop computer",
-    "developmentsystem":
+    "Development System":
         "a computer system, including hardware and software, that is specifically designed to aid in the development of software and interfaces",
-    "device":
+    "Device":
         "a piece of computer hardware that is designed for a specific function",
-    "digit": "any of the ten Arabic numerals from 0 to 9",
-    "digitalcomputer":
+    "Digit": "any of the ten Arabic numerals from 0 to 9",
+    "Digital Computer":
         "an electronic computer in which the input is discrete rather than continuous, consisting of combinations of numbers, letters, and other characters written in an appropriate programming language and represented internally in binary notation",
-    "digitalfount":
+    "Digitalfount":
         "a typeface of which the letter-shapes have been converted into digital form so that they can be used in computer-aided typesetting",
-    "digitalmapping":
+    "Digitalmapping":
         "a method of preparing maps in which the data is stored in a computer for ease of access and updating",
-    "digitize":
+    "Digitize":
         "to transcribe (data) into a digital form so that it can be directly processed by a computer",
-    "digitized": "recorded or stored in digital form",
-    "directory":
+    "Digitized": "recorded or stored in digital form",
+    "Directory":
         "an area of a disk, Winchester disk, or floppy disk that contains the names and locations of files currently held on that disk",
-    "disassembler":
+    "Disassembler":
         "a computer program that translates machine code into assembly language",
-    "distributedlogic":
+    "Distributedlogic":
         "a computer system in which remote terminals and electronic devices, distributed throughout the system, supplement the main computer by doing some of the computing or decision making",
-    "document":
+    "Document":
         "a piece of text or text and graphics stored in a computer as a file for manipulation by document processing software",
-    "documentreader":
+    "Document Reader":
         "a device that reads and inputs into a computer marks and characters on a special form, as by optical or magnetic character recognition",
-    "dot-matrixprinter":
+    "Dot-matrix Printer":
         "a printer in which each character is produced as an array of dots by a printhead",
-    "download":
-        "a file transferred onto a computer from another computer or the internet",
-    "downsize":
+    "Downsize":
         "to upgrade (a computer system) by replacing a mainframe or minicomputer with a network of microcomputers",
-    "downtime":
+    "Downtime":
         "the time during which a computer or computer system is down, or inoperative, due to hardware or software failure",
-    "dumbterminal":
+    "Dumb Terminal":
         "a computer terminal without an independent data-processing capacity",
-    "dump": "a place or area where waste materials are dumped",
-    "dpi":
+    "Dump": "a place or area where waste materials are dumped",
+    "Dpi":
         "dots per inch: a measure of the resolution of a typesetting machine, computer screen, etc",
-    "driver": "a computer program that controls a device",
-    "e-commerce": "business transactions conducted on the internet",
-    "edit":
+    "E-commerce": "business transactions conducted on the internet",
+    "Edit":
         "to modify (a computer file) by, for example, deleting, inserting, moving, or copying text",
-    "editor":
+    "Editor":
         "a computer program that facilitates the deletion or insertion of data within information already stored in a computer",
     "EPROM": "erasable programmable read-only memory",
-    "electronicmailorE-mail":
+    "ElectronicmailorE-mail":
         "the transmission and distribution of messages, information, facsimiles of documents, etc, from one computer terminal to another",
-    "electronicoffice":
+    "Electronicoffice":
         "integrated computer systems designed to handle office work",
-    "publishing":
+    "Publishing":
         "the publication of information on magnetic tape, disks, etc, so that",
-    "emulator":
+    "Emulator":
         "software or hardware that allows one computer to perform the functions of, or execute programs designed for, another type of computer",
-    "encryption":
+    "Encryption":
         "any system for security and fraud prevention which automatically breaks up and reorders information before it is sent via telephone lines or the Internet",
-    "errormessage":
+    "Errormessage":
         "a message displayed on a visual display unit, printout, etc, indicating that an incorrect instruction has been given to the computer",
-    "escaperoutine":
+    "Escaperoutine":
         "a means of leaving a computer-program sequence before its end, in order to commence another sequence",
-    "exclusiveORcircuit":
+    "ExclusiveORcircuit":
         "a computer logic circuit having two or more input wires and one output wire and giving a high-voltage output signal if a low-voltage signal is fed to one or more, but not all, of the input wires",
-    "expansionslot":
+    "Expansionslot":
         "a physical electronic interface provided in a computer system to enable extra facilities to be added easily at a later date",
-    "expertsystem":
+    "Expertsystem":
         "a computer program that can offer intelligent advice or make intelligent decisions using rule-based programs",
-    "extranet":
+    "Extranet":
         "an intranet that is modified to allow outsiders access to it, especially one belonging to a business that allows access to customers",
-    "failsafe":
+    "Failsafe":
         "designed to return to a safe condition in the event of a failure or malfunction",
-    "field": "a set of one or more characters comprising a unit of information",
-    "fifthgeneration":
+    "Field": "a set of one or more characters comprising a unit of information",
+    "Fifth Generation":
         "denoting developments in computer design to produce machines with artificial intelligence",
-    "file":
-        "a named collection of information, in the form of text, programs, graphics, etc, held on a permanent storage device such as a magnetic disk",
-    "filemanager": "a program that organizes and arranges files in a computer",
-    "filename":
+    "File Manager": "a program that organizes and arranges files in a computer",
+    "Filename":
         "an arrangement of characters that enables a computer system to permit the user to have access to a particular file",
-    "filesharing":
+    "File Sharing":
         "the practice of sharing computer data or space on a network",
-    "firewall":
-        "a computer system that isolates another computer from the internet in order to prevent unauthorized access",
     "FireWire":
         "a proprietary name for the internationally agreed standard IEEE1394, a high-performance interface that allows for the connection of peripherals such as modems, printers, and mass storage devices",
-    "firmware": "a fixed form of software programmed into a read-only memory",
-    "flag":
+    "Firmware": "a fixed form of software programmed into a read-only memory",
+    "Flag":
         "an indicator, that may be set or unset, used to indicate a condition or to stimulate a particular reaction in the execution of a computer program",
-    "flops":
+    "Flops":
         "floating-point operations per second: a unit for measuring the number of floating-point operations that a computer can perform in a second",
-    "flowchart":
+    "Flowchart":
         "a diagrammatic representation of the sequence of operations or equipment in an industrial process, computer program, etc",
-    "freeware":
-        "computer software that may be distributed and used without payment",
-    "frontendprocessor":
+    "Frontend Processor":
         "a small computer that receives data from input devices and performs some initial processing tasks on it before passing it to a more powerful computer for final processing",
     "FTP":
         "file transfer protocol; the standard protocol used to transfer files across the internet, or a similar network, between computer systems",
-    "function":
+    "Function":
         "an operational instruction for programming an electronic device, as a digital watch, computer, etc.; also, an operation performed by such a device as a result of such an instruction",
-    "functionkey":
+    "Function Key":
         "a key on the keyboard of a microcomputer, etc. that gives special commands to the computer",
-    "fuzzy":
+    "Fuzzy":
         "(of a computer program or system) designed to operate according to the principles of fuzzy logic, so as to be able to deal with data which is imprecise or has uncertain boundaries",
-    "gate":
+    "Gate":
         "a logic circuit having one or more input terminals and one output terminal, the output being switched between two voltage levels determined by the combination of input signals",
-    "gateway":
+    "Gateway":
         "hardware and software that connect incompatible computer networks, allowing information to be passed from one to another",
     "GIF": "a standard compressed file format used for pictures",
-    "gigabyte": "one thousand and twenty-four megabytes",
-    "globalsearch":
+    "Global Search":
         "a word-processing operation in which a complete computer file or set of files is searched for every occurrence of a particular word or other sequence of characters",
-    "graphicaluserinterface":
+    "Graphical User Interface":
         "an interface between a user and a computer system that involves the use of a mouse-controlled screen cursor to select options from menus, make choices with buttons, start programs by clicking icons, etc",
-    "graphics":
+    "Graphics":
         "the information displayed on a visual display unit or on a computer printout in the form of diagrams, graphs, pictures, and symbols",
-    "greyedout":
+    "Greyedout":
         "(of a navigation button, menu item, etc on a computer screen) not highlighted, indicating that the function is unavailable at a given time",
-    "hacker":
+    "Hacker":
         "a person who breaks into the computer system of a company, government, etc",
-    "hardcard":
+    "Hardcard":
         "a card or device that fits into a computer's expansion slot, with the purpose of increasing memory, graphics capacity, etc",
-    "hardcopy":
+    "Hardcopy":
         "computer output printed on paper, as contrasted with machine-readable output such as magnetic tape",
-    "hardware":
-        "the physical equipment used in a computer system, such as the central processing unit, peripheral devices, and memory",
-    "hardwired":
+    "Hardwired":
         "(of a circuit or instruction) permanently wired into a computer, replacing separate software",
-    "helpscreens": "computer instructions displayed on a visual display unit",
-    "hexadecimalnotation":
+    "Helpscreens": "computer instructions displayed on a visual display unit",
+    "Hexadecimal Notation":
         "a number system having a base 16; the symbols for the numbers 0-9 are the same as those used in the decimal system, and the numbers 10-15 are usually represented by the letters A-F. The system is used as a convenient way of representing the internal binary code of a computer",
-    "highlevellanguage":
+    "High Level Language":
         "a computer programming language that resembles natural language or mathematical notation and is designed to reflect the requirements of a problem; examples include Ada, BASIC, C, COBOL, FORTRAN, Pascal",
-    "host":
+    "Host":
         "a computer connected to a network and providing facilities to other computers and their users",
-    "hotkey":
+    "Hotkey":
         "a single key or combination of keys on the keyboard of a computer that carries out a series of commands",
-    "hotspot":
+    "Hotspot":
         "a place where wireless internet, especially broadband, services are provided to users of portable computers through a wireless local area network, such as in an airport, railway station, or library",
-    "housekeeping":
+    "Housekeeping":
         "the general maintenance of a computer storage system, including removal of obsolete files, documentation, security copying, etc",
     "HTML":
         "hypertext markup language: a text description language that is used for electronic publishing, especially on the internet",
-    "hybridcomputer":
+    "Hybrid Computer":
         "a computer that uses both analogue and digital techniques",
-    "hypermedia":
+    "Hypermedia":
         "computer software and hardware that allows users to interact with text, graphics, sound, and video, each of which can be accessed from within any of the others",
-    "hypertext":
+    "Hypertext":
         "computer software and hardware that allows users to create, store, and view text and move between related items easily and in a nonsequential way; a word or phrase can be selected to link users to another part of the same document or to a different document",
-    "icon":
-        "a pictorial representation of a facility available on a computer system, that enables the facility to be activated by means of a screen cursor rather than by a textual instruction",
-    "idletime":
+    "Idletime":
         "time during which a machine or a worker could be working but is not, as when one job has been completed and tooling or materials for the next are not complete or available",
     "IM":
         "instant messaging: the online facility that allows the instant exchange of written messages between two or more people using different computers or mobile phones",
-    "imageenhancement":
+    "Image Enhancement":
         "a method of improving the definition of a video picture by a computer program, which reduces the lowest grey values to black and the highest to white: used for pictures from microscopes, surveillance cameras, and scanners",
-    "incrementalplotter":
+    "Incremental Plotter":
         "a device that plots graphs on paper from computer-generated instructions",
-    "incrementalrecorder":
+    "Incremental Recorder":
         "a device for recording data as it is generated, usually on paper tape or magnetic tape, and feeding it into a computer",
-    "infect": "to affect with a computer virus",
-    "informationtechnology":
+    "Infect": "to affect with a computer virus",
+    "Information Technology":
         "the technology of the production, storage, and communication of information using computers and microelectronics",
-    "initialize":
+    "Initialize":
         "to assign an initial value to (a variable or storage location) in a computer program",
-    "input": "the data fed into a computer from a peripheral device",
-    "inputdevice":
+    "Input Device":
         "a peripheral device that accepts data and feeds it into a computer",
-    "input/output":
+    "Input/output":
         "the data or information that is passed into or out of a computer",
-    "install":
+    "Install":
         "to transfer (computer software) from a distribution file to a permanent location on disk, and prepare it for its particular environment and application",
-    "instruction":
+    "Instruction":
         "a part of a program consisting of a coded command to the computer to perform a specified function",
-    "intelligentknowledge-basedsystem":
+    "Intelligent Knowledge-based System":
         "a computer system in which the properties of a database and an expert system are combined to enable the system to store and process data and make deductions from stored data",
-    "intelligentterminal":
+    "Intelligent Terminal":
         "a computer operating terminal that can carry out some data processing, as well as sending data to and receiving it from a central processor",
-    "interactive":
+    "Interactive":
         "allowing or relating to continuous two-way transfer of information between a user and the central point of a communication system, such as a computer or television",
-    "interactivevideo":
+    "Interactive Video":
         "a computer-optical disk system that displays still or moving video images as determined by computer program and user needs",
-    "interpreter":
+    "Interpreter":
         "a program that translates a second program to machine code one statement at a time and causes the execution of the resulting code as soon as the translation is completed",
-    "interrupt":
+    "Interrupt":
         "the signal to initiate the stopping of the running of one computer program in order to run another, after which the running of the original program is usually continued",
-    "intranet": "an internal network that makes use of internet technology",
+    "Intranet": "an internal network that makes use of internet technology",
     "ISDN":
         "integrated services digital network: a rapid telecommunications network, combining data transfer and telephony",
     "iTunes":
@@ -513,314 +486,292 @@ class CompWords {
         "a unit of work for a computer consisting of a single complete task submitted by a user",
     "JPEG":
         "a standard file format for compressing pictures by disposing of redundant pixels",
-    "keyin":
+    "Keyin":
         "to enter (information or instructions) in a computer or other device by means of a keyboard or keypad",
-    "kilobyte": "1024 bytes",
-    "lapheld":
+    "Lapheld":
         "(especially of a personal computer) small enough to be used on one's lap; portable",
-    "laptop":
+    "Laptop":
         "a personal computer that is small and light enough to be operated on the user's lap",
-    "legacy": "surviving computer systems, hardware, or software",
-    "linkedlist":
+    "Legacy": "surviving computer systems, hardware, or software",
+    "Linkedlist":
         "a list in which each item contains both data and a pointer to one or both neighboring items, thus eliminating the need for the data items to be ordered in memory",
-    "liveware":
+    "Liveware":
         "the programmers, systems analysts, operating staff, and other personnel working in a computer system",
-    "load":
+    "Load":
         "a device that receives or dissipates the power from an amplifier, oscillator, generator, or some other source of signals",
-    "localareanetwork":
+    "Local Area Network":
         "the linking of a number of different devices by cable within a system",
-    "location": "the act or process of locating or the state of being located",
-    "logicbomb":
+    "Location": "the act or process of locating or the state of being located",
+    "Logic Bomb":
         "an unauthorized program that is inserted into a computer system; when activated it interferes with the operation of the computer",
-    "logiccircuit":
+    "Logic Circuit":
         "an electronic circuit used in computers to perform a logical operation on its two or more input signals. There are six basic circuits, the AND, NOT, NAND, OR, NOR, and exclusive OR circuits, which can be combined into more complex circuits",
-    "logicprogramming":
+    "Logic Programming":
         "the study or implementation of computer programs capable of discovering or checking proofs of formal expressions or segments",
-    "login": "the process by which a computer user logs in",
-    "logout": "the process by which a computer user logs out",
-    "loop":
+    "Login": "the process by which a computer user logs in",
+    "Logout": "the process by which a computer user logs out",
+    "Loop":
         "a series of instructions in a program, performed repeatedly until some specified condition is satisfied",
-    "lowlevellanguage":
+    "Low Level Language":
         "a computer programming language that is closer to machine language than to human language",
-    "machinecode":
+    "Machine Code":
         "instructions for the processing of data in a binary, octal, or hexadecimal code that can be understood and executed by a computer",
-    "machinelearning":
+    "Machine Learning":
         "a branch of artificial intelligence in which a computer generates rules underlying or based on raw data that has been fed into it",
-    "machine translation":
+    "Machine Translation":
         "the production of text in one natural language from that in another by means of computer procedures",
-    "macro":
+    "Macro":
         "a single computer instruction that initiates a set of instructions to perform a specific task",
-    "magneticbubble":
+    "Magnetic Bubble":
         "a small round magnetic domain induced by a magnetic field in a thin film of magnetic material, used in certain types of computer memories",
-    "mailbox":
+    "Mailbox":
         "(on a computer) the directory in which e-mail messages are stored; also used of the icon that can be clicked to provide access to e-mails",
-    "mainframe":
+    "Mainframe":
         "a high-speed general-purpose computer, usually with a large storage capacity",
-    "mainmemory": "the central memory-storage facility in a computer",
-    "malware":
+    "Mainmemory": "the central memory-storage facility in a computer",
+    "Malware":
         "a computer program designed specifically to damage or disrupt a system, such as a virus",
-    "manager":
+    "Manager":
         "a computer program that organizes a resource, such as a set of files or a database",
-    "megabyte": "220 or 1,048,576 bytes",
-    "memorymapping":
+    "Memory Mapping":
         "a technique whereby computer peripherals may be addressed as though they formed part of the main memory of the computer",
-    "menu":
-        "a list of options displayed on a visual display unit from which the operator selects an action to be carried out by positioning the cursor or by depressing the appropriate key",
-    "menu-driven": "(of a computer system) operated through menus",
-    "microcomputer":
+    "Menu-driven": "(of a computer system) operated through menus",
+    "Microcomputer":
         "a small computer in which the central processing unit is contained in one or more silicon chips",
-    "microprocessor":
+    "Microprocessor":
         "a single integrated circuit performing the basic functions of the central processing unit in a small computer",
-    "midi":
+    "Midi":
         "a generally accepted specification for the external control of electronic musical instruments",
-    "minicomputer": "a small comparatively cheap digital computer",
-    "module":
+    "Minicomputer": "a small comparatively cheap digital computer",
+    "Module":
         "a self-contained unit or item, such as an assembly of electronic components and associated wiring or a segment of computer software, which itself performs a defined task and can be linked with other such units to form a larger system",
-    "morphing":
+    "Morphing":
         "a computer technique used for graphics and in films, in which one image is gradually transformed into another image without individual changes being noticeable in the process",
     "MPEG":
         "a standard file format for compressing video images and audio sounds",
     "MP3":
         "a format for processing a digital audio file so as to remove unneeded data and produce a smaller file for transmission on the Internet, for use in portable players, etc.",
-    "multiaccess":
+    "Multiaccess":
         "a system in which several users are permitted to have apparently simultaneous access to a computer",
-    "multiprogramming":
+    "Multiprogramming":
         "a time-sharing technique by which several computer programs are each run for a short period in rotation",
     "NANDcircuitorgate":
         "a computer logic circuit having two or more input wires and one output wire that has an output signal if one or more of the input signals are at a low voltage",
-    "network":
-        "a system of interconnected computer systems, terminals, and other equipment allowing information to be exchanged",
-    "neurocomputerorneuralcomputer":
+    "Neuro Computer or Neural Computer":
         "a type of computer designed to mimic the action of the human brain by use of an electronic neural network",
-    "node": "an interconnection point on a computer network",
+    "Node": "an interconnection point on a computer network",
     "NORgate":
         "a digital logic gate that gives an output of 0 when any of its inputs are 1, otherwise 1",
-    "notebookcomputer":
+    "Notebook Computer":
         "a portable computer smaller than a laptop model, often approximately the size of a sheet of A4 paper",
     "NOTcircuit":
         "a logic circuit that has a high-voltage output signal if the input signal is low, and vice versa: used extensively in computers",
-    "objectprogram":
+    "Objectprogram":
         "a computer program translated from the equivalent source program into machine language by the compiler or assembler",
-    "offline": "disconnected from a computer; switched off",
-    "online":
+    "Offline": "disconnected from a computer; switched off",
+    "Online":
         "of or relating to the internet online shopping; of, relating to, or concerned with a peripheral device that is directly connected to and controlled by the central processing unit of a computer",
-    "open":
+    "Open":
         "(of software or a computer system) designed to an internationally agreed standard in order to allow communication between computers, irrespective of size, manufacturer, etc",
-    "opensource":
+    "Opensource":
         "intellectual property, esp computer source code, that is made freely available to the general public by its creators",
-    "operatingsystem":
-        "the set of software that controls the overall operation of a computer system, typically by performing such tasks as memory allocation, job scheduling, and input/output control",
-    "optimize":
+    "Optimize":
         "to write or modify (a computer program) to achieve maximum efficiency in storage capacity, time, cost, etc",
-    "output": "the information produced by a computer",
-    "overflow":
+    "Overflow":
         "a condition that occurs when numeric operations produce results too large to store in the memory space assigned to it",
-    "package":
+    "Package":
         "a set of programs designed for a specific type of problem in statistics, production control, etc, making it unnecessary for a separate program to be written for each problem",
-    "packet":
+    "Packet":
         "a unit into which a larger piece of data is broken down for more efficient transmission",
-    "packetswitching":
+    "Packet Switching":
         "the concentration of data into units that are allocated an address prior to transmission",
-    "palette":
+    "Palette":
         "the available range of colors or patterns that can be displayed by a computer on a visual display unit",
-    "palmtopcomputer":
+    "Palmtop Computer":
         "a computer that has a small screen and compressed keyboard and is small enough to be held in the hand, often used as a personal organizer",
-    "parallelprocessing":
+    "Parallel Processing":
         "the performance by a computer system of two or more simultaneous operations",
-    "paritycheck":
+    "Parity Check":
         "a check made of computer data to ensure that the total number of bits of value 1 (or 0) in each unit of information remains odd or even after transfer between a peripheral device and the memory or vice versa",
-    "parser":
+    "Parser":
         "a program or part of a program that interprets input to a computer by recognizing key words or analyzing sentence structure",
-    "password":
+    "Password":
         "a sequence of characters used to gain access to a computer system",
-    "patch":
+    "Patch":
         "a small set of instructions to correct or improve a computer program",
-    "patchboard":
+    "Patch Board":
         "a device with a large number of sockets into which electrical plugs can be inserted to form many different temporary circuits: used in telephone exchanges, computer systems, etc",
-    "PCorpersonalcomputer":
+    "PC or Personal Computer":
         "a small inexpensive computer used in word processing, playing computer games, etc",
     "PDA":
         "a hand-held, electronic device equipped with a microprocessor, for storing personal information",
     "PDF":
         "portable document format: a format in which documents may be viewed",
-    "personalcomputerorPC":
-        "a small inexpensive computer used in word processing, playing computer games, etc",
-    "piggyback":
+    "Piggyback":
         "a system whereby a vehicle, aircraft, etc, is transported for part of its journey on another vehicle, such as a flat railway wagon, another aircraft, etc",
-    "pixel":
+    "Pixel":
         "of a number of very small picture elements that make up a picture, as on a visual display unit",
-    "platform":
+    "Platform":
         "a specific type of computer hardware or computer operating system",
-    "plugcompatible":
+    "Plug Compatible":
         "(of a peripheral device) designed to be plugged into computer systems produced by different manufacturers",
-    "podcast":
+    "Podcast":
         "an audio file similar to a radio broadcast, which can be downloaded and listened to on a computer, mp3 player, mobile phone, etc",
-    "polymorphicfunction":
+    "Polymorphic Function":
         "a function in a computer program that can deal with a number of different types of data",
-    "popup":
+    "Popup":
         "something that appears over or above the open window on a computer screen",
-    "portable":
+    "Portable":
         "(of software, files, etc) able to be transferred from one type of computer system to another",
-    "powerdown":
+    "Powerdown":
         "to shut down (a computer system) in a methodical way, concluding by switching the power off",
-    "powerup": "to switch on the power to (a computer system)",
-    "printout":
+    "Powerup": "to switch on the power to (a computer system)",
+    "Printout":
         "a piece of paper on which information from a computer or similar device has been printed",
-    "procedure": "another name for subroutine",
-    "process":
+    "Procedure": "another name for subroutine",
+    "Process":
         "a distinct subtask of a computer system which can be regarded as proceeding in parallel with other subtasks of the system",
-    "program":
-        "a sequence of coded instructions fed into a computer, enabling it to perform specified logical and arithmetical operations on data",
-    "programgenerator":
+    "Program Generator":
         "a computer program that can be used to help to create other computer programs",
-    "programmablereadonlymemoryorPROM":
+    "Programmable Read Only Memory Or PROM":
         "a type of ROM chip that can be programmed to a particular user's needs",
-    "programmer":
+    "Programmer":
         "a person who writes a program so that data may be processed by a computer",
-    "programminglanguage":
+    "Programming Language":
         "a simple language system designed to facilitate the writing of computer programs",
-    "programstatement": "a single instruction in a computer program",
-    "prompt":
+    "Program Statement": "a single instruction in a computer program",
+    "Prompt":
         "an aid to the operator of a computer in the form of a question or statement that appears on the screen showing that the equipment is ready to proceed and indicating the options available",
-    "protocol":
+    "Protocol":
         "the set form in which data must be presented for handling by a particular computer configuration, esp in the transmission of information between different computer systems",
-    "querylanguage":
+    "Query Language":
         "the instructions and procedures used to retrieve information from a database",
-    "queue":
+    "Queue":
         "a list in which entries are deleted from one end and inserted at the other",
-    "queuingtheory":
+    "Queuingtheory":
         "a mathematical approach to the rate at which components queue to be processed by a machine, instructions are accessed by a computer, orders need to be serviced, etc, to achieve the optimum flow",
-    "randomaccessmemoryorRAM":
+    "Random Access Memory or RAM":
         "semiconductor memory in which all storage locations can be rapidly accessed in the same amount of time. It forms the main memory of a computer, used by applications to perform tasks while the device is operating",
-    "raster":
+    "Raster":
         "to use web-based technology to turn (a digital image) into a large picture composed of a grid of black and white dots",
-    "readin": "to read (data) into a computer memory or storage device",
-    "readout":
+    "Readin": "to read (data) into a computer memory or storage device",
+    "Readout":
         "the act of retrieving information from a computer memory or storage device",
-    "readonlymemoryorROM":
+    "Readonly Memory Or ROM":
         "computer memory whose contents can be read but not altered",
-    "realtimeprocessing":
+    "Realtime Processing":
         "data-processing by a computer which receives constantly changing data, such as information relating to air-traffic control, travel booking systems, etc, and processes it sufficiently rapidly to be able to control the source of the data",
-    "reboot":
+    "Reboot":
         "to shut down and restart (a computer system) or (of a computer system) to shut down and restart",
-    "record":
+    "Record":
         "(in some computer languages) a data structure designed to allow the handling of groups of related pieces of information as though the group were a single entity",
-    "remoteaccess": "access to a computer from a physically separate terminal",
-    "rerun": "the repeat of a part of a computer program",
-    "reservedword":
+    "Remote Access": "access to a computer from a physically separate terminal",
+    "Rerun": "the repeat of a part of a computer program",
+    "Reserved Word":
         "a word in a programming language or computer system that has a fixed meaning and therefore cannot be redefined by a programmer",
-    "reset": "a device for resetting instruments, controls, etc",
-    "restrictedusersgroup":
+    "Reset": "a device for resetting instruments, controls, etc",
+    "Restricted Users Group":
         "a group of people who, with knowledge of a secret password, or by some other method, have access to restricted information stored in a computer",
-    "retrieval":
+    "Retrieval":
         "a computer filing operation that recalls records or other data from a file",
     "RISCorreducedinstructionsetcomputer":
         "a computer that works on a kind of architecture that has a relatively small set of computer instructions that it can perform",
-    "routine": "a program or part of a program performing a specific function",
-    "run": "a period of time during which a machine, computer, etc, operates",
-    "runtime": "the time during which a computer program is executed",
-    "screensaver":
+    "Routine": "a program or part of a program performing a specific function",
+    "Run": "a period of time during which a machine, computer, etc, operates",
+    "Runtime": "the time during which a computer program is executed",
+    "Screensaver":
         "a computer program that reduces screen damage resulting from an unchanging display when a computer is switched on but not in use by blanking the screen or generating moving patterns, etc",
-    "screenshot":
+    "Screenshot":
         "an image created by copying part or all of the display on a computer screen at a particular moment, for example in order to demonstrate the use of a piece of software",
-    "scroll":
+    "Scroll":
         "to move (text) from right to left or up and down on a screen in order to view text that cannot be contained within a single display image",
-    "SCSIorSmallComputerSystemsInterface":
+    "SCSI or Small Computer Systems Interface":
         "Small Computer Systems Interface: a system for connecting a computer to peripheral devices",
-    "searchengine":
+    "Search Engine":
         "a service provided on the internet enabling users to search for items of interest",
-    "sense": "to test or locate the position of (a part of computer hardware)",
-    "sequentialaccess":
+    "Sense": "to test or locate the position of (a part of computer hardware)",
+    "Sequential Access":
         "a method of reaching and reading data from a computer file by reading through the file from the beginningserial access memory or SAM",
-    "server":
+    "Server":
         "a computer or program that supplies data or resources to other machines on a network",
     "SGML":
         "standard generalized mark-up language: an international standard used in publishing for defining the structure and formatting of documents",
-    "shareware":
-        "software available to all users without the need for a license and for which a token fee is requested",
-    "shellprogram":
+    "ShellProgram":
         "a basic low-cost computer program that provides a framework within which the user can develop the program to suit his personal requirements",
-    "smartcard":
+    "Smart Card":
         "a plastic card with integrated circuits used for storing and processing computer data",
-    "software":
-        "the programs that can be used with a particular computer system",
-    "softwareengineering": "the process of writing computer programs",
-    "sort":
+    "Software Engineering": "the process of writing computer programs",
+    "Sort":
         "to arrange (computer information) by machine in an order convenient to the computer user",
-    "sourcedocument":
+    "Source Document":
         "a document that has been or will be transcribed to a word processor or to the memory bank of a computer",
-    "sourceprogram":
+    "Source Program":
         "an original computer program written by a programmer that is converted into the equivalent object program, written in machine language, by the compiler or assembler",
-    "spam": "unsolicited electronic mail or text messages sent in this way",
-    "speechrecognition": "the understanding of continuous speech by a computer",
-    "spreadsheet":
-        "a computer program that allows easy entry and manipulation of figures, equations, and text, used esp for financial planning and budgeting",
-    "sprite":
+    "Spam": "unsolicited electronic mail or text messages sent in this way",
+    "Speech Recognition":
+        "the understanding of continuous speech by a computer",
+    "Sprite":
         "an icon in a computer game which can be maneuvered around the screen by means of a joystick, etc",
-    "spyware":
+    "Spyware":
         "software installed via the internet on a computer without the user's knowledge and used to send information about the user to another computer",
-    "stack": "an area in a computer memory for temporary storage",
-    "statement":
+    "Stack": "an area in a computer memory for temporary storage",
+    "Statement":
         "a computer instruction written in a source language, such as FORTRAN, which is converted into one or more machine code instructions by a compiler",
-    "storagecapacity":
+    "Storage Capacity":
         "the maximum number of bits, bytes, words, or items that can be held in a memory system such as that of a computer or of the brain",
-    "storagedevice":
+    "Storage Device":
         "a piece of computer equipment, such as a magnetic tape, disk, etc, in or on which data and instructions can be stored, usually in binary form",
-    "store": "the state of being stored (esp in the phrase in store)",
-    "storeandforward":
+    "Store": "the state of being stored (esp in the phrase in store)",
+    "Store and Forward":
         "to store (information) in a computer for later forward transmission through a telecommunication network",
-    "string":
+    "String":
         "a group of characters that can be treated as a unit by a computer program",
-    "subroutine":
+    "Sub Routine":
         "a section of a computer program that is stored only once but can be used when required at several different points in the program, thus saving space",
-    "supercomputer":
+    "Supercomputer":
         "a powerful computer that can process large quantities of data of a similar type very quickly",
-    "syntax": "the structure of statements in a computer language",
-    "system":
+    "Syntax": "the structure of statements in a computer language",
+    "System":
         "an organization of hardware and software, often together with personnel, that function together as a unit",
-    "systemsanalysis":
+    "Systems Analysis":
         "the analysis of the requirements of a task and the expression of those requirements in a form that permits the assembly of computer hardware and software to perform the task",
-    "systemsdisk":
+    "Systems Disk":
         "a disk used to store computer programs, esp the basic operating programs of a computer",
-    "taskbar":
+    "Taskbar":
         "a row of selectable buttons and icons typically running along the bottom of a computer screen, displaying information such as the names of running programs",
-    "teleprocessing":
+    "Teleprocessing":
         "the use of remote computer terminals connected to a central computer to process data",
-    "virtualstorage":
+    "Virtual Storage":
         "a computer system in which the size of the memory is effectively increased by automatically transferring sections of a program from a large capacity backing store, such as a disk, into the smaller core memory as they are required",
-    "virus":
-        "an unauthorized program that inserts itself into a computer system and then propagates itself to other computers via networks or disks; when activated it interferes with the operation of the computer",
-    "voiceinput":
+    "Voiceinput":
         "the control and operation of computer systems by spoken commands",
-    "voicerecognition":
+    "Voice Recognition":
         "the control of a computer system by a voice or voices that the computer has been instructed to accept",
-    "voiceresponse":
+    "Voice Response":
         "output of information from a computer system in the form of speech rather than displayed text",
     "WAN":
         "wide area network: a computer network of geographically distant computers, terminals, etc.",
     "WAP":
         "Wireless Application Protocol: a global application that enables mobile phone users to access the internet and other information services",
-    "wares":
+    "Wares":
         "illegally copied computer software which has had its protection codes de-activated",
     "WiFi":
         "a system of accessing the internet from remote machines such as laptop computers that have wireless connections",
-    "wildcard":
+    "Wildcard":
         "a symbol that can represent any character or group of characters, as in a filename",
     "WIMP":
         "windows, icons, menus (or mice), pointers: denoting a type of user-friendly screen display used on small computers",
-    "window":
-        "an area of a VDU display that may be manipulated separately from the rest of the display area; typically different files can be displayed simultaneously in different overlapping windows",
-    "wireless":
+    "Wireless":
         "communicating without connecting wires or other material contacts",
-    "wizard": "a computer program that guides a user through a complex task",
-    "word":
+    "Wizard": "a computer program that guides a user through a complex task",
+    "Word":
         "a set of bits used to store, transmit, or operate upon an item of information in a computer, such as a program instruction",
-    "wordprocessor": "a computer program that performs word processing",
-    "work station":
+    "WordProcessor": "a computer program that performs word processing",
+    "Work Station":
         "a device or component of an electronic office system consisting of a display screen and keyboard used to handle electronic office work",
     "World Wide Web":
         "a vast network of linked hypertext files, stored on computers throughout the world, that can provide a computer user with information on a huge variety of subjects",
-    "worm":
+    "Worm":
         "a program that duplicates itself many times in a network and prevents its destruction. It often carries a logic bomb or virus",
     "WYSIWIG":
         "what you see is what you get: referring to what is displayed on the screen being the same as what will be printed out",
@@ -897,9 +848,7 @@ class CompWords {
         "A predecessor to Swift, Objective-C is used for building iOS and macOS applications.",
     "Lua":
         "A lightweight scripting language designed for embedded systems and game development.",
-    "Assembly Language":
-        "A low-level programming language specific to a computer architecture, used for system programming and optimization.",
-    "bootsectorvirus":
+    "Bootsect or Virus":
         "specifically targets the boot sector of a hard drive, impairing the boot process. These viruses were once prevalent during the time when computers were booted via floppy disks.",
     "Macroviruses":
         "are frequently found in word processing and spreadsheet programs such as Microsoft Word and Excel. These viruses are typically embedded in documents and spread when the files are transferred to other computers, frequently via email attachments.",
@@ -923,409 +872,388 @@ class CompWords {
         "is a trojan that infects end-user devices and attempts to compromise and steal funds from their financial accounts. The Trojan was discovered in 2012 and initially infected thousands of Turkish computers.",
     "Welchia":
         "also known as Nachi, is a Nematode that deletes Blaster and fixes the vulnerabilities that allow them to exist. While it has no malicious intent, it does tend to slow down computers and networks. On August 18th, 2003, it was first reported.",
-    "port":
+    "Port":
         "this is a connection point through which data can be transferred between a computer and other devices",
-    "bit":
-        "in computing and digital messaging, a 'bit' is the smallest unit of information. The name comes from the phrase 'binary digit'",
-    "cache":
+    "Cache":
         "a piece of hardware or software that stores data so that it can be given faster when that data is asked for again",
-    "kernel":
+    "Kernel":
         "a computer program at the heart of an operating system that controls everything else in the system",
-    "resolution":
+    "Resolution":
         "This is the number of pixels in each dimension that a device or image can display",
-    "computer":
-        "Technically, this only refers to a programmable machine. But native English speakers commonly use it to refer to the entire personal computer (PC) device, including a monitor, keyboard, mouse or laptop",
-    "mouse":
-        "The pointing device used to move the cursor (the position indicator on a computer display screen) and select objects on the computer screen",
-    "printer":
-        "An output device that produces hard copies of documents and images from a computer. You have likely printed documents from a printer before, although it is becoming less common for people to have a printer in their homes",
-    "router":
+    "Router":
         "A device that allows other devices (such as computers, tablets and phones) to connect to the internet. If your internet connection is not strong enough, you may need to move closer to the router",
-    "scanner":
+    "Scanner":
         "An input device that captures and digitizes printed documents or images for computer use. You may have used a scanner if, for example, you needed to sign a document and then send it to someone by email",
     "USB":
         "USB stands for Universal Serial Bus. It is a common interface used to connect devices to a computer, such as printers, keyboards, and external storage",
-    "USBflasgdrive":
+    "USB flash drive":
         "often simply referred to as a 'flash drive' or 'USB drive,' is a small and portable storage device used for storing and transferring data. It is designed to connect to a computer or other compatible device through a USB port",
-    "browser":
-        "Software application used to access and view websites on the internet. There are different kinds of browsers, such as Google Chrome, Safari and Firefox",
-    "cloud":
+    "Cloud":
         "'Cloud-based storage' means that data is stored online. This saves storage space on a computer device. You may have heard someone tell you to save or upload something 'to the Cloud'",
-    "computer programming":
+    "Computer Programming":
         "The process of designing, writing and testing sets of instructions (code) that tell a computer how to perform specific tasks or solve problems. This is often referred to as just “programming",
-    "cookies":
+    "Cookies":
         "Cookies” refer to small text files that are created and stored on a user’s device when they visit a website. Cookies are used to collect and store certain information about the user’s browsing activity and preferences",
     "CSS":
         "CSS stands for Cascading Style Sheets. This information programs a website’s layout and design. For example, CSS programs a website’s font size and color",
-    "email":
-        "Electronic mail sent and received through a computer network. You probably have an email account through a service such as Gmail or Outlook and an email address with an “at sign” (@) and a “dot com” (.com).",
-    "ethernet":
+    "Ethernet":
         "Wired networking technology that connects computers and devices through cables",
-    "internet": "The online network that connects all web-based devices",
     "IP address": "The unique code that identifies a device on the internet",
-    "javascript":
+    "Javascript":
         "A programming language used to add interactivity and dynamic features to web pages",
-    "keyword":
+    "Keyword":
         "Short phrases that describe an image, idea, webpage or piece of data. For example, the phrases and terms you type into a search engine are considered keywords",
-    "toolbar":
+    "Toolbar":
         "The toolbar usually sits at the top of your web browser with icons that help you control what you see. Typically, you can find icons that help you move forward, backward or refresh a webpage. You can also type a web address here",
     "VPN":
         "VPN stands for Virtual Private Network. It is a secure connection that encrypts data transmitted over a public network, providing privacy and anonymity",
-    "website":
+    "Website":
         "This is a collection of individual webpages. When you input a URL, you are brought to a website. FluentU is an example of a website. (Its URL is www.fluentu.com.) The program is also an app, and no matter how you access it, it’s a powerful way to study the English language (like the vocabulary in this post) in an immersive and natural way",
-    "fluentU":
+    "FluentU":
         "takes authentic videos—like music videos, movie trailers, news and inspiring talks—and turns them into personalized language learning lessons",
     "Wi-Fi":
         "Wi-Fi allows computers to communicate wirelessly. Once you connect to a “Wi-Fi network,” you can access the internet without plugging your device into a wire-based system",
-    "app":
+    "App":
         "An app, or application, is a term that was first popularized by Apple. This refers to computer programs that are commonly seen on smartphones and tablets",
-    "browser cache":
+    "Browser Cache":
         "is the temporary storage where a browser keeps copies of web pages and files to speed up future access. You can clear your cache to free up space if you are running low",
     "Hack/Hacker/Hacking":
         "Hacking refers to the act of gaining unauthorized access to computer systems, networks or digital devices with the intention of exploiting or manipulating them.",
-    "zip":
+    "Zip":
         "Zip files are small, compressed files. These files store information with less data than traditional files. When you download a zip file, you need a program to “unzip” the file so you can access the information",
     "Address bar or box":
         "the narrow, rectangular box on the topmost part of a browser window where you can type in a web address",
-    "bookmark":
+    "Bookmark":
         "saving a webpage so you can easily go back to your favorite locations on the Web. On Google Chrome, you can bookmark by clicking on the star on the rightmost part of the address bar",
-    "browse":
+    "Browse":
         "or surf, means to explore a website or a number of websites by scanning and reading information",
-    "dialog box":
+    "Dialog box":
         "a box that appears on your screen when the computer needs additional information to carry out a task. For example, when you open Skype, a dialog box appears and asks you your user name and password",
-    "folder":
-        "A virtual location where your files, programs or other folders are located. These are easy to locate as the icon looks like a yellow office folder in most computers",
-    "homepage":
+    "Homepage":
         "The opening page of a website. In most websites, you go back to this when you click on “Home” or the site’s logo",
-    "update":
+    "Update":
         "A software file that contains fixes for problems found by users or the software developer. These are usually free and have small file sizes.",
-    "upload":
+    "Upload":
         "To save or send data to a network or another computer. You upload information when you post words, pictures or videos on social media, send an email, or save files on a website",
-    "adsl": "Asynchronous Digital Subscriber Line",
-    "alphatest":
+    "Adsl": "Asynchronous Digital Subscriber Line",
+    "Alphatest":
         "An in-house test of a new or modified piece of computer software",
-    "andgate":
+    "Andgate":
         "An electrical circuit that combines two signals so that the output is on if both signals are present",
-    "backingsore":
+    "Backingsore":
         "A computer storage device, usually a disk, that provides additional storage space for information so that it can be accessed and referred to when required and may be copied into the processor if needed",
-    "baseaddress":
+    "Base Address":
         "A system by which the computer programs of a number of individual users are submitted to the computer as a single batch",
-    "betatest":
+    "Beta test":
         "A test of a new or modified piece of computer software by customers who volunteer to do so",
-    "binarynotations":
+    "Binary Notations":
         "A number system having a base of two, numbers being expressed by sequences of the digits 0 and 1: used in computing, as 0 and 1 can be represented electrically as off and on",
-    "binarydigit":
+    "Binary Digit":
         "A unit of capacity of a computer, consisting of an element of its physical structure capable of being in either of two states, such as a switch with on and off positions, or a microscopic magnet capable of alignment in two directions",
-    "bittorrent":
+    "Bit Torrent":
         "A file transfer protocol which enables users to upload and download large files on the internet in the form of software, games, film, video, music, etc, from other users rather than from a central server",
-    "bluetooth":
-        "A short-range radio technology that allows wireless communication between a computer and a keyboard, between mobile phones, etc",
-    "bileprate":
+    "Bileprate":
         "A set of instructions incorporated in several places in a computer program or a standard form of words used repeatedly in drafting contracts, guarantees, etc",
-    "boot":
-        "A protective covering over a mechanical device, such as a rubber sheath protecting a coupling joining two shafts",
-    "bottomupprocessing":
+    "Bottom up Processing":
         "A processing technique, either in the brain or in a computer, in which incoming information is analyzed in successive steps and later-stage processing does not affect processing in earlier stages",
-    "interconnection":
+    "Interconnection":
         "The links or connections between different components that make up a particular computer system",
-    "cybercafe":
+    "Cybercafe":
         "A café with computer equipment that gives public access to the internet",
-    "duplex":
+    "Duplex":
         "Permitting the transmission of simultaneous signals in both directions in a radio, telecommunications, or computer channel",
-    "echo":
+    "Echo":
         "To display (a character) on the screen of a visual display unit as a response to receiving that character from a keyboard entry",
-    "fail-safe":
+    "Fail-safe":
         "Designed to return to a safe condition in the event of a failure or malfunction",
-    "front-endprocessor":
+    "Front-endprocessor":
         "A small computer that receives data from input devices and performs some initial processing tasks on it before passing it to a more powerful computer for final processing",
     "KEYIN":
         "To enter (information or instructions) in a computer or other device by means of a keyboard or keypad",
-    "low-levellanguage":
+    "Low-level Language":
         "A computer programming language that is closer to machine language than to human language",
-    "machinereadable":
+    "Machine Readable":
         "(Of data) in a form in which it can be fed into a computer",
-    "machinetranslation":
-        "The production of text in one natural language from that in another by means of computer procedures",
-    "objectiveprogram":
+    "Objective Program":
         "A computer program translated from the equivalent source program into machine language by the compiler or assembler",
-    "screenshoot":
-        "an image created by copying part or all of the display on a computer screen at a particular moment, for example in order to demonstrate the use of a piece of software",
-    "spreedsheet":
+    "Spreedsheet":
         "a computer program that allows easy entry and manipulation of figures, equations, and text, used esp for financial planning and budgeting",
-    "terminal":
+    "Terminal":
         "a device having input/output links with a computer but situated at a distance from the compute",
-    "topology":
+    "Topology":
         "the arrangement and interlinking of computers in a computer network",
-    "touchscreen":
+    "Touchscreen":
         "a computer screen that allows the user to give commands to the computer by touching parts of the screen rather than by using a keyboard or mouse.",
-    "translator":
+    "Translator":
         "a computer program that converts a program from one language to another",
-    "trojanhorse":
+    "Trojanhorse":
         "a bug inserted into a program or system designed to be activated after a certain time or a certain number of operations",
-    "underflow":
+    "Underflow":
         "a condition that occurs when arithmetic operations produce results too small to store in the available register",
-    "vaccine":
+    "Vaccine":
         "a piece of software designed to detect and remove computer viruses from a system",
-    "variable":
+    "Variable":
         "a named unit of storage that can be changed to any of a set of specified values during execution of a program",
-    "workstation":
+    "Workstation":
         "a device or component of an electronic office system consisting of a display screen and keyboard used to handle electronic office work",
-    "angular": "a structural framework for dynamic web apps",
-    "bootstrap":
+    "Angular": "a structural framework for dynamic web apps",
+    "Bootstrap":
         "a front-end framework for designing responsive and mobile-first websites",
-    "cakephp":
+    "Cakephp":
         "a rapid development framework for PHP that uses design patterns like MVC",
-    "codeigniter":
+    "Codeigniter":
         "a lightweight PHP framework that is simple to use and has a small footprint",
-    "django":
+    "Django":
         "a high-level Python web framework that encourages rapid development and clean, pragmatic design",
-    "ember": "a JavaScript framework for creating ambitious web applications",
-    "express": "a minimal and flexible Node.js web application framework",
-    "flask": "a lightweight web application framework for Python",
-    "gatsby":
+    "Ember": "a JavaScript framework for creating ambitious web applications",
+    "Express": "a minimal and flexible Node.js web application framework",
+    "Flask": "a lightweight web application framework for Python",
+    "Gatsby":
         "a modern framework for building websites and applications using React",
-    "laravel":
+    "Laravel":
         "a PHP web application framework with elegant syntax and tools for tasks like routing, caching, and authentication",
-    "nestjs":
+    "Nestjs":
         "a progressive Node.js framework for building efficient and scalable server-side applications",
-    "next":
+    "Next":
         "a React framework for building static and dynamic web applications",
-    "nuxt": "a framework for building server-side rendered Vue.js applications",
-    "rails": "a web application framework for the Ruby programming language",
-    "react": "a JavaScript library for building user interfaces",
-    "redux": "a predictable state container for JavaScript apps",
-    "rubyonrails":
+    "Nuxt": "a framework for building server-side rendered Vue.js applications",
+    "Rails": "a web application framework for the Ruby programming language",
+    "React": "a JavaScript library for building user interfaces",
+    "Redux": "a predictable state container for JavaScript apps",
+    "Rubyonrails":
         "a web application framework for the Ruby programming language",
-    "rxjs": "a library for reactive programming using Observables",
-    "sails": "a real-time MVC web development framework for Node.js",
-    "springboot":
+    "Rxjs": "a library for reactive programming using Observables",
+    "Sails": "a real-time MVC web development framework for Node.js",
+    "Springboot":
         "an open-source Java-based framework used to create microservices",
-    "springmvc": "a Java-based framework for building web applications",
-    "struts": "a framework for developing Java web applications",
-    "symfony":
+    "Springmvc": "a Java-based framework for building web applications",
+    "Struts": "a framework for developing Java web applications",
+    "Symfony":
         "a PHP web application framework with a set of reusable PHP components",
-    "thymeleaf":
+    "Thymeleaf":
         "a Java-based server-side template engine for web and standalone environments",
-    "typescript":
+    "Typescript":
         "a superset of JavaScript that adds static types to the language",
-    "vue": "a progressive JavaScript framework for building user interfaces",
-    "vuepress": "a minimalistic static site generator built on Vue",
-    "web2py":
+    "Vue": "a progressive JavaScript framework for building user interfaces",
+    "Vuepress": "a minimalistic static site generator built on Vue",
+    "Web2py":
         "a full-stack web framework for agile development of fast, scalable, secure, and portable database-driven web-based applications",
-    "webpack": "a module bundler for JavaScript applications",
-    "webflow":
+    "Webpack": "a module bundler for JavaScript applications",
+    "Webflow":
         "a visual web development platform that allows users to design, build, and launch responsive websites visually",
-    "django-rest-framework":
+    "Django-rest-framework":
         "a powerful and flexible toolkit for building Web APIs in Django",
-    "springcloud":
+    "Springcloud":
         "a set of tools for building microservices architecture with Java and the Spring framework",
-    "fastapi":
+    "Fastapi":
         "a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints",
-    "flutter":
+    "Flutter":
         "an open-source UI software development toolkit created by Google for building natively compiled applications for mobile, web, and desktop from a single codebase",
-    "quasar":
+    "Quasar":
         "a Vue framework for building high-performance and responsive web and mobile applications",
-    "rxjava":
+    "Rxjava":
         "a Java library for composing asynchronous and event-based programs using observable sequences",
-    "centralprocessingunit":
+    "Central Processing Unit":
         "the brain of the computer responsible for executing instructions",
-    "motherboard":
+    "Motherboard":
         "the main circuit board that houses the CPU, memory, and other essential components",
-    "randomaccessmemory":
+    "Random Access Memory":
         "temporary storage used by the CPU for active tasks and data",
-    "harddiskdrive": "a non-volatile storage device for long-term data storage",
-    "solidstatedrive":
+    "Hard Disk Drive":
+        "a non-volatile storage device for long-term data storage",
+    "Solid State Drive":
         "a faster and more durable alternative to traditional hard disk drives",
-    "powersupplyunit":
+    "Power Supply Unit":
         "converts electrical power from an outlet into usable power for the computer components",
-    "graphicsprocessingunit":
+    "Graphics Processing Unit":
         "dedicated hardware for rendering images and videos",
-    "networkinterfacecard":
+    "Network Interface Card":
         "enables the computer to connect to a network, such as Ethernet or Wi-Fi",
-    "audiocard": "handles sound processing and enables audio output",
-    "coolingsystem":
+    "Audiocard": "handles sound processing and enables audio output",
+    "Coolingsystem":
         "keeps the components, especially the CPU, from overheating",
-    "case": "encloses and protects the internal components of the computer",
-    "fan": "a component of the cooling system that helps dissipate heat",
-    "heatsink":
+    "Case": "encloses and protects the internal components of the computer",
+    "Fan": "a component of the cooling system that helps dissipate heat",
+    "Heatsink":
         "a passive cooling device that absorbs and disperses heat from the CPU",
-    "memorymodules":
+    "Memorymodules":
         "additional RAM modules for expanding the system's memory capacity",
-    "centralprocessingunitcooler":
+    "Central Processing Unit Cooler":
         "a cooling device specifically designed for the CPU",
-    "bluetoothmodule":
+    "Bluetooth Module":
         "enables wireless communication with other Bluetooth-enabled devices",
-    "usbport": "allows connection to various external devices using USB cables",
-    "ethernetport": "provides a wired network connection to the computer",
-    "wirelesscard": "enables the computer to connect to wireless networks",
-    "opticaldrive":
+    "Usbport": "allows connection to various external devices using USB cables",
+    "Ethernet Port": "provides a wired network connection to the computer",
+    "Wireless Card": "enables the computer to connect to wireless networks",
+    "Optical Drive":
         "reads and writes optical discs like CDs, DVDs, and Blu-rays",
-    "powersupplycable": "connects the power supply to the electrical outlet",
-    "satacable":
+    "Power Supply Cable": "connects the power supply to the electrical outlet",
+    "Sata Cable":
         "connects storage devices like hard drives and SSDs to the motherboard",
-    "graphicscard":
+    "Graphics Card":
         "an expansion card that enhances the computer's graphical processing capabilities",
-    "cputhermalpaste":
+    "CPU Thermal Paste":
         "a heat-conductive paste applied between the CPU and heatsink for better heat transfer",
-    "bioschip":
+    "Bios Chip":
         "stores the system's basic input/output system for booting and hardware initialization",
-    "pcieslot":
+    "PCIE Slot":
         "a slot on the motherboard for connecting expansion cards like graphics cards and network cards",
-    "cmosbattery":
+    "Cmos Battery":
         "powers the CMOS chip, which stores BIOS settings and system time",
-    "frontpanelpins":
+    "Front Panel Psins":
         "connects the case's front panel components, such as power button and LEDs, to the motherboard",
-    "harddrivecage":
+    "Hard Drive Cage":
         "holds and secures hard disk drives within the computer case",
-    "powerbutton":
+    "Power Button":
         "a physical button on the case for turning the computer on or off",
-    "usbheader":
+    "USB header":
         "connects additional USB ports on the front or top panel of the case to the motherboard",
-    "audioheader": "connects front panel audio jacks to the motherboard",
-    "pcislot": "a slot for connecting various PCI expansion cards",
-    "ramslots": "sockets on the motherboard for installing RAM modules",
-    "satapowerconnector": "provides power to SATA-based storage devices",
-    "cpusocket": "where the CPU is installed on the motherboard",
-    "biosjumper":
+    "Audio Header": "connects front panel audio jacks to the motherboard",
+    "PCI Slot": "a slot for connecting various PCI expansion cards",
+    "Ram Slots": "sockets on the motherboard for installing RAM modules",
+    "Sata Power Connector": "provides power to SATA-based storage devices",
+    "CPU Socket": "where the CPU is installed on the motherboard",
+    "Bios Jumper":
         "a set of pins on the motherboard used to reset or configure the BIOS settings",
-    "cmosresetbutton": "a button or jumper used to reset the CMOS settings",
-    "vgaport": "a port for connecting monitors or displays using VGA cables",
-    "webserver": "serves web pages and content to users over the internet",
-    "fileserver": "manages and provides access to files within a network",
-    "databaseserver": "stores, manages, and retrieves data from databases",
-    "mailserver": "handles email communication and manages email accounts",
-    "ftpserver":
+    "Cmos Resetbutton": "a button or jumper used to reset the CMOS settings",
+    "Vgaport": "a port for connecting monitors or displays using VGA cables",
+    "Web Server": "serves web pages and content to users over the internet",
+    "File Server": "manages and provides access to files within a network",
+    "Database Server": "stores, manages, and retrieves data from databases",
+    "Mail Server": "handles email communication and manages email accounts",
+    "Ftp Server":
         "facilitates file transfer over a network using the File Transfer Protocol (FTP)",
-    "proxyserver":
+    "Proxy Server":
         "intermediary server that acts as a gateway between client and destination servers",
-    "applicationserver":
+    "Application Server":
         "runs and manages applications, providing a runtime environment",
-    "printserver":
+    "Print Server":
         "manages print requests and controls access to printers on a network",
-    "DNSserver":
+    "DNS Server":
         "resolves domain names to IP addresses, facilitating internet communication",
-    "DHCPserver": "assigns IP addresses dynamically to devices on a network",
-    "VPNserver": "provides a secure virtual private network for remote access",
-    "VoIPserver": "handles Voice over Internet Protocol (VoIP) communication",
-    "gameserver": "hosts multiplayer online games and manages game sessions",
-    "authenticationserver":
+    "DHCP Server": "assigns IP addresses dynamically to devices on a network",
+    "VPN Server": "provides a secure virtual private network for remote access",
+    "VoIP Server": "handles Voice over Internet Protocol (VoIP) communication",
+    "game Server": "hosts multiplayer online games and manages game sessions",
+    "Authentication Server":
         "verifies user identities and grants access to authorized users",
-    "NTPserver":
+    "NTP Server":
         "synchronizes the time across devices on a network using the Network Time Protocol",
-    "LDAPserver": "manages a directory of user information and resources",
-    "chatserver": "facilitates real-time communication between users",
-    "virtualserver": "operates as a virtualized instance on a physical server",
-    "backupserver":
+    "LDAP Server": "manages a directory of user information and resources",
+    "Chat Server": "facilitates real-time communication between users",
+    "Virtual Server": "operates as a virtualized instance on a physical server",
+    "Backup Server":
         "manages and stores backups of data and system configurations",
-    "printqueueserver": "controls and prioritizes print jobs in a print queue",
-    "filesynchronizationserver":
+    "Print Queue Server":
+        "controls and prioritizes print jobs in a print queue",
+    "File Synchronization Server":
         "synchronizes files and data across multiple devices or locations",
-    "clusterserver":
+    "Cluster Server":
         "part of a cluster that works together to enhance performance and reliability",
-    "RADIUSserver":
+    "RADIUS Server":
         "provides authentication, authorization, and accounting services for network access",
-    "webhostingserver":
+    "Web Hosting Server":
         "hosts websites and makes them accessible on the internet",
-    "FTPbackupserver": "stores and manages backup copies of files using FTP",
-    "Collaborationserver":
+    "FTP Backup Server": "stores and manages backup copies of files using FTP",
+    "Collaboration Server":
         "supports collaborative tools and communication within a team or organization",
-    "streamingserver":
+    "Streaming Server":
         "delivers multimedia content, such as audio or video, to users",
-    "mailtransferagent(MTA)server":
+    "Mailtransferagent(MTA)server":
         "transfers and routes email messages between servers",
-    "loadbalancer":
+    "Loadbalancer":
         "distributes incoming network traffic across multiple servers to ensure optimal resource utilization",
-    "firewallserver":
+    "Firewall Server":
         "monitors and controls incoming and outgoing network traffic based on predetermined security rules",
-    "contentdeliverynetwork(CDN)server":
+    "Content Delivery Network(CDN) Server":
         "distributes web content to multiple servers for faster delivery to users",
-    "transactionserver":
+    "Transaction Server":
         "manages and processes transactions in a distributed computing environment",
-    "renderfarmserver":
+    "Renderfarm Server":
         "splits and distributes rendering tasks for computer-generated graphics or animations",
-    "identityserver":
+    "Identity Server":
         "manages user identities, authentication, and access control",
-    "edgeserver":
+    "Edge Server":
         "placed at the network edge to improve content delivery and reduce latency",
-    "disasterrecoveryserver":
+    "Disaster Recovery Server":
         "facilitates the recovery of data and systems after a catastrophic event",
-    "webapplicationserver":
+    "Web Application Server":
         "supports the execution of web applications and their components",
-    "peer-to-peerserver":
+    "Peer-to-Peer Server":
         "enables direct communication and resource sharing between networked devices",
-    "softwaredeveloper": "designs and develops software applications",
-    "webdeveloper": "creates and maintains websites and web applications",
-    "systemadministrator":
+    "Software Developer": "designs and develops software applications",
+    "Web Developer": "creates and maintains websites and web applications",
+    "System Administrator":
         "manages and maintains computer systems and networks",
-    "databaseadministrator": "designs, implements, and maintains databases",
-    "networkengineer": "designs, implements, and manages computer networks",
-    "ITconsultant":
+    "Database Administrator": "designs, implements, and maintains databases",
+    "Network Engineer": "designs, implements, and manages computer networks",
+    "IT Consultant":
         "provides advice and solutions for information technology challenges",
-    "cloudarchitect":
+    "Cloud Architect":
         "designs and manages cloud computing architecture and solutions",
-    "datascientist":
+    "Data Scientist":
         "analyzes and interprets complex data sets to inform business decision-making",
-    "machinelearningengineer":
+    "Machine Learning Engineer":
         "develops algorithms and models for machine learning applications",
-    "fullstackdeveloper":
+    "Full Stack Developer":
         "works on both the front-end and back-end of web applications",
-    "devopsengineer":
+    "Dev Ops Engineer":
         "collaborates between development and operations teams to improve efficiency",
-    "cybersecurityanalyst":
+    "Cyber Security Analyst":
         "protects computer systems and networks from security breaches",
     "UI/UXdesigner":
         "focuses on the user interface and user experience design of applications",
-    "businessanalyst":
+    "Business Analyst":
         "analyzes business processes and systems to provide technological solutions",
-    "QAengineer":
+    "QA Engineer":
         "tests and ensures the quality of software applications and systems",
-    "mobileappdeveloper":
+    "Mobile App Developer":
         "creates applications for mobile devices such as smartphones and tablets",
-    "networksecurityengineer":
+    "Network Security Engineer":
         "implements security measures to protect computer networks",
-    "frontenddeveloper":
+    "Front End Developer":
         "specializes in designing and implementing the user interface of web applications",
-    "backenddeveloper":
+    "Back End Developer":
         "focuses on the server-side logic and database of web applications",
-    "dataengineer":
+    "Data Engineer":
         "builds and maintains the architecture for data generation, processing, and storage",
-    "ITprojectmanager": "oversees the planning and execution of IT projects",
-    "technicalsupportspecialist":
+    "IT Project Manager": "oversees the planning and execution of IT projects",
+    "Technical Support Specialist":
         "assists users with technical issues and provides troubleshooting",
-    "blockchaindeveloper":
+    "Blockchain Developer":
         "works on developing applications and solutions using blockchain technology",
-    "AIengineer":
+    "AI Engineer":
         "develops artificial intelligence and machine learning solutions",
-    "systemsanalyst":
+    "Systems Analyst":
         "analyzes and designs information systems to meet business needs",
-    "roboticsengineer": "designs and builds robots and robotic systems",
-    "computervisionengineer":
+    "Robotics Engineer": "designs and builds robots and robotic systems",
+    "Computer Vision Engineer":
         "works on systems that enable computers to interpret visual information",
-    "dataanalyst":
+    "Data Analyst":
         "interprets and analyzes data to provide insights for decision-making",
-    "networkadministrator":
+    "Network Administrator":
         "manages and supports computer networks within an organization",
-    "frontenddesigner":
+    "Front End Designer":
         "focuses on the visual and interactive elements of a website or application",
-    "backendengineer":
+    "Back End Engineer":
         "works on server-side development and database management",
-    "IoTdeveloper":
+    "IoT Developer":
         "develops applications and solutions for the Internet of Things (IoT)",
-    "UXresearcher":
+    "UX Researcher":
         "conducts research to understand user behavior and preferences",
-    "ITsecurityconsultant":
+    "IT Security Consultant":
         "provides expertise in cybersecurity and recommends security measures",
-    "computerhardwareengineer":
+    "Computer Hardware Engineer":
         "designs and develops computer hardware components",
-    "healthtechspecialist":
+    "Health Tech Specialist":
         "works on technology solutions within the healthcare industry",
-    "edtechdeveloper":
+    "Edtech Developer":
         "develops educational technology solutions and platforms",
     "AIethicist":
         "addresses ethical considerations in the development and use of AI technologies",
-    "technicalwriter":
+    "Technical Writer":
         "creates documentation and guides for software and technical processes",
-    "3Dgraphicsdeveloper":
+    "3Dgraphics Developer":
         "works on creating 3D graphics and animations for applications and games",
     "TensorFlow":
         "an open-source machine learning framework developed by Google",
@@ -1471,12 +1399,8 @@ class CompWords {
     "Gradle": "a build automation system used for Java projects",
     "Ant": "a build tool for Java projects",
     "Maven": "a build automation and project management tool for Java projects",
-    "Array":
-        "a collection of elements with a fixed-size, typically of the same data type",
     "LinkedList":
         "a linear collection of elements where each element points to the next one",
-    "Stack": "a collection of elements with last in, first out (LIFO) access",
-    "Queue": "a collection of elements with first in, first out (FIFO) access",
     "HashTable":
         "a data structure that maps keys to values, allowing efficient retrieval",
     "Tree": "a hierarchical data structure with nodes connected by edges",
@@ -1610,12 +1534,9 @@ class CompWords {
     'IPAddress':
         'A numerical label assigned to each device participating in a computer network.',
     'SubnetMask': 'Divides an IP address into network and host portions.',
-    'Router': 'A device that forwards data packets between computer networks.',
     'Switch':
         'A device that connects devices within the same local area network (LAN).',
     'Hub': 'A basic networking device that connects multiple devices in a LAN.',
-    'Gateway':
-        'A node that serves as an entry or exit point for data traffic between different networks.',
     'DNS(DomainNameSystem)':
         'Resolves human-readable domain names to IP addresses.',
     'DHCP(DynamicHostConfigurationProtocol)':
@@ -1638,10 +1559,8 @@ class CompWords {
         'Used to transfer files between a server and a client on a network.',
     'SSL/TLS(SecureSocketsLayer/TransportLayerSecurity)':
         'Protocols for secure data transmission over a network.',
-    'Packet': 'A unit of data transmitted over a network.',
     'Routing':
         'The process of determining the optimal path for data to travel in a network.',
-    'Bandwidth': 'The maximum rate of data transfer across a network.',
     'Latency':
         'The time delay between the initiation and execution of a network operation.',
     'MACAddress(MediaAccessControlAddress)':
@@ -1679,29 +1598,14 @@ class CompWords {
     'SSID(ServiceSetIdentifier)':
         'A unique identifier that names a wireless network.',
     'Algorithm': 'A step-by-step procedure or formula for solving a problem.',
-    'Variable':
-        'A named storage location capable of holding data during program execution.',
-    'Function': 'A reusable block of code that performs a specific task.',
     'Class': 'A blueprint for creating objects with attributes and methods.',
     'Object': 'An instance of a class, encapsulating data and behavior.',
     'Method':
         'A function associated with an object in object-oriented programming.',
-    'Array': 'A collection of elements, each identified by an index or key.',
-    'Loop':
-        'A control flow statement that allows code to be executed repeatedly.',
     'ConditionalStatement':
         'A statement that performs different actions based on a condition.',
-    'Syntax':
-        'The set of rules that define the combinations of symbols that are considered correctly structured programs.',
     'VariableScope':
         'The context in which a variable is declared, determining its visibility and accessibility.',
-    'Compiler':
-        'A program that translates source code into machine code or an intermediate code.',
-    'Interpreter':
-        'A program that directly executes instructions written in a programming or scripting language.',
-    'Bug': 'An error, flaw, or unintended behavior in a computer program.',
-    'Debugging':
-        'The process of finding and fixing bugs or errors in a program.',
     'Exception':
         'An event that occurs during the execution of a program and disrupts normal flow.',
     'API(ApplicationProgrammingInterface)':

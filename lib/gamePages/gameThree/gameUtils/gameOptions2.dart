@@ -41,7 +41,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry3> {
                   width: 300,
                   child: Center(
                     child: Text(
-                      "Try Again ${widget.username} \n You Only Get ${widget.WordCount}",
+                      "Oops! Sorry ${widget.username} you didnt reach the minimum guessed words which a minimum of 10",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

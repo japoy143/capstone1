@@ -199,7 +199,7 @@ class _MenuPageState extends State<MenuPage> {
                     ),
                     child: const Center(
                       child: Text(
-                        'HighScores',
+                        'High Scores',
                         style: TextStyle(
                           fontFamily: 'Anton',
                           fontSize: 30,
