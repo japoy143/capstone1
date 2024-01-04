@@ -77,8 +77,8 @@ class _MygameUI2State extends State<MygameUI2> {
     timerBanner();
     timerWPM();
     keysZero();
-    _gameNotifs2.gameNotifGameDescription(context);
-    timerGameNotif2();
+    // _gameNotifs2.gameNotifGameDescription(context);
+    _gameNotifs2.gameNotifGameDescription2(context);
     bgmusic3.play(AssetSource('audios/Bgmusic/Victorous.mp3'));
     scoreBox = Hive.box<scores>('scores');
   }
@@ -115,13 +115,13 @@ class _MygameUI2State extends State<MygameUI2> {
     });
   }
 
-  //Timer for gameNotif2
-  late Timer TimerGameNotif2;
-  void timerGameNotif2() {
-    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
-      return _gameNotifs2.gameNotifGameDescription2(context);
-    });
-  }
+  // //Timer for gameNotif2
+  // late Timer TimerGameNotif2;
+  // void timerGameNotif2() {
+  //   TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+  //     return _gameNotifs2.gameNotifGameDescription2(context);
+  //   });
+  // }
 
   //Timer banner off
   late Timer Timerbanner;
@@ -298,7 +298,6 @@ class _MygameUI2State extends State<MygameUI2> {
     TimerWPM.cancel();
     Timerbanner.cancel();
     keysToZero.cancel();
-    TimerGameNotif2.cancel();
     bgmusic3.stop();
     widget.audioPlayer.resume();
   }
@@ -364,15 +363,12 @@ class _MygameUI2State extends State<MygameUI2> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(left: 33.0),
-                      child: GestureDetector(
-                        onTap: onScore,
-                        child: Text(
-                          'Score: ${Score}',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            color: Colors.white70,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      child: Text(
+                        'Score: ${Score}',
+                        style: TextStyle(
+                          fontSize: 22.0,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -482,12 +478,12 @@ class _MygameUI2State extends State<MygameUI2> {
                 controller: userInputController,
                 readOnly: true,
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.amber,
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
-                  hintStyle: TextStyle(color: Colors.green),
+                  hintStyle: TextStyle(color: Colors.amber),
                 ),
               ),
             ),
@@ -532,7 +528,7 @@ class _MygameUI2State extends State<MygameUI2> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.0,
-                                color: Colors.green[400]),
+                                color: Colors.amber[500]),
                           ),
                         ),
                       ),
@@ -568,7 +564,7 @@ class _MygameUI2State extends State<MygameUI2> {
                         child: Icon(
                       Icons.backspace,
                       size: 24,
-                      color: Colors.green[400],
+                      color: Colors.amber[500],
                     )),
                   ),
                 ),
@@ -599,7 +595,7 @@ class _MygameUI2State extends State<MygameUI2> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Colors.green[400]),
+                              color: Colors.amber[500]),
                         ),
                         const SizedBox(
                           width: 10.0,
@@ -624,7 +620,7 @@ class _MygameUI2State extends State<MygameUI2> {
                     style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green[400]),
+                        color: Colors.amber[500]),
                   )),
                 ),
               ),

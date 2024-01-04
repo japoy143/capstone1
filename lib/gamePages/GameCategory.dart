@@ -123,7 +123,7 @@ class _GameCategoryState extends State<GameCategory> {
                     width: 200,
                     decoration: BoxDecoration(
                         color: userScore!.totalScore >= 100
-                            ? Colors.green[400]
+                            ? Colors.amberAccent
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
                     child: Center(
@@ -155,7 +155,7 @@ class _GameCategoryState extends State<GameCategory> {
                     width: 200,
                     decoration: BoxDecoration(
                         color: userScore!.totalScore > 150
-                            ? Colors.green[400]
+                            ? Colors.red
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),
                     child: Center(

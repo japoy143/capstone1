@@ -83,13 +83,12 @@ class _MygameUI1State extends State<MygameUI1> {
     keysZero();
     randId();
     timerWPM();
-    timerGameNotif2();
+    _gameNotifs.gameNotifGameDescription2(context);
     randHintIndex();
     getCompWordIndex();
     shuffleWordHint();
 
     bgMusic.play(AssetSource('audios/Bgmusic/Soar.mp3'));
-    _gameNotifs.gameNotifGameDescription(context);
     scoreBox = Hive.box<scores>('scores');
     wordcollectionBox = Hive.box<WordCollection>('wordcollection');
   }
@@ -110,13 +109,13 @@ class _MygameUI1State extends State<MygameUI1> {
     });
   }
 
-  //Timer for gameNotif2
-  late Timer TimerGameNotif2;
-  void timerGameNotif2() {
-    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
-      return _gameNotifs.gameNotifGameDescription2(context);
-    });
-  }
+  // //Timer for gameNotif2
+  // late Timer TimerGameNotif2;
+  // void timerGameNotif2() {
+  //   TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+  //     return;
+  //   });
+  // }
 
   //Timer banner off
   late Timer Timerbanner;
@@ -309,7 +308,7 @@ class _MygameUI1State extends State<MygameUI1> {
     Timerbanner.cancel();
     keysToZero.cancel();
     TimerWPM.cancel();
-    TimerGameNotif2.cancel();
+
     bgMusic.stop();
     widget.audioPlayer.resume();
   }
@@ -447,15 +446,12 @@ class _MygameUI1State extends State<MygameUI1> {
                     ),
               Row(
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: onScore,
-                    child: Text(
-                      'Score: ${Score}',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                        color: Colors.white70,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    'Score: ${Score}',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      color: Colors.white70,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(

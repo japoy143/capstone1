@@ -36,11 +36,11 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
               Padding(
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
-                  height: 70,
+                  height: 80,
                   width: 300,
                   child: Center(
                     child: Text(
-                      "Oops! Sorry ${widget.username} you didnt reach the minimum guessed words which a minimum of 10",
+                      "Oops! Sorry ${widget.username} you didnt reach the minimum guessed words.",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -60,7 +60,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.amber[500],
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,
@@ -88,7 +88,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.amber[500],
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,
@@ -109,7 +109,7 @@ class _GameOptionsTry1State extends State<GameOptionsTry2> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.amber[500],
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,

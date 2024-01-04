@@ -35,13 +35,13 @@ class WordCollected3 extends StatelessWidget {
           Text(
             'Words Collected',
             style: TextStyle(
-                fontSize: 24, fontFamily: 'Anton', color: Colors.green[400]),
+                fontSize: 24, fontFamily: 'Anton', color: Colors.redAccent),
           ),
           SizedBox(
             height: 10.0,
           ),
           Container(
-              decoration: BoxDecoration(color: Colors.green[400]),
+              decoration: BoxDecoration(color: Colors.redAccent),
               height: 250,
               width: 280,
               child: ListView(children: combined))

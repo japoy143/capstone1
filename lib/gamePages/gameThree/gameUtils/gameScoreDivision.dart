@@ -23,7 +23,7 @@ class gameScoresDivision3 extends StatelessWidget {
               height: screenHeight * .25,
               width: screenWidth * .33,
               decoration: BoxDecoration(
-                color: Colors.green[400],
+                color: Colors.redAccent,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(children: <Widget>[
@@ -49,7 +49,7 @@ class gameScoresDivision3 extends StatelessWidget {
               height: screenHeight * .25,
               width: screenWidth * .33,
               decoration: BoxDecoration(
-                color: Colors.green[400],
+                color: Colors.redAccent,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(children: <Widget>[

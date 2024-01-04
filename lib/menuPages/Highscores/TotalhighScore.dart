@@ -35,9 +35,10 @@ class _TotalhighScoreState extends State<TotalhighScore> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Total High Scores',
-          style: TextStyle(fontSize: 20.0),
+          'Scores',
+          style: TextStyle(fontSize: 25.0),
         ),
+        centerTitle: true,
       ),
       body: ListView.builder(
           itemCount: userScore.length,
@@ -62,7 +63,7 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                         Vibration.vibrate();
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 8.0),
                         child: Container(
                           height: 40,
                           width: 220,
@@ -90,7 +91,7 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                           child: Column(children: <Widget>[
                             Container(
                               height: 40,
-                              width: 200,
+                              width: 190,
                               decoration: BoxDecoration(
                                 color: Colors.green[400],
                                 borderRadius: BorderRadius.circular(8.0),
@@ -99,7 +100,7 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                                 child: Text(
                                   'Word Per Minute',
                                   style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 16.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white70,
                                       letterSpacing: 2.0),
@@ -125,16 +126,16 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                             children: <Widget>[
                               Container(
                                 height: 40,
-                                width: 180,
+                                width: 190,
                                 decoration: BoxDecoration(
                                   color: Colors.green[400],
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'CompScore',
+                                    'Total Guessed Word',
                                     style: TextStyle(
-                                        fontSize: 20.0,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white70,
                                         letterSpacing: 2.0),
@@ -160,41 +161,6 @@ class _TotalhighScoreState extends State<TotalhighScore> {
                     SizedBox(
                       height: 5,
                     ),
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: 40,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              color: Colors.green[400],
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Total Score',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white70,
-                                    letterSpacing: 2.0),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              sorted.totalScore.toString(),
-                              style: TextStyle(
-                                  fontSize: 30.0,
-                                  color: Colors.green[400],
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Rubik'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),

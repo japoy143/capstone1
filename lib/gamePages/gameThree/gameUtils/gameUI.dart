@@ -73,8 +73,9 @@ class _MygameUI3State extends State<MygameUI3> {
     _startMinusLetter();
     _timerform.startTimer(119);
     timerBanner();
-    _gameNotifs3.gameNotifGameDescription(context);
-    timerGameNotif2();
+    // _gameNotifs3.gameNotifGameDescription(context);
+    // timerGameNotif2();
+    _gameNotifs3.gameNotifGameDescription2(context);
     randId();
     timerWPM();
     bgMusic3.play(AssetSource('audios/Bgmusic/FastRun.mp3'));
@@ -218,12 +219,12 @@ class _MygameUI3State extends State<MygameUI3> {
   }
 
   //Timer for gameNotif2
-  late Timer TimerGameNotif2;
-  void timerGameNotif2() {
-    TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
-      return _gameNotifs3.gameNotifGameDescription2(context);
-    });
-  }
+  // late Timer TimerGameNotif2;
+  // void timerGameNotif2() {
+  //   TimerGameNotif2 = Timer(Duration(seconds: 2, milliseconds: 7), () {
+  //     return _gameNotifs3.gameNotifGameDescription2(context);
+  //   });
+  // }
 
   late Timer Timerbanner;
   void timerBanner() {
@@ -303,7 +304,6 @@ class _MygameUI3State extends State<MygameUI3> {
     _newtimer.cancel();
     Timerbanner.cancel();
     TimerWPM.cancel();
-    TimerGameNotif2.cancel();
     bgMusic3.stop();
     widget.audioPlayer.resume();
   }
@@ -398,15 +398,12 @@ class _MygameUI3State extends State<MygameUI3> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(left: 20.0),
-                        child: GestureDetector(
-                          onTap: onScore,
-                          child: Text(
-                            'Score: ${Score}',
-                            style: TextStyle(
-                              fontSize: 22.0,
-                              color: Colors.white70,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        child: Text(
+                          'Score: ${Score}',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Colors.white70,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -517,12 +514,12 @@ class _MygameUI3State extends State<MygameUI3> {
                   controller: userInputController,
                   readOnly: true,
                   style: TextStyle(
-                      color: Colors.green,
+                      color: Colors.red,
                       fontWeight: FontWeight.bold,
                       fontSize: 25),
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
-                    hintStyle: TextStyle(color: Colors.green),
+                    hintStyle: TextStyle(color: Colors.red),
                   ),
                 ),
               ),
@@ -566,7 +563,7 @@ class _MygameUI3State extends State<MygameUI3> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
-                                  color: Colors.green[400]),
+                                  color: Colors.redAccent),
                             ),
                           ),
                         ),
@@ -597,7 +594,7 @@ class _MygameUI3State extends State<MygameUI3> {
                           child: Icon(
                         Icons.backspace,
                         size: 24,
-                        color: Colors.green[400],
+                        color: Colors.redAccent,
                       )),
                     ),
                   ),
@@ -631,7 +628,7 @@ class _MygameUI3State extends State<MygameUI3> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.0,
-                                color: Colors.green[400]),
+                                color: Colors.redAccent),
                           ),
                           const SizedBox(
                             width: 10.0,
@@ -643,7 +640,7 @@ class _MygameUI3State extends State<MygameUI3> {
                                 style: TextStyle(
                                     fontSize: 17.0,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.green[400]),
+                                    color: Colors.redAccent),
                               ),
                             ],
                           )
@@ -667,7 +664,7 @@ class _MygameUI3State extends State<MygameUI3> {
                       style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.green[400]),
+                          color: Colors.redAccent),
                     )),
                   ),
                 ),

@@ -13,7 +13,7 @@ class WordUsed2 extends StatelessWidget {
           child: Text(
             "Word is Already Used",
             style: TextStyle(
-                fontSize: 18, fontFamily: 'Anton', color: Colors.green[400]),
+                fontSize: 18, fontFamily: 'Anton', color: Colors.amber[500]),
           ),
         ),
       ),

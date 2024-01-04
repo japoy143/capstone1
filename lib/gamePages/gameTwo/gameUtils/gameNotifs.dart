@@ -108,7 +108,7 @@ class GameNotifs2 {
             height: MediaQuery.of(context as BuildContext).size.height * .12,
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.amberAccent,
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: const Center(

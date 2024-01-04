@@ -61,7 +61,7 @@ class _GameOptions1State extends State<GameOptions3> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.redAccent,
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,
@@ -89,7 +89,7 @@ class _GameOptions1State extends State<GameOptions3> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.redAccent,
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,
@@ -110,7 +110,7 @@ class _GameOptions1State extends State<GameOptions3> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green[400],
+                      color: Colors.redAccent,
                       borderRadius: BorderRadius.circular(5)),
                   height: 50,
                   width: 170,
