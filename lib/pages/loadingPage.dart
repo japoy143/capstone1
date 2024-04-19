@@ -66,7 +66,7 @@ class _loadingPageState extends State<loadingPage>
             ),
           ),
           Text(
-            'woodpicker',
+            'WOODPICKER',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(
