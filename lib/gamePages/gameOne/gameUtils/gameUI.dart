@@ -21,6 +21,7 @@ import 'package:hive/hive.dart';
 import 'package:vibration/vibration.dart';
 import 'gameAssets.dart';
 import 'package:intl/intl.dart';
+import 'package:pausable_timer/pausable_timer.dart';
 
 class MygameUI1 extends StatefulWidget {
   late String username;
@@ -32,6 +33,10 @@ class MygameUI1 extends StatefulWidget {
 }
 
 class _MygameUI1State extends State<MygameUI1> {
+  //timer
+  late final PausableTimer timer;
+  var countDown = 180;
+
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
 
@@ -69,18 +74,12 @@ class _MygameUI1State extends State<MygameUI1> {
   //Computer Words List
   CompWords compWords = CompWords();
 
-  //Timer 2 minutes
-  TimerController _timerform1 = TimerController();
-  TimerUI timerUI = TimerUI();
-
   @override
   void initState() {
     super.initState();
-    _timerform1.startTimer(179);
-    timerBanner();
     keysLength();
     letters.shuffle();
-    keysZero();
+    CountDown();
     randId();
     timerWPM();
     _gameNotifs.gameNotifGameDescription2(context);
@@ -118,24 +117,67 @@ class _MygameUI1State extends State<MygameUI1> {
   // }
 
   //Timer banner off
-  late Timer Timerbanner;
-  void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 181), () async {
-      if (scoreBox.containsKey(widget.username)) {
-        final user = await scoreBox.get(widget.username);
-        if (Score > user!.totalScore) {
-          await scoreBox.put(
-              widget.username,
-              scores(
-                  id: randNum,
-                  username: widget.username,
-                  compScore: compScore,
-                  genScore: genScore,
-                  totalScore: Score,
-                  wordPerMinute: finalWPM));
-        }
+  // late Timer Timerbanner;
+  // void timerBanner() {
+  //   Timerbanner = Timer(Duration(seconds: 181), () async {
+  //     if (scoreBox.containsKey(widget.username)) {
+  //       final user = await scoreBox.get(widget.username);
+  //       if (Score > user!.totalScore) {
+  //         await scoreBox.put(
+  //             widget.username,
+  //             scores(
+  //                 id: randNum,
+  //                 username: widget.username,
+  //                 compScore: compScore,
+  //                 genScore: genScore,
+  //                 totalScore: Score,
+  //                 wordPerMinute: finalWPM));
+  //       }
+  //     }
+  //     if (!scoreBox.containsKey(widget.username)) {
+  //       await scoreBox.put(
+  //           widget.username,
+  //           scores(
+  //               id: randNum,
+  //               username: widget.username,
+  //               compScore: compScore,
+  //               genScore: genScore,
+  //               totalScore: Score,
+  //               wordPerMinute: finalWPM));
+  //       print('Data saved successfully');
+  //     }
+  //     await wordcollectionBox.add(WordCollection(
+  //         username: widget.username, wordcollected: checker, date: date));
+  //     bgMusic.stop();
+  //     return showOptions(context);
+  //   });
+  // }
+
+//timer
+  void CountDown() {
+    timer = PausableTimer.periodic(Duration(seconds: 1), () {
+      if (countDown == 0) {
+        keysZero();
+        timerBanner();
+        timer.pause();
+      } else {
+        var minutes = countDown ~/ 60; // integer division for minutes
+        var seconds = countDown % 60; // remainder for seconds
+        print(
+            '$minutes:${seconds.toString().padLeft(2, '0')}'); // format the output as MM:SS
+
+        setState(() {
+          countDown--;
+        });
       }
-      if (!scoreBox.containsKey(widget.username)) {
+    })
+      ..start();
+  }
+
+  void timerBanner() async {
+    if (scoreBox.containsKey(widget.username)) {
+      final user = await scoreBox.get(widget.username);
+      if (Score > user!.totalScore) {
         await scoreBox.put(
             widget.username,
             scores(
@@ -145,22 +187,30 @@ class _MygameUI1State extends State<MygameUI1> {
                 genScore: genScore,
                 totalScore: Score,
                 wordPerMinute: finalWPM));
-        print('Data saved successfully');
       }
-      await wordcollectionBox.add(WordCollection(
-          username: widget.username, wordcollected: checker, date: date));
-      bgMusic.stop();
-      return showOptions(context);
-    });
+    }
+    if (!scoreBox.containsKey(widget.username)) {
+      await scoreBox.put(
+          widget.username,
+          scores(
+              id: randNum,
+              username: widget.username,
+              compScore: compScore,
+              genScore: genScore,
+              totalScore: Score,
+              wordPerMinute: finalWPM));
+      print('Data saved successfully');
+    }
+    await wordcollectionBox.add(WordCollection(
+        username: widget.username, wordcollected: checker, date: date));
+    bgMusic.stop();
+    return showOptions(context);
   }
 
-  late Timer keysToZero;
   void keysZero() {
-    keysToZero = Timer(Duration(seconds: 181), () {
-      setState(() {
-        keyboardLength = 0;
-        shuffledWordHint = '';
-      });
+    setState(() {
+      keyboardLength = 0;
+      shuffledWordHint = '';
     });
   }
 
@@ -171,12 +221,14 @@ class _MygameUI1State extends State<MygameUI1> {
         builder: (context) {
           if (wordCount > 10) {
             return GameOptions1(
+              time: timer,
               WordCount: wordCount,
               username: widget.username,
               audioPlayer: widget.audioPlayer,
             );
           } else {
             return GameOptionsTry1(
+              time: timer,
               WordCount: wordCount,
               username: widget.username,
               audioPlayer: widget.audioPlayer,
@@ -216,7 +268,8 @@ class _MygameUI1State extends State<MygameUI1> {
       });
       if (!isWordUsed) {
         for (var key in compWords.ComputerWordsList.keys) {
-          if (key.toUpperCase() == createdWord.toUpperCase()) {
+          var splittedKey = key.replaceAll(RegExp(r'\s+'), '');
+          if (splittedKey.toUpperCase() == createdWord.trim().toUpperCase()) {
             print("Word Exist");
             tapsounds.Correct();
             _gameNotifs.gameNotifRight(context);
@@ -305,10 +358,8 @@ class _MygameUI1State extends State<MygameUI1> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
-    Timerbanner.cancel();
-    keysToZero.cancel();
     TimerWPM.cancel();
-
+    timer.cancel();
     bgMusic.stop();
     widget.audioPlayer.resume();
   }
@@ -379,6 +430,8 @@ class _MygameUI1State extends State<MygameUI1> {
     String newCollected =
         collected + shuffledWordHint.toUpperCase().replaceAll(" ", '');
     List<String> charlist = newCollected.split('');
+    var minutes = countDown ~/ 60; // integer division for minutes
+    var seconds = countDown % 60;
 
     return Column(
       children: [
@@ -390,6 +443,7 @@ class _MygameUI1State extends State<MygameUI1> {
                   padding: const EdgeInsets.only(left: 2.0),
                   child: IconButton(
                       onPressed: () {
+                        timer.pause();
                         return showOptions(context);
                       },
                       icon: const Icon(
@@ -472,6 +526,9 @@ class _MygameUI1State extends State<MygameUI1> {
                         iconSize: 30,
                         color: Colors.white70,
                       ),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Container(
                         height: (screenHeight) * .04,
                         width: (screenWidth) * .20,
@@ -491,15 +548,11 @@ class _MygameUI1State extends State<MygameUI1> {
                               SizedBox(
                                 width: (screenWidth) * .01,
                               ),
-                              Obx(
-                                () => Text(
-                                  _timerform1.time.value,
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70),
-                                ),
-                              ),
+                              Text(
+                                  '$minutes:${seconds.toString().padLeft(2, '0')}',
+                                  style: TextStyle(
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.w500))
                             ],
                           ),
                         ),

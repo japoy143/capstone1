@@ -115,7 +115,7 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 40.0,
                 ),
                 GestureDetector(
-                  onTap: userScore!.totalScore > 50
+                  onTap: userScore!.totalScore > 100
                       ? () => targetScoreIntermediate()
                       : null,
                   child: Container(
@@ -147,14 +147,14 @@ class _GameCategoryState extends State<GameCategory> {
                   height: 15.0,
                 ),
                 GestureDetector(
-                  onTap: userScore!.totalScore > 100
+                  onTap: userScore!.totalScore >= 150
                       ? () => targetScoreExpert()
                       : null,
                   child: Container(
                     height: 100,
                     width: 200,
                     decoration: BoxDecoration(
-                        color: userScore!.totalScore > 150
+                        color: userScore!.totalScore >= 150
                             ? Colors.red
                             : Colors.grey,
                         borderRadius: BorderRadius.circular(8.0)),

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ffi';
+
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:capstoneapp1/components/Dictionaries/ComputerWordsList.dart';
@@ -15,6 +15,7 @@ import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:pausable_timer/pausable_timer.dart';
 import 'package:vibration/vibration.dart';
 import 'gameAssets.dart';
 import 'gameBanner.dart';
@@ -28,6 +29,10 @@ class MygameUI3 extends StatefulWidget {
 }
 
 class _MygameUI3State extends State<MygameUI3> {
+  //timer
+  late final PausableTimer timer;
+  var countDown = 120;
+  int decrease = 8;
   //database
   late Box<scores> scoreBox;
   //Score
@@ -44,10 +49,6 @@ class _MygameUI3State extends State<MygameUI3> {
 
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
-
-  late Timer _newtimer;
-  int seconds = 225;
-  TimerController3 _timerform = TimerController3();
 
   //keys
   List<String> letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
@@ -69,10 +70,9 @@ class _MygameUI3State extends State<MygameUI3> {
   @override
   void initState() {
     super.initState();
+    scoreBox = Hive.box<scores>('scores');
+    CountDown();
     letters.shuffle();
-    _startMinusLetter();
-    _timerform.startTimer(119);
-    timerBanner();
     // _gameNotifs3.gameNotifGameDescription(context);
     // timerGameNotif2();
     _gameNotifs3.gameNotifGameDescription2(context);
@@ -80,6 +80,34 @@ class _MygameUI3State extends State<MygameUI3> {
     timerWPM();
     bgMusic3.play(AssetSource('audios/Bgmusic/FastRun.mp3'));
     scoreBox = Hive.box<scores>('scores');
+  }
+
+  //timer
+  void CountDown() {
+    timer = PausableTimer.periodic(Duration(seconds: 1), () {
+      if (countDown == 0) {
+        timerBanner();
+        timer.pause();
+      } else {
+        var minutes = countDown ~/ 60; // integer division for minutes
+        var seconds = countDown % 60; // remainder for seconds
+
+        print(
+            '$minutes:${seconds.toString().padLeft(2, '0')}'); // format the output as MM:SS
+
+        setState(() {
+          countDown--;
+          decrease--;
+        });
+        if (decrease == 0) {
+          setState(() {
+            _startMinusLetter();
+            decrease = 8;
+          });
+        }
+      }
+    })
+      ..start();
   }
 
   void onTapLetter(String letter) {
@@ -194,12 +222,14 @@ class _MygameUI3State extends State<MygameUI3> {
         builder: (context) {
           if (wordCount > 10) {
             return GameOptions3(
+              time: timer,
               WordCount: wordCount,
               username: widget.userName,
               audioPlayer: widget.audioPlayer,
             );
           } else {
             return GameOptionsTry3(
+              time: timer,
               WordCount: wordCount,
               username: widget.userName,
               audioPlayer: widget.audioPlayer,
@@ -226,24 +256,52 @@ class _MygameUI3State extends State<MygameUI3> {
   //   });
   // }
 
-  late Timer Timerbanner;
-  void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 121), () async {
-      if (scoreBox.containsKey(widget.userName)) {
-        final user = await scoreBox.get(widget.userName);
-        if (Score > user!.totalScore) {
-          await scoreBox.put(
-              widget.userName,
-              scores(
-                  id: randNum,
-                  username: widget.userName,
-                  compScore: compScore,
-                  genScore: genScore,
-                  totalScore: Score,
-                  wordPerMinute: finalWPM));
-        }
-      }
-      if (!scoreBox.containsKey(widget.userName)) {
+  // late Timer Timerbanner;
+  // void timerBanner() {
+  //   Timerbanner = Timer(Duration(seconds: 121), () async {
+  //     if (scoreBox.containsKey(widget.userName)) {
+  //       final user = await scoreBox.get(widget.userName);
+  //       if (Score > user!.totalScore) {
+  //         await scoreBox.put(
+  //             widget.userName,
+  //             scores(
+  //                 id: randNum,
+  //                 username: widget.userName,
+  //                 compScore: compScore,
+  //                 genScore: genScore,
+  //                 totalScore: Score,
+  //                 wordPerMinute: finalWPM));
+  //       }
+  //     }
+  //     if (!scoreBox.containsKey(widget.userName)) {
+  //       await scoreBox.put(
+  //           widget.userName,
+  //           scores(
+  //               id: randNum,
+  //               username: widget.userName,
+  //               compScore: compScore,
+  //               genScore: genScore,
+  //               totalScore: Score,
+  //               wordPerMinute: finalWPM));
+  //       print('Data saved successfully');
+  //     }
+
+  //     bgMusic3.stop();
+  //     return showOptions(context);
+  //   });
+  // }
+
+  // int randNum = 0;
+  // //randomize id
+  // void randId() {
+  //   var random = Random();
+  //   randNum = (random.nextDouble() * 10000).toInt() + 1;
+  // }
+
+  void timerBanner() async {
+    if (scoreBox.containsKey(widget.userName)) {
+      final user = await scoreBox.get(widget.userName);
+      if (Score > user!.totalScore) {
         await scoreBox.put(
             widget.userName,
             scores(
@@ -253,12 +311,23 @@ class _MygameUI3State extends State<MygameUI3> {
                 genScore: genScore,
                 totalScore: Score,
                 wordPerMinute: finalWPM));
-        print('Data saved successfully');
       }
+    }
+    if (!scoreBox.containsKey(widget.userName)) {
+      await scoreBox.put(
+          widget.userName,
+          scores(
+              id: randNum,
+              username: widget.userName,
+              compScore: compScore,
+              genScore: genScore,
+              totalScore: Score,
+              wordPerMinute: finalWPM));
+      print('Data saved successfully');
+    }
 
-      bgMusic3.stop();
-      return showOptions(context);
-    });
+    bgMusic3.stop();
+    return showOptions(context);
   }
 
   int randNum = 0;
@@ -300,9 +369,8 @@ class _MygameUI3State extends State<MygameUI3> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
-    _timerform.timer?.cancel();
-    _newtimer.cancel();
-    Timerbanner.cancel();
+    timer.cancel();
+
     TimerWPM.cancel();
     bgMusic3.stop();
     widget.audioPlayer.resume();
@@ -312,18 +380,16 @@ class _MygameUI3State extends State<MygameUI3> {
   int LetterCount = 15;
   int numcount = 15;
   void _startMinusLetter() {
-    _newtimer = Timer.periodic(Duration(seconds: 8), (timer) {
-      if (numcount % 15 == 0) {
-        if (LetterCount > 0) {
-          setState(() {
-            LetterCount--;
-            thiefImg = false;
-            thiefImg2 = true;
-          });
-          thiefImgsStates();
-        }
+    if (numcount % 15 == 0) {
+      if (LetterCount > 0) {
+        setState(() {
+          LetterCount--;
+          thiefImg = false;
+          thiefImg2 = true;
+        });
+        thiefImgsStates();
       }
-    });
+    }
   }
 
   late Timer TimerWPM;
@@ -352,6 +418,8 @@ class _MygameUI3State extends State<MygameUI3> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     String collected = letters.take(LetterCount).join('');
+    var minutes = countDown ~/ 60; // integer division for minutes
+    var seconds = countDown % 60;
 
     List<String> charlist = collected.split('');
 
@@ -364,6 +432,7 @@ class _MygameUI3State extends State<MygameUI3> {
                 children: [
                   IconButton(
                       onPressed: () {
+                        timer.pause();
                         return showOptions(context);
                       },
                       icon: const Icon(
@@ -447,15 +516,11 @@ class _MygameUI3State extends State<MygameUI3> {
                                   SizedBox(
                                     width: (screenWidth) * .01,
                                   ),
-                                  Obx(
-                                    () => Text(
-                                      _timerform.time.value,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white70),
-                                    ),
-                                  ),
+                                  Text(
+                                      '$minutes:${seconds.toString().padLeft(2, '0')}',
+                                      style: TextStyle(
+                                          color: Colors.white70,
+                                          fontWeight: FontWeight.w500))
                                 ],
                               ),
                             ),

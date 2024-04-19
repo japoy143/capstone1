@@ -13,6 +13,7 @@ import 'package:dictionaryx/dictionary_msa_json_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:pausable_timer/pausable_timer.dart';
 import 'package:vibration/vibration.dart';
 import '../../../components/Dictionaries/ComputerWordsList.dart';
 import '../../../helpers/gamesounds.dart';
@@ -28,6 +29,10 @@ class MygameUI2 extends StatefulWidget {
 }
 
 class _MygameUI2State extends State<MygameUI2> {
+  //timer
+  late final PausableTimer timer;
+  var countDown = 120;
+
   //database
   late Box<scores> scoreBox;
 
@@ -48,8 +53,7 @@ class _MygameUI2State extends State<MygameUI2> {
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
 
-  int seconds = 225;
-  TimerController2 _timerform = TimerController2();
+
 
   //
   List<String> letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
@@ -72,11 +76,9 @@ class _MygameUI2State extends State<MygameUI2> {
   void initState() {
     super.initState();
     letters.shuffle();
-    _timerform.startTimer(119);
+    CountDown();
     randId();
-    timerBanner();
     timerWPM();
-    keysZero();
     // _gameNotifs2.gameNotifGameDescription(context);
     _gameNotifs2.gameNotifGameDescription2(context);
     bgmusic3.play(AssetSource('audios/Bgmusic/Victorous.mp3'));
@@ -106,12 +108,10 @@ class _MygameUI2State extends State<MygameUI2> {
   }
 
   //keyboardLength to zero
-  late Timer keysToZero;
+
   void keysZero() {
-    keysToZero = Timer(Duration(seconds: 121), () {
-      setState(() {
-        keyboardLength = 0;
-      });
+    setState(() {
+      keyboardLength = 0;
     });
   }
 
@@ -123,25 +123,30 @@ class _MygameUI2State extends State<MygameUI2> {
   //   });
   // }
 
-  //Timer banner off
-  late Timer Timerbanner;
-  void timerBanner() {
-    Timerbanner = Timer(Duration(seconds: 121), () async {
-      if (scoreBox.containsKey(widget.userName)) {
-        final user = await scoreBox.get(widget.userName);
-        if (Score > user!.totalScore) {
-          await scoreBox.put(
-              widget.userName,
-              scores(
-                  id: randNum,
-                  username: widget.userName,
-                  compScore: compScore,
-                  genScore: genScore,
-                  totalScore: Score,
-                  wordPerMinute: finalWPM));
-        }
+  void CountDown() {
+    timer = PausableTimer.periodic(Duration(seconds: 1), () {
+      if (countDown == 0) {
+        keysZero();
+        timerBanner();
+        timer.pause();
+      } else {
+        var minutes = countDown ~/ 60; // integer division for minutes
+        var seconds = countDown % 60; // remainder for seconds
+        print(
+            '$minutes:${seconds.toString().padLeft(2, '0')}'); // format the output as MM:SS
+
+        setState(() {
+          countDown--;
+        });
       }
-      if (!scoreBox.containsKey(widget.userName)) {
+    })
+      ..start();
+  }
+
+  void timerBanner() async {
+    if (scoreBox.containsKey(widget.userName)) {
+      final user = await scoreBox.get(widget.userName);
+      if (Score > user!.totalScore) {
         await scoreBox.put(
             widget.userName,
             scores(
@@ -151,13 +156,60 @@ class _MygameUI2State extends State<MygameUI2> {
                 genScore: genScore,
                 totalScore: Score,
                 wordPerMinute: finalWPM));
-        print('Data saved successfully');
       }
+    }
+    if (!scoreBox.containsKey(widget.userName)) {
+      await scoreBox.put(
+          widget.userName,
+          scores(
+              id: randNum,
+              username: widget.userName,
+              compScore: compScore,
+              genScore: genScore,
+              totalScore: Score,
+              wordPerMinute: finalWPM));
+      print('Data saved successfully');
+    }
 
-      bgmusic3.stop();
-      return showOptions(context);
-    });
+    bgmusic3.stop();
+    return showOptions(context);
   }
+
+  //Timer banner off
+  // late Timer Timerbanner;
+  // void timerBanner() {
+  //   Timerbanner = Timer(Duration(seconds: 121), () async {
+  //     if (scoreBox.containsKey(widget.userName)) {
+  //       final user = await scoreBox.get(widget.userName);
+  //       if (Score > user!.totalScore) {
+  //         await scoreBox.put(
+  //             widget.userName,
+  //             scores(
+  //                 id: randNum,
+  //                 username: widget.userName,
+  //                 compScore: compScore,
+  //                 genScore: genScore,
+  //                 totalScore: Score,
+  //                 wordPerMinute: finalWPM));
+  //       }
+  //     }
+  //     if (!scoreBox.containsKey(widget.userName)) {
+  //       await scoreBox.put(
+  //           widget.userName,
+  //           scores(
+  //               id: randNum,
+  //               username: widget.userName,
+  //               compScore: compScore,
+  //               genScore: genScore,
+  //               totalScore: Score,
+  //               wordPerMinute: finalWPM));
+  //       print('Data saved successfully');
+  //     }
+
+  //     bgmusic3.stop();
+  //     return showOptions(context);
+  //   });
+  // }
 
   //game banner
   void showOptions(BuildContext context) {
@@ -166,12 +218,14 @@ class _MygameUI2State extends State<MygameUI2> {
         builder: (context) {
           if (wordCount > 10) {
             return GameOptions2(
+              time: timer,
               WordCount: wordCount,
               username: widget.userName,
               audioPlayer: widget.audioPlayer,
             );
           } else {
             return GameOptionsTry2(
+              time: timer,
               WordCount: wordCount,
               username: widget.userName,
               audioPlayer: widget.audioPlayer,
@@ -294,10 +348,8 @@ class _MygameUI2State extends State<MygameUI2> {
   void dispose() {
     super.dispose();
     userInputController.dispose();
-    _timerform.timer?.cancel();
     TimerWPM.cancel();
-    Timerbanner.cancel();
-    keysToZero.cancel();
+    timer.cancel();
     bgmusic3.stop();
     widget.audioPlayer.resume();
   }
@@ -318,6 +370,8 @@ class _MygameUI2State extends State<MygameUI2> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     String collected = letters.take(keyboardLength).join('');
+    var minutes = countDown ~/ 60; // integer division for minutes
+    var seconds = countDown % 60;
 
     List<String> charlist = collected.split('');
 
@@ -329,6 +383,7 @@ class _MygameUI2State extends State<MygameUI2> {
               children: [
                 IconButton(
                     onPressed: () {
+                      timer.pause();
                       return showOptions(context);
                     },
                     icon: const Icon(
@@ -412,15 +467,11 @@ class _MygameUI2State extends State<MygameUI2> {
                                 SizedBox(
                                   width: (screenWidth) * .01,
                                 ),
-                                Obx(
-                                  () => Text(
-                                    _timerform.time.value,
-                                    style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white70),
-                                  ),
-                                ),
+                                Text(
+                                    '$minutes:${seconds.toString().padLeft(2, '0')}',
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontWeight: FontWeight.w500))
                               ],
                             ),
                           ),
