@@ -2,7 +2,7 @@
 # readme.md
 WORDYWOODPICKER 
 
-![WordyMockup](WordyMockup.png)
+![WordyMockup](MockupGreen.png)
 
 Computer word guessing game you have to guessed a computer related word from the given  randomize set of letters. The game has three Categories.
 
