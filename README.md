@@ -1,16 +1,44 @@
-# capstoneapp1
 
-A new Flutter project.
+# readme.md
+WORDYWOODPICKER 
 
-## Getting Started
+Computer word guessing game you have to guessed a computer related word from the given  randomize set of letters. The game has three Categories.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## How to Install and Set up
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+how to clone the project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone  https://github.com/japoy143/capstone1.git
+```
+
+how to install dependencies
+```bash
+flutter pub get 
+```
+
+how to run the game
+
+```bash
+open emulator
+```
+```bash
+flutter run
+```
+
+## Tech Stack
+
+Flutter,Dart and Hive
+
+
+## Authors
+
+github
+- [@japoy143](https://github.com/japoy143)
+
+linkedIn
+
+- [@rainierlesondato](https://www.linkedin.com/in/rainierlesondato/)
+
+
