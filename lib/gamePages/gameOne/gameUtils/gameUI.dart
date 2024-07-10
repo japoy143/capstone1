@@ -576,10 +576,10 @@ class _MygameUI1State extends State<MygameUI1> {
               color: Colors.grey[300]),
         ),
         Text(
-          "woodpicker",
+          "WOODPICKER",
           style: TextStyle(
             fontFamily: 'Edusa',
-            fontSize: 35.0,
+            fontSize: 25.0,
             color: Colors.grey[300],
           ),
         ),

@@ -543,10 +543,10 @@ class _MygameUI3State extends State<MygameUI3> {
                 color: Colors.grey[300]),
           ),
           Text(
-            'woodpicker',
+            'WOODPICKER',
             style: TextStyle(
               fontFamily: 'Edusa',
-              fontSize: 30.0,
+              fontSize: 20.0,
               color: Colors.grey[300],
             ),
           ),

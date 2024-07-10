@@ -53,8 +53,6 @@ class _MygameUI2State extends State<MygameUI2> {
   //dictionary
   final dMSAJson = DictionaryMSAFlutter();
 
-
-
   //
   List<String> letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
@@ -494,10 +492,10 @@ class _MygameUI2State extends State<MygameUI2> {
               color: Colors.grey[300]),
         ),
         Text(
-          'woodpicker',
+          'WOODPICKER',
           style: TextStyle(
             fontFamily: 'Edusa',
-            fontSize: 30.0,
+            fontSize: 25.0,
             color: Colors.grey[300],
           ),
         ),
